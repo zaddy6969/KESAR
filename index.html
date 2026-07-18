@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#17130f" />
+  <meta name="description" content="Kesar — contemporary Indian dining shaped by season, spice and slow craft." />
+  <title>Kesar — Contemporary Indian Dining</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <div class="nav-left">
+        <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mobilePanel">Menu</button>
+        <a class="nav-link" href="#story">Story</a>
+        <a class="nav-link" href="#menu">Menu</a>
+      </div>
+
+      <a class="brand" href="#home" aria-label="Kesar home">
+        KESAR
+        <small>Contemporary Indian Dining</small>
+      </a>
+
+      <div class="nav-right">
+        <a class="nav-link" href="#gallery">Gallery</a>
+        <a class="reserve-nav" href="#reservation">Reserve</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+    <nav class="mobile-links" aria-label="Mobile navigation">
+      <a href="#story">Our Story</a>
+      <a href="#menu">The Menu</a>
+      <a href="#experience">Experience</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reservation">Reserve</a>
+    </nav>
+    <div class="mobile-meta">
+      <span>Your City, India</span>
+      <span>+91 98765 43210</span>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-media" aria-hidden="true">
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-shade"></div>
+      </div>
+
+      <div class="container hero-inner">
+        <div class="hero-status reveal-load d1" id="liveStatusWrap" aria-live="polite">
+          <span class="status-dot"></span>
+          <span id="liveStatus">Checking today’s service</span>
+          <span aria-hidden="true">—</span>
+          <span id="liveTime">IST</span>
+        </div>
+
+        <div class="hero-copy">
+          <h1 class="reveal-load d2">
+            <span>India,</span>
+            <span>reimagined.</span>
+          </h1>
+
+          <div class="hero-side reveal-load d3">
+            <p>
+              A contemporary expression of Indian dining—season-led ingredients,
+              slow craft and the warmth of a table shared.
+            </p>
+            <a class="link-line" href="#reservation">Reserve a table</a>
+          </div>
+        </div>
+
+        <div class="hero-bottom reveal-load d4">
+          <div>
+            <span>Lunch 12:00—15:30</span>
+            <span>Dinner 19:00—23:30</span>
+          </div>
+          <a href="#story">Scroll to discover ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="container">
+        <div class="story-top">
+          <div class="reveal">
+            <span class="kicker">The Kesar story</span>
+          </div>
+
+          <div>
+            <h2 class="section-title story-title reveal">
+              Memory, season and spice—served with restraint.
+            </h2>
+            <div class="story-copy reveal">
+              <p>
+                Kesar begins with flavours we know by heart: smoke from the tandoor,
+                the perfume of saffron, the patience of a dum and the generosity of
+                an Indian table.
+              </p>
+              <p>
+                We refine those memories without losing their soul. The result is
+                expressive, modern food grounded in regional technique and honest
+                ingredients.
+              </p>
+              <a class="link-line" href="#menu">Discover the menu</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-images">
+          <figure class="reveal">
+            <img
+              src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1500&q=88"
+              alt="A refined Indian dining spread"
+            />
+            <figcaption class="caption">
+              <span>Seasonal table</span><span>01</span>
+            </figcaption>
+          </figure>
+
+          <figure class="reveal">
+            <img
+              src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1000&q=88"
+              alt="A contemporary paneer dish"
+            />
+            <figcaption class="caption">
+              <span>From the tandoor</span><span>02</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="menu-head">
+          <div>
+            <span class="kicker reveal">A tasting of Kesar</span>
+            <h2 class="section-title reveal" style="margin-top:22px">Signature plates.</h2>
+          </div>
+          <p class="reveal">
+            A concise seasonal selection. Vegetarian and tasting-menu options
+            are available on request.
+          </p>
+        </div>
+
+        <div class="menu-layout">
+          <figure class="menu-image reveal">
+            <img
+              src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1400&q=90"
+              alt="Kesar's signature butter chicken"
+            />
+          </figure>
+
+          <div>
+            <div class="menu-list">
+              <article class="menu-item reveal">
+                <div>
+                  <h3>Smoked Paneer, Kasundi & Charred Pepper</h3>
+                  <p>House-made paneer, mustard, sweet pepper and tandoor smoke.</p>
+                </div>
+                <span class="menu-price">₹475</span>
+              </article>
+
+              <article class="menu-item reveal">
+                <div>
+                  <h3>Kesar Butter Chicken</h3>
+                  <p>Charred chicken, cultured butter, tomato, fenugreek and cream.</p>
+                </div>
+                <span class="menu-price">₹625</span>
+              </article>
+
+              <article class="menu-item reveal">
+                <div>
+                  <h3>Royal Dum Biryani</h3>
+                  <p>Aged basmati, saffron, caramelised onion and slow-cooked spice.</p>
+                </div>
+                <span class="menu-price">₹575</span>
+              </article>
+
+              <article class="menu-item reveal">
+                <div>
+                  <h3>Black Dal, 18 Hours</h3>
+                  <p>Whole urad, tomato, cultured butter and patient fire.</p>
+                </div>
+                <span class="menu-price">₹395</span>
+              </article>
+
+              <article class="menu-item reveal">
+                <div>
+                  <h3>Saffron Milk, Pistachio & Rose</h3>
+                  <p>A delicate finish of kesar, toasted nuts and floral notes.</p>
+                </div>
+                <span class="menu-price">₹325</span>
+              </article>
+            </div>
+
+            <div class="menu-note reveal">
+              <span>Seasonal tasting menu from ₹2,850 per guest.</span>
+              <a class="link-line" href="#reservation">View full menu</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <div class="experience-content">
+        <div class="container experience-grid">
+          <div>
+            <span class="kicker reveal">The dining room</span>
+            <h2 class="section-title experience-title reveal" style="margin-top:20px">
+              An evening designed to unfold slowly.
+            </h2>
+          </div>
+
+          <div class="experience-copy reveal">
+            <p>
+              Low light, considered service and a room that lets the table take
+              centre stage. Come for dinner; stay for the conversation.
+            </p>
+            <a class="link-line" href="#reservation">Plan your visit</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="philosophy">
+      <div class="container philosophy-grid">
+        <div class="philosophy-list">
+          <article class="philosophy-row reveal">
+            <span>01</span>
+            <div>
+              <h3>Regional memory</h3>
+              <p>Recipes begin with a place, a season and the people who carried them forward.</p>
+            </div>
+          </article>
+
+          <article class="philosophy-row reveal">
+            <span>02</span>
+            <div>
+              <h3>Slow technique</h3>
+              <p>We ferment, smoke, roast and simmer with time—not shortcuts—as an ingredient.</p>
+            </div>
+          </article>
+
+          <article class="philosophy-row reveal">
+            <span>03</span>
+            <div>
+              <h3>Modern restraint</h3>
+              <p>Every element on the plate has purpose; nothing is there only to decorate.</p>
+            </div>
+          </article>
+        </div>
+
+        <aside class="philosophy-aside">
+          <span class="kicker reveal">Our philosophy</span>
+          <h2 class="section-title reveal" style="margin-top:22px">
+            Less spectacle.<br>More feeling.
+          </h2>
+          <p class="reveal">
+            Kesar’s luxury is quiet: excellent produce, confident cooking and
+            hospitality that feels natural rather than performed.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="gallery-header">
+          <div>
+            <span class="kicker reveal">Kesar, in moments</span>
+            <h2 class="section-title reveal" style="margin-top:22px">At the table.</h2>
+          </div>
+          <a class="link-line reveal" href="#contact">Follow on Instagram</a>
+        </div>
+
+        <div class="gallery-track">
+          <figure class="reveal">
+            <img
+              src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=88"
+              alt="A richly coloured Indian curry"
+            />
+          </figure>
+          <figure class="reveal">
+            <img
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1100&q=88"
+              alt="An elegant restaurant table"
+            />
+          </figure>
+          <figure class="reveal">
+            <img
+              src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=1200&q=88"
+              alt="Fragrant biryani"
+            />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="reservation" id="reservation">
+      <div class="container">
+        <div class="reservation-head">
+          <div>
+            <span class="kicker reveal">Reservations</span>
+            <h2 class="section-title reveal" style="margin-top:22px">
+              Join us at Kesar.
+            </h2>
+          </div>
+          <p class="reveal">
+            Reservations are recommended for dinner and weekends. For parties
+            larger than six, please contact our team directly.
+          </p>
+        </div>
+
+        <form class="reservation-form reveal" id="reservationForm">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+          </div>
+          <div class="field">
+            <label for="date">Date</label>
+            <input id="date" name="date" type="date" required />
+          </div>
+          <div class="field">
+            <label for="time">Time</label>
+            <select id="time" name="time" required>
+              <option value="">Choose</option>
+              <option>12:30 PM</option>
+              <option>1:30 PM</option>
+              <option>7:30 PM</option>
+              <option>8:30 PM</option>
+              <option>9:30 PM</option>
+            </select>
+          </div>
+          <div class="field wide">
+            <label for="guests">Number of guests</label>
+            <select id="guests" name="guests" required>
+              <option value="">Choose party size</option>
+              <option>2 guests</option>
+              <option>3 guests</option>
+              <option>4 guests</option>
+              <option>5 guests</option>
+              <option>6 guests</option>
+              <option>7+ guests</option>
+            </select>
+          </div>
+          <div class="field wide">
+            <label for="occasion">Occasion</label>
+            <select id="occasion" name="occasion">
+              <option>Dining</option>
+              <option>Birthday</option>
+              <option>Anniversary</option>
+              <option>Business dinner</option>
+              <option>Private event</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="message">Notes</label>
+            <textarea id="message" name="message" placeholder="Dietary requirements or special requests"></textarea>
+          </div>
+
+          <div class="submit-row">
+            <p>
+              This demo form confirms the request on screen. Connect it to your
+              preferred reservation system, email or WhatsApp before launch.
+            </p>
+            <button class="submit-button" type="submit">Request a table</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <h2 class="footer-brand">KESAR</h2>
+        </div>
+        <div>
+          <h4>Visit</h4>
+          <p>123 Food Street<br>Your City, India</p>
+          <p style="margin-top:18px">+91 98765 43210<br>hello@kesarrestaurant.com</p>
+        </div>
+        <div>
+          <h4>Service</h4>
+          <ul>
+            <li>Lunch · 12:00—15:30</li>
+            <li>Dinner · 19:00—23:30</li>
+            <li>Private dining available</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-bottom">
+        <span>© <span id="year"></span> Kesar Restaurant</span>
+        <span>Instagram · Facebook · WhatsApp</span>
+        <span>Contemporary Indian Dining</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status">
+    Your reservation request has been received. The Kesar team will contact you shortly.
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
