@@ -1,7 +1,7 @@
 /* Full-screen mandi hero */
 .hero-media,.hero-slide,.hero-shade,.hero-smoke{position:absolute;inset:0}
 .hero-slide{background-position:58% center;background-size:cover;opacity:0;will-change:transform}
-.hero-slide:nth-child(1){background-image:url("https://kesar-beige.vercel.app/hero-mandi.webp?v=20260719")!important;opacity:1;display:block;filter:saturate(1.08) contrast(1.04) brightness(1.05);transform:scale(1.025);animation:mandiHeroZoom 16s ease-in-out infinite alternate}
+.hero-slide:nth-child(1){background-image:url("/hero-mandi.svg?v=20260719")!important;opacity:1;display:block;filter:saturate(1.08) contrast(1.04) brightness(1.05);transform:scale(1.025);animation:mandiHeroZoom 16s ease-in-out infinite alternate}
 .hero-slide:nth-child(2),.hero-slide:nth-child(3){display:none!important}
 .hero-shade{z-index:1;background:linear-gradient(180deg,rgba(8,7,6,.18) 0%,rgba(8,7,6,.03) 38%,rgba(8,7,6,.45) 100%),linear-gradient(90deg,rgba(8,7,6,.46) 0%,rgba(8,7,6,.18) 38%,rgba(8,7,6,.04) 68%,rgba(8,7,6,.16) 100%)}
 .hero-smoke{z-index:2;pointer-events:none;overflow:hidden;mix-blend-mode:screen}
