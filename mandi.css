@@ -1,0 +1,17 @@
+/* Full-screen mandi hero */
+.hero-media,.hero-slide,.hero-shade,.hero-smoke{position:absolute;inset:0}
+.hero-slide{background-position:58% center;background-size:cover;opacity:0;will-change:transform}
+.hero-slide:nth-child(1){background-image:url("https://kesar-beige.vercel.app/hero-mandi.webp?v=20260719")!important;opacity:1;display:block;filter:saturate(1.08) contrast(1.04) brightness(1.05);transform:scale(1.025);animation:mandiHeroZoom 16s ease-in-out infinite alternate}
+.hero-slide:nth-child(2),.hero-slide:nth-child(3){display:none!important}
+.hero-shade{z-index:1;background:linear-gradient(180deg,rgba(8,7,6,.18) 0%,rgba(8,7,6,.03) 38%,rgba(8,7,6,.45) 100%),linear-gradient(90deg,rgba(8,7,6,.46) 0%,rgba(8,7,6,.18) 38%,rgba(8,7,6,.04) 68%,rgba(8,7,6,.16) 100%)}
+.hero-smoke{z-index:2;pointer-events:none;overflow:hidden;mix-blend-mode:screen}
+.hero-smoke span{position:absolute;bottom:14%;left:56%;width:210px;height:290px;border-radius:50%;opacity:0;background:radial-gradient(ellipse at center,rgba(255,255,255,.42) 0%,rgba(255,255,255,.19) 28%,rgba(255,255,255,.08) 50%,rgba(255,255,255,0) 72%);filter:blur(27px);transform-origin:center bottom;animation:mandiSmoke 12s ease-in-out infinite}
+.hero-smoke span:nth-child(2){left:64%;bottom:19%;width:260px;height:340px;animation-delay:2.1s}
+.hero-smoke span:nth-child(3){left:73%;bottom:13%;width:180px;height:250px;animation-delay:4.5s}
+.hero-smoke span:nth-child(4){left:60%;bottom:9%;width:240px;height:320px;animation-delay:6.8s}
+.hero-smoke span:nth-child(5){left:69%;bottom:21%;width:170px;height:235px;animation-delay:9.1s}
+.brand small{white-space:nowrap}
+@keyframes mandiHeroZoom{from{transform:scale(1.025) translate3d(0,0,0)}to{transform:scale(1.085) translate3d(-.7%,-.4%,0)}}
+@keyframes mandiSmoke{0%{opacity:0;transform:translate3d(-16px,52px,0) scale(.58) rotate(-8deg)}15%{opacity:.42}56%{opacity:.20}100%{opacity:0;transform:translate3d(30px,-330px,0) scale(1.36) rotate(12deg)}}
+@media(max-width:680px){.hero-slide:nth-child(1){background-position:64% center}.brand small{display:block;font-size:.40rem;letter-spacing:.22em}.hero-smoke span{left:48%}.hero-smoke span:nth-child(2){left:58%}.hero-smoke span:nth-child(3){left:68%}}
+@media(prefers-reduced-motion:reduce){.hero-slide:nth-child(1){animation:none;transform:none}.hero-smoke span{animation:none;opacity:0}}
