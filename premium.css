@@ -442,7 +442,7 @@ html.story-enhanced .story-media.is-loaded img{opacity:1}
   position:absolute;
   inset:0 auto auto 0;
   width:78%;
-  aspect-ratio:4/5;
+  aspect-ratio:1122/1402;
 }
 .story-media-craft-main img{object-position:51% 53%}
 .story-media-craft-spices{
@@ -452,7 +452,7 @@ html.story-enhanced .story-media.is-loaded img{opacity:1}
   right:0;
   bottom:2%;
   width:37%;
-  aspect-ratio:3/4;
+  aspect-ratio:1122/1402;
   filter:drop-shadow(0 24px 32px rgba(23,19,15,.14));
 }
 .story-media-craft-spices img{object-position:50% 48%}
@@ -572,8 +572,8 @@ html.story-enhanced .story-media-craft-spices.visible{transform:none}
     width:100%;
     filter:none;
   }
-  .story-media-craft-main{aspect-ratio:4/5}
-  .story-media-craft-spices{aspect-ratio:4/5}
+  .story-media-craft-main{aspect-ratio:1122/1402}
+  .story-media-craft-spices{aspect-ratio:1122/1402}
   html.story-enhanced .story-media-craft-spices{transform:translateY(28px)}
   html.story-enhanced .story-media-craft-spices.visible{transform:none}
 }
