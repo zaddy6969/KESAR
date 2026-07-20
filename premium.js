@@ -39,7 +39,7 @@ if (premiumReduceMotion) {
 }
 
 document.querySelectorAll(".section-title").forEach(item => item.classList.add("reveal-title"));
-document.querySelectorAll(".menu-showcase-media, .gallery-track figure").forEach(item => item.classList.add("reveal-image"));
+document.querySelectorAll(".menu-showcase-media").forEach(item => item.classList.add("reveal-image"));
 
 const premiumStoryImages = document.querySelectorAll(".story-media img");
 premiumStoryImages.forEach(image => {
@@ -99,7 +99,7 @@ if (premiumFinePointer && !premiumReduceMotion) {
   }
   animatePremiumCursor();
 
-  document.querySelectorAll("a, button, input, select, textarea, .menu-combo-card summary, .menu-signature-card, .philosophy-row, figure").forEach(element => {
+  document.querySelectorAll("a, button, input, select, textarea, .menu-combo-card summary, .menu-signature-card, figure").forEach(element => {
     element.addEventListener("pointerenter", () => premiumCursor.classList.add("active"));
     element.addEventListener("pointerleave", () => premiumCursor.classList.remove("active"));
   });
@@ -129,7 +129,7 @@ if (premiumFinePointer && !premiumReduceMotion) {
     premiumHeroMedia.style.setProperty("--hero-y", "0px");
   });
 
-  const premiumParallaxImages = document.querySelectorAll(".story-media[data-story-parallax] img, .menu-showcase-media img, .gallery-track figure img");
+  const premiumParallaxImages = document.querySelectorAll(".story-media[data-story-parallax] img, .menu-showcase-media img");
   let premiumParallaxFrame = 0;
 
   function updatePremiumParallax() {
