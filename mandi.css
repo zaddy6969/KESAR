@@ -1,6 +1,6 @@
 /* Cinematic full-screen mandi hero */
 .hero-media,.hero-shade{position:absolute;inset:0}
-.hero-media{background:#080705}
+.hero-media{background:#080705;transform:none!important;transition:none!important}
 .hero-video{
   position:absolute;
   inset:0;
@@ -8,8 +8,8 @@
   height:100%;
   object-fit:cover;
   object-position:center;
-  transform:scale(1.006);
-  filter:saturate(1.08) contrast(1.035) brightness(.91);
+  transform:none;
+  filter:saturate(1.04) contrast(1.025) brightness(.96);
 }
 .hero-shade{
   z-index:1;
@@ -101,7 +101,7 @@
 }
 
 @media(max-width:680px){
-  .hero-video{object-position:62% center;transform:scale(1.02)}
+  .hero-video{object-position:62% center;transform:none}
   .hero-shade{
     background:
       linear-gradient(180deg,rgba(5,4,3,.55) 0%,rgba(5,4,3,.12) 28%,rgba(5,4,3,.56) 68%,rgba(5,4,3,.88) 100%),
@@ -131,5 +131,5 @@
 
 @media(prefers-reduced-motion:reduce){
   .hero-video{display:none}
-  .hero-media{background:#080705 url("/assets/images/kesar-mandi-hero-poster.webp") center/cover no-repeat}
+  .hero-media{background:#080705 url("/assets/images/heropage-mandi-4k.webp") center/cover no-repeat}
 }
