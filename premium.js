@@ -99,12 +99,12 @@ if (premiumFinePointer && !premiumReduceMotion) {
   }
   animatePremiumCursor();
 
-  document.querySelectorAll("a, button, input, select, textarea, .menu-combo-card summary, .menu-signature-card, .menu-promise, .philosophy-row, figure").forEach(element => {
+  document.querySelectorAll("a, button, input, select, textarea, .menu-combo-card summary, .menu-signature-card, .philosophy-row, figure").forEach(element => {
     element.addEventListener("pointerenter", () => premiumCursor.classList.add("active"));
     element.addEventListener("pointerleave", () => premiumCursor.classList.remove("active"));
   });
 
-  document.querySelectorAll(".reserve-nav, .link-line, .story-cta, .menu-combo-action button, .menu-visit-button, .submit-button").forEach(element => {
+  document.querySelectorAll(".reserve-nav, .link-line, .story-cta, .menu-combo-action button, .submit-button").forEach(element => {
     element.classList.add("magnetic");
     element.addEventListener("pointermove", event => {
       const rect = element.getBoundingClientRect();
