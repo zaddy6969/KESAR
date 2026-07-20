@@ -38,7 +38,6 @@ if (premiumReduceMotion) {
 }
 
 document.querySelectorAll(".section-title").forEach(item => item.classList.add("reveal-title"));
-document.querySelectorAll(".menu-showcase-media").forEach(item => item.classList.add("reveal-image"));
 
 const premiumStoryImages = document.querySelectorAll(".story-media img");
 premiumStoryImages.forEach(image => {
@@ -76,7 +75,7 @@ window.addEventListener("scroll", updatePremiumScroll, { passive: true });
 window.addEventListener("resize", updatePremiumScroll, { passive: true });
 
 if (premiumFinePointer && !premiumReduceMotion) {
-  document.querySelectorAll(".reserve-nav, .link-line, .story-cta, .menu-combo-action button, .submit-button").forEach(element => {
+  document.querySelectorAll(".reserve-nav, .link-line, .story-cta, .menu-primary-action, .menu-reserve-button, .submit-button").forEach(element => {
     element.classList.add("magnetic");
     element.addEventListener("pointermove", event => {
       const rect = element.getBoundingClientRect();
@@ -101,7 +100,7 @@ if (premiumFinePointer && !premiumReduceMotion) {
     premiumHeroMedia.style.setProperty("--hero-y", "0px");
   });
 
-  const premiumParallaxImages = document.querySelectorAll(".story-media[data-story-parallax] img, .menu-showcase-media img");
+  const premiumParallaxImages = document.querySelectorAll(".story-media[data-story-parallax] img");
   let premiumParallaxFrame = 0;
 
   function updatePremiumParallax() {
@@ -139,10 +138,13 @@ if (premiumFinePointer && !premiumReduceMotion) {
 
 const premiumSections = [...document.querySelectorAll("main section[id]")];
 const premiumNavLinks = [...document.querySelectorAll('.nav-link[href^="#"]')];
+const premiumMenuSectionIds = new Set(["menu", "menu-combos", "signature-dishes", "why-kesar", "menu-reservation"]);
 const premiumSectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      const activeSectionId = entry.target.id === "story-craft" ? "story" : entry.target.id;
+      const activeSectionId = entry.target.id === "story-craft"
+        ? "story"
+        : premiumMenuSectionIds.has(entry.target.id) ? "menu" : entry.target.id;
       premiumNavLinks.forEach(link => {
         link.classList.toggle("is-active", link.getAttribute("href") === `#${activeSectionId}`);
       });

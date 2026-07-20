@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="premium.css">
   <link rel="stylesheet" href="mandi.css">
+  <link rel="stylesheet" href="menu-premium.css">
 </head>
 
 <body class="is-loading">
@@ -243,276 +244,599 @@
       </div>
     </section>
 
-    <section class="menu-section" id="menu" aria-labelledby="menuTitle">
-      <div class="menu-ambient" aria-hidden="true"></div>
-
-      <div class="container menu-premium-shell">
-        <header class="menu-premium-head">
-          <div>
-            <span class="kicker reveal">The Kesar feast</span>
-            <h2 id="menuTitle" class="section-title reveal">Built for the whole table.</h2>
+    <section
+      id="menu"
+      class="menu-chapter menu-intro"
+      aria-labelledby="menuIntroTitle"
+      data-menu-chapter
+    >
+      <div class="container">
+        <header class="menu-intro__hero">
+          <div class="menu-intro__copy">
+            <span class="menu-kicker reveal">The Kesar menu</span>
+            <h2 id="menuIntroTitle" class="menu-display reveal">
+              <span>A feast for</span>
+              <span><em>every table.</em></span>
+            </h2>
+            <p class="menu-intro__lede reveal">
+              Slow-roasted meats, fragrant mandi rice and generous combinations
+              designed for sharing.
+            </p>
+            <div class="menu-intro__actions reveal">
+              <a class="menu-primary-action" href="#menu-combos">
+                Explore Combos <span aria-hidden="true">→</span>
+              </a>
+              <a class="menu-text-link" href="#signature-dishes">
+                View Signature Dishes <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <span class="menu-ornament reveal" aria-hidden="true"></span>
           </div>
 
-          <div class="menu-head-copy reveal">
-            <p>
-              Five generous mandi combinations for tables of two to ten—made with
-              organic spices, served with unlimited mandi rice and true Arabian hospitality.
-            </p>
-            <div class="menu-head-stats" aria-label="Menu overview">
-              <span><strong>05</strong> family feasts</span>
-              <span><strong>02—10</strong> guests</span>
-              <span><strong>₹499</strong> starting at</span>
-            </div>
+          <div class="menu-intro__visual reveal">
+            <span class="menu-intro__glow" aria-hidden="true"></span>
+            <figure class="menu-intro__media">
+              <img
+                src="/assets/images/menupage-chicken mandi.png"
+                width="1122"
+                height="1402"
+                loading="lazy"
+                decoding="async"
+                alt="A generous chicken mandi platter served over fragrant basmati rice"
+              />
+            </figure>
+            <figure class="menu-intro__detail" aria-hidden="true">
+              <img
+                src="/assets/images/storypage-spices2.png"
+                width="1122"
+                height="1402"
+                loading="lazy"
+                decoding="async"
+                alt=""
+              />
+            </figure>
           </div>
         </header>
 
-        <nav class="menu-index reveal" aria-label="Explore the Kesar menu">
-          <a href="#menu-combos">Feast combinations</a>
-          <a href="#menu-signatures">Signature dishes</a>
-          <a class="menu-index-reserve" href="#reservation">Reserve a table <span aria-hidden="true">↗</span></a>
-        </nav>
-
-        <div class="menu-showcase" id="menu-combos">
-          <figure class="menu-showcase-media reveal">
-            <img
-              src="/assets/story-page-mandi.png"
-              width="1672"
-              height="941"
-              loading="lazy"
-              decoding="async"
-              alt="A generous Kesar mandi feast of roasted chicken and fragrant rice"
-            />
-            <figcaption>
-              <span>Opening feast combinations</span>
-              <strong>Unlimited mandi rice</strong>
-            </figcaption>
-          </figure>
-
-          <div class="menu-party-panel reveal">
-            <span class="menu-eyebrow">Find your feast</span>
-            <h3>How many are at your table?</h3>
-            <p>Choose your party size and we will open the combination designed for your gathering.</p>
-
-            <div class="menu-party-picker" role="group" aria-label="Choose a party size">
-              <button type="button" data-menu-combo-target="menu-combo-2" aria-pressed="true">
-                <strong>2</strong><span>guests</span>
-              </button>
-              <button type="button" data-menu-combo-target="menu-combo-5" aria-pressed="false">
-                <strong>4—5</strong><span>guests</span>
-              </button>
-              <button type="button" data-menu-combo-target="menu-combo-6" aria-pressed="false">
-                <strong>6</strong><span>guests</span>
-              </button>
-              <button type="button" data-menu-combo-target="menu-combo-8" aria-pressed="false">
-                <strong>8</strong><span>guests</span>
-              </button>
-              <button type="button" data-menu-combo-target="menu-combo-10" aria-pressed="false">
-                <strong>10</strong><span>guests</span>
-              </button>
-            </div>
-
-            <p class="menu-selection-status" id="menuSelectionStatus" aria-live="polite">
-              Mandi Combo for 2 · ₹499 · unlimited mandi rice included.
-            </p>
-          </div>
-        </div>
-
-        <section class="menu-combo-board" aria-labelledby="menuComboTitle">
-          <div class="menu-subhead reveal">
+        <section class="menu-selector reveal" aria-labelledby="menuSelectorTitle">
+          <header class="menu-selector__head">
             <div>
-              <span class="menu-eyebrow">Grand-opening combinations</span>
-              <h3 id="menuComboTitle">One table. One generous spread.</h3>
+              <span class="menu-section-number" aria-hidden="true">01</span>
+              <h3 id="menuSelectorTitle">How many are dining?</h3>
             </div>
-            <p>Select a feast to see everything arriving at your table.</p>
+            <p>Choose your gathering and discover the feast prepared for your table.</p>
+          </header>
+
+          <div class="menu-combo-selector" role="tablist" aria-label="Choose a party size">
+            <button
+              id="menuParty2"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="menuComboFeature"
+              tabindex="-1"
+              data-menu-party="2"
+            >2 People</button>
+            <button
+              id="menuParty5"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="menuComboFeature"
+              data-menu-party="5"
+            >4–5 People</button>
+            <button
+              id="menuParty6"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="menuComboFeature"
+              tabindex="-1"
+              data-menu-party="6"
+            >6 People</button>
+            <button
+              id="menuParty8"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="menuComboFeature"
+              tabindex="-1"
+              data-menu-party="8"
+            >8 People</button>
+            <button
+              id="menuParty10"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="menuComboFeature"
+              tabindex="-1"
+              data-menu-party="10"
+            >10 People</button>
           </div>
 
-          <div class="menu-combo-list">
-            <details
-              class="menu-combo-card reveal is-selected"
-              id="menu-combo-2"
-              data-menu-combo-card
-              data-menu-combo-name="Mandi Combo"
-              data-menu-combo-party="2 guests"
-              data-menu-combo-price="₹499"
-              open
-            >
-              <summary>
-                <span class="menu-combo-number">01</span>
-                <span class="menu-combo-title"><small>Serves 2</small><strong>Mandi Combo</strong></span>
-                <span class="menu-combo-price"><strong>₹499</strong><small>complete feast</small></span>
-                <span class="menu-combo-toggle" aria-hidden="true"></span>
-              </summary>
-              <div class="menu-combo-body">
+          <article
+            id="menuComboFeature"
+            class="menu-combo-feature"
+            role="tabpanel"
+            aria-labelledby="menuParty5"
+            data-menu-feature
+          >
+            <figure class="menu-combo-feature__media">
+              <img
+                src="/assets/images/menupage-chicken mandi.png"
+                width="1122"
+                height="1402"
+                loading="lazy"
+                decoding="async"
+                alt="A Kesar mandi feast prepared for four to five people"
+                data-menu-feature-image
+              />
+            </figure>
+            <div class="menu-combo-feature__content">
+              <span class="menu-combo-badge" data-menu-feature-badge>Most Popular</span>
+              <div class="menu-combo-feature__title">
                 <div>
-                  <span class="menu-detail-label">At the table</span>
-                  <ul>
-                    <li>Half Al Faham chicken</li>
-                    <li>Unlimited mandi rice</li>
-                    <li>2 boiled eggs</li>
-                    <li>2 soft drinks</li>
-                  </ul>
+                  <h3 data-menu-feature-name>Mandi Combo</h3>
+                  <p data-menu-feature-party>4 to 5 People</p>
                 </div>
-                <div class="menu-combo-action">
-                  <span>Organic spices · family style</span>
-                  <button type="button" data-menu-plan data-guests="2 guests">Plan this feast <span aria-hidden="true">↗</span></button>
-                </div>
+                <p class="menu-combo-feature__price" aria-label="Price 1,199 rupees">
+                  <span class="menu-price-symbol">₹</span><strong data-menu-feature-price>1,199</strong>
+                </p>
               </div>
-            </details>
-
-            <details
-              class="menu-combo-card reveal"
-              id="menu-combo-5"
-              data-menu-combo-card
-              data-menu-combo-name="Mandi Combo"
-              data-menu-combo-party="4 to 5 guests"
-              data-menu-combo-price="₹1,199"
-            >
-              <summary>
-                <span class="menu-combo-number">02</span>
-                <span class="menu-combo-title"><small>Serves 4—5</small><strong>Mandi Combo</strong></span>
-                <span class="menu-combo-price"><strong>₹1,199</strong><small>complete feast</small></span>
-                <span class="menu-combo-toggle" aria-hidden="true"></span>
-              </summary>
-              <div class="menu-combo-body">
-                <div>
-                  <span class="menu-detail-label">At the table</span>
-                  <ul>
-                    <li>Half Al Faham chicken</li>
-                    <li>Half tandoori chicken</li>
-                    <li>8-piece chicken kabab</li>
-                    <li>Unlimited mandi rice</li>
-                    <li>5 soft drinks</li>
-                  </ul>
-                </div>
-                <div class="menu-combo-action">
-                  <span>Organic spices · family style</span>
-                  <button type="button" data-menu-plan data-guests="5 guests">Plan this feast <span aria-hidden="true">↗</span></button>
-                </div>
-              </div>
-            </details>
-
-            <details
-              class="menu-combo-card reveal"
-              id="menu-combo-6"
-              data-menu-combo-card
-              data-menu-combo-name="Family Mandi Feast"
-              data-menu-combo-party="6 guests"
-              data-menu-combo-price="₹1,499"
-            >
-              <summary>
-                <span class="menu-combo-number">03</span>
-                <span class="menu-combo-title"><small>Serves 6</small><strong>Family Mandi Feast</strong></span>
-                <span class="menu-combo-price"><strong>₹1,499</strong><small>complete feast</small></span>
-                <span class="menu-combo-toggle" aria-hidden="true"></span>
-              </summary>
-              <div class="menu-combo-body">
-                <div>
-                  <span class="menu-detail-label">At the table</span>
-                  <ul>
-                    <li>Full Al Faham chicken</li>
-                    <li>12-piece chicken kabab</li>
-                    <li>Unlimited mandi rice</li>
-                    <li>6 boiled eggs</li>
-                    <li>6 soft drinks</li>
-                  </ul>
-                </div>
-                <div class="menu-combo-action">
-                  <span>Organic spices · family style</span>
-                  <button type="button" data-menu-plan data-guests="6 guests">Plan this feast <span aria-hidden="true">↗</span></button>
-                </div>
-              </div>
-            </details>
-
-            <details
-              class="menu-combo-card reveal"
-              id="menu-combo-8"
-              data-menu-combo-card
-              data-menu-combo-name="Mandi Combo"
-              data-menu-combo-party="8 guests"
-              data-menu-combo-price="₹1,999"
-            >
-              <summary>
-                <span class="menu-combo-number">04</span>
-                <span class="menu-combo-title"><small>Serves 8</small><strong>Mandi Combo</strong></span>
-                <span class="menu-combo-price"><strong>₹1,999</strong><small>complete feast</small></span>
-                <span class="menu-combo-toggle" aria-hidden="true"></span>
-              </summary>
-              <div class="menu-combo-body">
-                <div>
-                  <span class="menu-detail-label">At the table</span>
-                  <ul>
-                    <li>Half tandoori chicken</li>
-                    <li>Half Al Faham chicken</li>
-                    <li>8-piece chicken kabab</li>
-                    <li>8 boiled eggs</li>
-                    <li>Unlimited mandi rice</li>
-                    <li>8 soft drinks</li>
-                  </ul>
-                </div>
-                <div class="menu-combo-action">
-                  <span>Organic spices · family style</span>
-                  <button type="button" data-menu-plan data-guests="7+ guests">Plan this feast <span aria-hidden="true">↗</span></button>
-                </div>
-              </div>
-            </details>
-
-            <details
-              class="menu-combo-card reveal"
-              id="menu-combo-10"
-              data-menu-combo-card
-              data-menu-combo-name="Royal Mandi Platter"
-              data-menu-combo-party="10 guests"
-              data-menu-combo-price="₹2,499"
-            >
-              <summary>
-                <span class="menu-combo-number">05</span>
-                <span class="menu-combo-title"><small>Serves 10</small><strong>Royal Mandi Platter</strong></span>
-                <span class="menu-combo-price"><strong>₹2,499</strong><small>complete feast</small></span>
-                <span class="menu-combo-toggle" aria-hidden="true"></span>
-              </summary>
-              <div class="menu-combo-body">
-                <div>
-                  <span class="menu-detail-label">At the table</span>
-                  <ul>
-                    <li>Full Al Faham chicken</li>
-                    <li>Full tandoori chicken</li>
-                    <li>16-piece chicken kabab</li>
-                    <li>10 boiled eggs</li>
-                    <li>Unlimited mandi rice</li>
-                    <li>10 soft drinks</li>
-                  </ul>
-                </div>
-                <div class="menu-combo-action">
-                  <span>Organic spices · family style</span>
-                  <button type="button" data-menu-plan data-guests="7+ guests">Plan this feast <span aria-hidden="true">↗</span></button>
-                </div>
-              </div>
-            </details>
-          </div>
-        </section>
-
-        <section class="menu-signatures" id="menu-signatures" aria-labelledby="menuSignatureTitle">
-          <div class="menu-subhead reveal">
-            <div>
-              <span class="menu-eyebrow">Eight house favourites</span>
-              <h3 id="menuSignatureTitle">Signature dishes.</h3>
+              <span class="menu-detail-label">Included at the table</span>
+              <ul class="menu-combo-feature__items" data-menu-feature-items>
+                <li>Half Al Faham Chicken</li>
+                <li>Half Tandoori Chicken</li>
+                <li>8 Pc Chicken Kabab</li>
+                <li>Unlimited Mandi Rice</li>
+                <li>5 Soft Drinks</li>
+              </ul>
+              <button class="menu-reserve-button" type="button" data-menu-reserve="5">
+                Reserve This Feast <span aria-hidden="true">→</span>
+              </button>
             </div>
-            <p>From charcoal and tandoor to fragrant rice—familiar favourites, prepared the Kesar way.</p>
-          </div>
+          </article>
 
-          <div class="menu-signature-grid">
-            <article class="menu-signature-card reveal"><span>01 · Mandi</span><h4>Chicken Mandi</h4></article>
-            <article class="menu-signature-card reveal"><span>02 · Charcoal</span><h4>Al Faham Chicken</h4></article>
-            <article class="menu-signature-card reveal"><span>03 · Tandoor</span><h4>Tandoori Chicken</h4></article>
-            <article class="menu-signature-card reveal"><span>04 · Grill</span><h4>Chicken Kabab</h4></article>
-            <article class="menu-signature-card reveal"><span>05 · Grill</span><h4>Grill Chicken</h4></article>
-            <article class="menu-signature-card reveal"><span>06 · Wrap</span><h4>Shawarma</h4></article>
-            <article class="menu-signature-card reveal"><span>07 · Rolls</span><h4>Kathi Rolls</h4></article>
-            <article class="menu-signature-card reveal"><span>08 · Rice</span><h4>Biryani</h4></article>
-          </div>
+          <p id="menuComboAnnouncement" class="menu-sr-only" aria-live="polite"></p>
         </section>
       </div>
     </section>
+
+    <section
+      id="menu-combos"
+      class="menu-chapter menu-combos"
+      aria-labelledby="menuCombosTitle"
+      data-menu-chapter
+    >
+      <div class="container">
+        <header class="menu-chapter-head">
+          <div>
+            <span class="menu-kicker reveal">Complete combinations</span>
+            <h2 id="menuCombosTitle" class="menu-display reveal">
+              Choose your <em>gathering.</em>
+            </h2>
+          </div>
+          <p class="reveal">
+            From dinner for two to a royal table for ten, every Kesar combination
+            is prepared for generous sharing.
+          </p>
+        </header>
+
+        <div class="menu-combos__layout">
+          <aside class="menu-combo-summary reveal" aria-label="Selected combo summary">
+            <figure class="menu-combo-summary__media">
+              <img
+                src="/assets/images/menupage-chicken mandi.png"
+                width="1122"
+                height="1402"
+                loading="lazy"
+                decoding="async"
+                alt="Selected Kesar mandi combination"
+                data-menu-comparison-image
+              />
+            </figure>
+            <div class="menu-combo-summary__caption">
+              <span data-menu-comparison-badge>Most Popular</span>
+              <div>
+                <strong data-menu-comparison-name>Mandi Combo</strong>
+                <p data-menu-comparison-party>4 to 5 People</p>
+              </div>
+              <p class="menu-combo-summary__price">
+                <span>₹</span><strong data-menu-comparison-price>1,199</strong>
+              </p>
+            </div>
+          </aside>
+
+          <div>
+            <div class="menu-combo-rows" id="menuComboRows"></div>
+            <p class="menu-combos__note">
+              Every combo includes unlimited mandi rice unless otherwise stated.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="signature-dishes"
+      class="menu-chapter menu-signatures"
+      aria-labelledby="signatureDishesTitle"
+      data-menu-chapter
+    >
+      <div class="container">
+        <header class="menu-chapter-head menu-signatures__head">
+          <div>
+            <span class="menu-kicker reveal">Signature dishes</span>
+            <h2 id="signatureDishesTitle" class="menu-display reveal">
+              Beyond the <em>platter.</em>
+            </h2>
+          </div>
+          <p class="reveal">
+            From signature mandi to charcoal grills, rolls and biryani, every dish
+            carries the warmth of Arabian hospitality.
+          </p>
+        </header>
+
+        <div class="menu-dish-tabs reveal" role="tablist" aria-label="Dish collections">
+          <button
+            id="menuNonVegTab"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="menuNonVegPanel"
+            data-menu-dish-tab="nonveg"
+          >Non-Vegetarian</button>
+          <button
+            id="menuVegTab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="menuVegPanel"
+            tabindex="-1"
+            data-menu-dish-tab="veg"
+          >Vegetarian</button>
+        </div>
+
+        <div
+          id="menuNonVegPanel"
+          class="menu-dish-panel"
+          role="tabpanel"
+          aria-labelledby="menuNonVegTab"
+          data-menu-dish-panel="nonveg"
+        >
+          <div class="menu-carousel-controls reveal">
+            <p>Eight house favourites</p>
+            <div>
+              <button id="menuDishPrev" type="button" aria-label="Previous signature dishes">
+                <span aria-hidden="true">←</span>
+              </button>
+              <button id="menuDishNext" type="button" aria-label="Next signature dishes">
+                <span aria-hidden="true">→</span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            id="menuDishTrack"
+            class="menu-dish-track"
+            role="list"
+            tabindex="0"
+            aria-label="Kesar signature dishes"
+          >
+            <article
+              class="menu-dish-card reveal"
+              role="listitem"
+              data-menu-dish
+              data-menu-pairing="Best enjoyed with aromatic mandi rice and house sauces."
+            >
+              <figure class="menu-dish-card__media">
+                <img src="/assets/images/menupage-chicken mandi.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Chicken mandi served over fragrant basmati rice" />
+              </figure>
+              <div class="menu-dish-card__body">
+                <span>Mandi · Signature</span>
+                <h3>Chicken Mandi</h3>
+                <p>Fragrant mandi rice served with tender, slow-roasted chicken.</p>
+                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
+              </div>
+            </article>
+
+            <article
+              class="menu-dish-card reveal"
+              role="listitem"
+              data-menu-dish
+              data-menu-pairing="Pair with warm flatbread, mandi rice and cooling raita."
+            >
+              <figure class="menu-dish-card__media">
+                <img src="/assets/images/menupage-al faham.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Charcoal-grilled Al Faham chicken with Arabian spices" />
+              </figure>
+              <div class="menu-dish-card__body">
+                <span>Charcoal · Grill</span>
+                <h3>Al Faham Chicken</h3>
+                <p>Charcoal-grilled chicken marinated with aromatic Arabian spices.</p>
+                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
+              </div>
+            </article>
+
+            <article
+              class="menu-dish-card reveal"
+              role="listitem"
+              data-menu-dish
+              data-menu-pairing="Pair with fragrant basmati rice, lemon and mint chutney."
+            >
+              <figure class="menu-dish-card__media">
+                <img src="/assets/images/menupage-tandoori chicken.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Clay-oven roasted tandoori chicken with lemon and onion" />
+              </figure>
+              <div class="menu-dish-card__body">
+                <span>Tandoor · Roast</span>
+                <h3>Tandoori Chicken</h3>
+                <p>Clay-oven roasted chicken with smoke, spice and rich flavour.</p>
+                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
+              </div>
+            </article>
+
+            <article
+              class="menu-dish-card reveal"
+              role="listitem"
+              data-menu-dish
+              data-menu-pairing="Serve with grilled vegetables, flatbread and house chutney."
+            >
+              <figure class="menu-dish-card__media">
+                <img src="/assets/images/menupage-chicken kebab.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Chicken kababs grilled until tender and lightly charred" />
+              </figure>
+              <div class="menu-dish-card__body">
+                <span>Grill · Kabab</span>
+                <h3>Chicken Kabab</h3>
+                <p>Juicy chicken kababs grilled until tender and lightly charred.</p>
+                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
+              </div>
+            </article>
+
+            <article
+              class="menu-dish-card reveal"
+              role="listitem"
+              data-menu-dish
+              data-menu-pairing="Pair with mandi rice, grilled lemon and creamy garlic sauce."
+            >
+              <figure class="menu-dish-card__media">
+                <img src="/assets/images/menupage-grill chicken.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Flame-grilled chicken with a smoky marinade" />
+              </figure>
+              <div class="menu-dish-card__body">
+                <span>Flame · Grill</span>
+                <h3>Grill Chicken</h3>
+                <p>Flame-grilled chicken with a balanced smoky marinade.</p>
+                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
+              </div>
+            </article>
+
+            <article
+              class="menu-dish-card reveal"
+              role="listitem"
+              data-menu-dish
+              data-menu-pairing="Enjoy with pickled vegetables, garlic sauce and a cool drink."
+            >
+              <figure class="menu-dish-card__media">
+                <img src="/assets/images/menupage-shawarma.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Arabian-style chicken shawarma with fresh fillings" />
+              </figure>
+              <div class="menu-dish-card__body">
+                <span>Arabian · Wrap</span>
+                <h3>Shawarma</h3>
+                <p>Arabian-style spiced chicken wrapped with fresh, flavourful fillings.</p>
+                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
+              </div>
+            </article>
+
+            <article
+              class="menu-dish-card reveal"
+              role="listitem"
+              data-menu-dish
+              data-menu-pairing="Pair with mint chutney, crisp onions and a chilled drink."
+            >
+              <figure class="menu-dish-card__media">
+                <img src="/assets/images/menupage-kathi rolles.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Kathi rolls filled with grilled chicken and vegetables" />
+              </figure>
+              <div class="menu-dish-card__body">
+                <span>Street · Rolls</span>
+                <h3>Kathi Rolls</h3>
+                <p>Soft rolls packed with grilled chicken, vegetables and house sauces.</p>
+                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
+              </div>
+            </article>
+
+            <article
+              class="menu-dish-card reveal"
+              role="listitem"
+              data-menu-dish
+              data-menu-pairing="Complete the plate with raita, salad and a squeeze of lemon."
+            >
+              <figure class="menu-dish-card__media">
+                <img src="/assets/images/menupage-biryani.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Aromatic biryani layered with spice and tender meat" />
+              </figure>
+              <div class="menu-dish-card__body">
+                <span>Rice · Classic</span>
+                <h3>Biryani</h3>
+                <p>Aromatic long-grain basmati layered with spice and tender meat.</p>
+                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div
+          id="menuVegPanel"
+          class="menu-dish-panel menu-dish-panel--empty"
+          role="tabpanel"
+          aria-labelledby="menuVegTab"
+          data-menu-dish-panel="veg"
+          hidden
+        >
+          <div class="menu-veg-empty">
+            <span class="menu-veg-empty__number" aria-hidden="true">V</span>
+            <div>
+              <span class="menu-kicker">Vegetarian collection</span>
+              <h3>Reserved for what comes next.</h3>
+              <p>Your vegetarian dishes can be added here when they are ready.</p>
+            </div>
+            <span class="menu-veg-empty__frame" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="why-kesar"
+      class="menu-chapter menu-benefits"
+      aria-labelledby="whyKesarTitle"
+      data-menu-chapter
+    >
+      <div class="container">
+        <header class="menu-chapter-head">
+          <div>
+            <span class="menu-kicker reveal">Why visit Kesar?</span>
+            <h2 id="whyKesarTitle" class="menu-display reveal">
+              Made for <em>generous tables.</em>
+            </h2>
+          </div>
+          <p class="reveal">
+            Familiar warmth, thoughtful service and Arabian cooking designed
+            around the pleasure of sharing.
+          </p>
+        </header>
+
+        <div class="menu-benefits__layout">
+          <div class="menu-benefit-grid">
+            <article class="menu-benefit-card reveal">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M39 9C23 10 12 18 11 32c8 1 15-1 20-6 5-5 7-11 8-17Z"/><path d="M10 38c6-10 14-17 25-24"/></svg>
+              <span>01</span>
+              <h3>Fresh Ingredients</h3>
+              <p>Carefully selected produce, spices and meats prepared for exceptional flavour.</p>
+            </article>
+            <article class="menu-benefit-card reveal">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M25 5c2 8-5 10-5 17 0 4 3 7 7 7 6 0 10-5 9-11 5 4 7 9 7 14 0 8-7 13-17 13S8 40 8 31c0-8 6-13 11-18 2-2 4-5 6-8Z"/></svg>
+              <span>02</span>
+              <h3>Authentic Arabian Recipes</h3>
+              <p>Time-honoured recipes shaped by slow roasting, charcoal and fragrant spice.</p>
+            </article>
+            <article class="menu-benefit-card reveal">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 23h34c0 11-7 19-17 19S7 34 7 23Z"/><path d="M12 19c4-5 20-5 24 0M18 11c0 3 2 4 2 7M27 8c0 4 3 5 3 9"/></svg>
+              <span>03</span>
+              <h3>Unlimited Mandi Rice</h3>
+              <p>Generous servings of aromatic mandi rice made for sharing.</p>
+            </article>
+            <article class="menu-benefit-card reveal">
+              <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="15" r="6"/><circle cx="33" cy="18" r="5"/><path d="M7 39c0-9 5-14 12-14s12 5 12 14M27 29c2-3 5-5 8-5 6 0 9 5 9 12"/></svg>
+              <span>04</span>
+              <h3>Perfect for Families</h3>
+              <p>Comfortable combinations and welcoming service for every gathering.</p>
+            </article>
+          </div>
+
+          <div class="menu-hospitality-media reveal">
+            <figure class="menu-hospitality-media__main">
+              <img
+                src="/assets/images/menupage-al faham.png"
+                width="1122"
+                height="1402"
+                loading="lazy"
+                decoding="async"
+                alt="Charcoal-grilled Al Faham chicken prepared for sharing"
+              />
+            </figure>
+            <figure class="menu-hospitality-media__detail">
+              <img
+                src="/assets/images/menupage-shawarma.png"
+                width="1122"
+                height="1402"
+                loading="lazy"
+                decoding="async"
+                alt="Freshly wrapped Arabian chicken shawarma"
+              />
+            </figure>
+          </div>
+        </div>
+
+        <div class="menu-benefit-strip reveal" aria-label="More reasons to visit Kesar">
+          <span>Premium Hospitality</span>
+          <span>Affordable Combos</span>
+          <span>Parking Available</span>
+          <span>Easy to Locate</span>
+        </div>
+
+        <p class="menu-hospitality-line reveal">
+          Experience the true warmth of Arabian hospitality.
+        </p>
+      </div>
+    </section>
+
+    <section
+      id="menu-reservation"
+      class="menu-chapter menu-reservation-cta"
+      aria-labelledby="menuReservationTitle"
+      data-menu-chapter
+    >
+      <div class="container menu-reservation-cta__layout">
+        <div class="menu-reservation-cta__copy">
+          <span class="menu-kicker reveal">Ready to reserve?</span>
+          <h2 id="menuReservationTitle" class="menu-display reveal">
+            <span>Let us prepare</span>
+            <span><em>your perfect feast.</em></span>
+          </h2>
+          <p class="reveal">
+            Choose your table, select your gathering and let Kesar prepare an
+            experience made for sharing.
+          </p>
+          <div class="menu-reservation-cta__actions reveal">
+            <a class="menu-primary-action" href="#reservation">
+              Reserve Your Table <span aria-hidden="true">→</span>
+            </a>
+            <a class="menu-text-link" href="#menu">Return to Menu <span aria-hidden="true">↑</span></a>
+          </div>
+          <ul class="menu-reservation-cta__status reveal" aria-label="Service information">
+            <li><span>Monday—Thursday</span>1 PM—11 PM</li>
+            <li><span>Friday</span>5 PM—11 PM</li>
+            <li><span>Weekend</span>1 PM—11 PM</li>
+          </ul>
+        </div>
+
+        <figure class="menu-reservation-cta__media reveal">
+          <img
+            src="/assets/images/storypage-mandi2.png"
+            width="1122"
+            height="1402"
+            loading="lazy"
+            decoding="async"
+            alt="A generous mandi feast with Arabian lanterns in a warm dining setting"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <dialog
+      id="menuDishDialog"
+      class="menu-dish-modal"
+      aria-labelledby="menuDishDialogTitle"
+      aria-describedby="menuDishDialogDescription"
+    >
+      <div class="menu-dish-modal__shell">
+        <button class="menu-dish-modal__close" type="button" aria-label="Close dish details" data-menu-dialog-close>
+          <span aria-hidden="true">×</span>
+        </button>
+        <figure class="menu-dish-modal__media">
+          <img src="/assets/images/menupage-chicken mandi.png" width="1122" height="1402" decoding="async" alt="" data-menu-dialog-image />
+        </figure>
+        <div class="menu-dish-modal__content">
+          <span data-menu-dialog-category>Signature dish</span>
+          <h2 id="menuDishDialogTitle" data-menu-dialog-title>Chicken Mandi</h2>
+          <p id="menuDishDialogDescription" data-menu-dialog-description></p>
+          <div class="menu-dish-modal__pairing">
+            <span>Suggested pairing</span>
+            <p data-menu-dialog-pairing></p>
+          </div>
+          <a class="menu-primary-action" href="#reservation" data-menu-dialog-reserve>
+            Reserve a Table <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </dialog>
 
     <section class="experience" id="experience">
       <div class="experience-content">
@@ -613,6 +937,14 @@
     </section>
   </main>
 
+  <div class="menu-mobile-reserve" id="menuMobileReserve" hidden>
+    <div>
+      <span data-menu-mobile-name>Mandi Combo · 4–5 People</span>
+      <strong data-menu-mobile-price>₹1,199</strong>
+    </div>
+    <button type="button" data-menu-mobile-reserve>Reserve</button>
+  </div>
+
   <footer class="contact" id="contact">
     <div class="container">
       <div class="contact-grid">
@@ -648,5 +980,6 @@
 
   <script src="script.js"></script>
   <script src="premium.js"></script>
+  <script src="menu-premium.js"></script>
 </body>
 </html>
