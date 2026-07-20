@@ -3,7 +3,6 @@ document.documentElement.classList.add("story-enhanced");
 const premiumLoader = document.getElementById("pageLoader");
 const premiumProgress = document.getElementById("scrollProgress");
 const premiumHeroMedia = document.getElementById("heroMedia");
-const premiumCursor = document.getElementById("cursorRing");
 const premiumReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const premiumFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 const premiumHeroVideo = document.querySelector(".hero-video");
@@ -77,33 +76,6 @@ window.addEventListener("scroll", updatePremiumScroll, { passive: true });
 window.addEventListener("resize", updatePremiumScroll, { passive: true });
 
 if (premiumFinePointer && !premiumReduceMotion) {
-  let targetX = -100;
-  let targetY = -100;
-  let ringX = -100;
-  let ringY = -100;
-
-  window.addEventListener("pointermove", event => {
-    targetX = event.clientX;
-    targetY = event.clientY;
-    premiumCursor.classList.add("visible");
-  }, { passive: true });
-
-  window.addEventListener("pointerleave", () => premiumCursor.classList.remove("visible"));
-
-  function animatePremiumCursor() {
-    ringX += (targetX - ringX) * 0.16;
-    ringY += (targetY - ringY) * 0.16;
-    premiumCursor.style.left = `${ringX}px`;
-    premiumCursor.style.top = `${ringY}px`;
-    requestAnimationFrame(animatePremiumCursor);
-  }
-  animatePremiumCursor();
-
-  document.querySelectorAll("a, button, input, select, textarea, .menu-combo-card summary, .menu-signature-card, figure").forEach(element => {
-    element.addEventListener("pointerenter", () => premiumCursor.classList.add("active"));
-    element.addEventListener("pointerleave", () => premiumCursor.classList.remove("active"));
-  });
-
   document.querySelectorAll(".reserve-nav, .link-line, .story-cta, .menu-combo-action button, .submit-button").forEach(element => {
     element.classList.add("magnetic");
     element.addEventListener("pointermove", event => {
