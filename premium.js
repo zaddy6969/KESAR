@@ -4,6 +4,23 @@ const premiumHeroMedia = document.getElementById("heroMedia");
 const premiumCursor = document.getElementById("cursorRing");
 const premiumReduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const premiumFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const premiumHeroVideo = document.querySelector(".hero-video");
+
+function startHeroVideo() {
+  if (!premiumHeroVideo || premiumReduceMotion) return;
+  premiumHeroVideo.muted = true;
+  premiumHeroVideo.defaultMuted = true;
+  const playAttempt = premiumHeroVideo.play();
+  if (playAttempt) playAttempt.catch(() => {
+    premiumHeroVideo.addEventListener("canplay", () => premiumHeroVideo.play().catch(() => {}), { once: true });
+  });
+}
+
+startHeroVideo();
+window.addEventListener("pageshow", startHeroVideo);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) startHeroVideo();
+});
 
 function finishPremiumLoading() {
   document.body.classList.remove("is-loading");
