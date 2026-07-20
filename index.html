@@ -64,31 +64,39 @@
   <main>
     <section class="hero" id="home">
       <div class="hero-media" id="heroMedia" aria-hidden="true">
-        <div class="hero-slide"></div>
-        <div class="hero-slide"></div>
-        <div class="hero-slide"></div>
+        <video
+          class="hero-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="assets/kesar-mandi-hero-poster.webp"
+          tabindex="-1"
+        >
+          <source src="assets/kesar-mandi-hero-4k.mp4" type="video/mp4">
+        </video>
         <div class="hero-shade"></div>
-        <div class="hero-smoke"><span></span><span></span><span></span><span></span><span></span></div>
       </div>
 
       <div class="container hero-inner">
         <div class="hero-status reveal-load d1" id="liveStatusWrap" aria-live="polite">
           <span class="status-dot"></span>
-          <span id="liveStatus">Checking today’s service</span>
-          <span aria-hidden="true">—</span>
-          <span id="liveTime">IST</span>
+          <span id="liveStatus">Live now · checking service</span>
+          <span class="hero-time" id="liveTime">IST</span>
         </div>
 
         <div class="hero-copy">
           <h1 class="reveal-load d2">
-            <span>India,</span>
-            <span>reimagined.</span>
+            <span>Smoke.</span>
+            <span>Spice.</span>
+            <span>Mandi.</span>
           </h1>
 
           <div class="hero-side reveal-load d3">
             <p>
-              A contemporary expression of Indian dining—season-led ingredients,
-              slow craft and the warmth of a table shared.
+              A contemporary celebration of mandi—where slow-cooked meats,
+              fragrant rice and time-honoured flavours come together in perfect harmony.
             </p>
             <a class="link-line magnetic" href="#reservation">Reserve a table</a>
           </div>
@@ -96,10 +104,10 @@
 
         <div class="hero-bottom reveal-load d4">
           <div>
-            <span>Lunch 12:00—15:30</span>
+            <span>Lunch 12:00—16:30</span>
             <span>Dinner 19:00—23:30</span>
           </div>
-          <a href="#story">Scroll to discover ↓</a>
+          <a href="#story">Scroll to discover</a>
         </div>
       </div>
     </section>

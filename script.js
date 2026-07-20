@@ -66,11 +66,11 @@
       statusWrap.classList.toggle("closed", !isOpen);
 
       if (isOpen) {
-        statusText.textContent = `Open now · ${weekend ? "closes 11:30 PM" : "closes 11:00 PM"}`;
+        statusText.textContent = `Live now · open until ${weekend ? "11:30 PM" : "11:00 PM"}`;
       } else if (current < openAt) {
-        statusText.textContent = "Closed · opens 12:00 PM";
+        statusText.textContent = "Closed now · opens 12:00 PM";
       } else {
-        statusText.textContent = "Closed · opens tomorrow 12:00 PM";
+        statusText.textContent = "Closed now · opens tomorrow 12:00 PM";
       }
 
       timeText.textContent = new Intl.DateTimeFormat("en-IN", {
