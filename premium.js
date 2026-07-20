@@ -1,3 +1,5 @@
+document.documentElement.classList.add("story-enhanced");
+
 const premiumLoader = document.getElementById("pageLoader");
 const premiumProgress = document.getElementById("scrollProgress");
 const premiumHeroMedia = document.getElementById("heroMedia");
@@ -37,7 +39,19 @@ if (premiumReduceMotion) {
 }
 
 document.querySelectorAll(".section-title").forEach(item => item.classList.add("reveal-title"));
-document.querySelectorAll(".story-images figure, .menu-image, .gallery-track figure").forEach(item => item.classList.add("reveal-image"));
+document.querySelectorAll(".menu-image, .gallery-track figure").forEach(item => item.classList.add("reveal-image"));
+
+const premiumStoryImages = document.querySelectorAll(".story-media img");
+premiumStoryImages.forEach(image => {
+  const markStoryImageLoaded = () => image.closest(".story-media")?.classList.add("is-loaded");
+
+  if (image.complete) {
+    markStoryImageLoaded();
+  } else {
+    image.addEventListener("load", markStoryImageLoaded, { once: true });
+    image.addEventListener("error", markStoryImageLoaded, { once: true });
+  }
+});
 
 const premiumReservation = document.querySelector(".reservation");
 
@@ -90,7 +104,7 @@ if (premiumFinePointer && !premiumReduceMotion) {
     element.addEventListener("pointerleave", () => premiumCursor.classList.remove("active"));
   });
 
-  document.querySelectorAll(".reserve-nav, .link-line, .submit-button").forEach(element => {
+  document.querySelectorAll(".reserve-nav, .link-line, .story-cta, .submit-button").forEach(element => {
     element.classList.add("magnetic");
     element.addEventListener("pointermove", event => {
       const rect = element.getBoundingClientRect();
@@ -115,20 +129,40 @@ if (premiumFinePointer && !premiumReduceMotion) {
     premiumHeroMedia.style.setProperty("--hero-y", "0px");
   });
 
-  const premiumParallaxImages = document.querySelectorAll(".story-images figure img, .gallery-track figure img");
+  const premiumParallaxImages = document.querySelectorAll(".story-media[data-story-parallax] img, .gallery-track figure img");
+  let premiumParallaxFrame = 0;
+
   function updatePremiumParallax() {
+    premiumParallaxFrame = 0;
+
     premiumParallaxImages.forEach((image, index) => {
       const frame = image.parentElement;
-      const rect = frame.getBoundingClientRect();
+      const parallaxFrame = image.closest("[data-story-parallax]") || frame;
+      const rect = parallaxFrame.getBoundingClientRect();
       if (rect.bottom > 0 && rect.top < window.innerHeight) {
         const centerOffset = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
-        const speed = index % 2 === 0 ? -18 : -12;
-        frame.style.setProperty("--parallax-y", `${centerOffset * speed}px`);
+        const storyLimit = Number(parallaxFrame.dataset.storyParallax);
+
+        if (Number.isFinite(storyLimit) && window.innerWidth > 1000) {
+          const movement = Math.max(-Math.abs(storyLimit),Math.min(Math.abs(storyLimit),centerOffset * storyLimit));
+          parallaxFrame.style.setProperty("--story-parallax-y", `${movement}px`);
+        } else if (Number.isFinite(storyLimit)) {
+          parallaxFrame.style.setProperty("--story-parallax-y", "0px");
+        } else {
+          const speed = index % 2 === 0 ? -18 : -12;
+          frame.style.setProperty("--parallax-y", `${centerOffset * speed}px`);
+        }
       }
     });
   }
-  updatePremiumParallax();
-  window.addEventListener("scroll", updatePremiumParallax, { passive: true });
+
+  function schedulePremiumParallax() {
+    if (!premiumParallaxFrame) premiumParallaxFrame = requestAnimationFrame(updatePremiumParallax);
+  }
+
+  schedulePremiumParallax();
+  window.addEventListener("scroll", schedulePremiumParallax, { passive: true });
+  window.addEventListener("resize", schedulePremiumParallax, { passive: true });
 }
 
 const premiumSections = [...document.querySelectorAll("main section[id]")];
@@ -136,8 +170,9 @@ const premiumNavLinks = [...document.querySelectorAll('.nav-link[href^="#"]')];
 const premiumSectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
+      const activeSectionId = entry.target.id === "story-craft" ? "story" : entry.target.id;
       premiumNavLinks.forEach(link => {
-        link.classList.toggle("is-active", link.getAttribute("href") === `#${entry.target.id}`);
+        link.classList.toggle("is-active", link.getAttribute("href") === `#${activeSectionId}`);
       });
     }
   });

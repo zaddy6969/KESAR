@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="/assets/story-page-mandi.png">
 
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="premium.css">
@@ -112,52 +113,134 @@
       </div>
     </section>
 
-    <section class="story" id="story">
-      <div class="container">
-        <div class="story-top">
-          <div class="reveal">
-            <span class="kicker">The Kesar story</span>
+    <section
+      id="story"
+      class="story-chapter story-chapter-one"
+      aria-labelledby="storyChapterOneTitle"
+    >
+      <div class="container story-chapter-one__grid">
+        <div class="story-label story-reveal">
+          <span>The Kesar story</span>
+        </div>
+
+        <h2 id="storyChapterOneTitle" class="story-title story-reveal">
+          <span class="story-title-line"><span>A story</span></span>
+          <span class="story-title-line"><span>written in</span></span>
+          <span class="story-title-line">
+            <span>smoke and <em class="story-accent">spice.</em></span>
+          </span>
+        </h2>
+
+        <figure class="story-media story-media-spices story-reveal">
+          <div class="story-media-frame">
+            <img
+              src="/assets/story-page-spices.png"
+              width="1672"
+              height="941"
+              loading="lazy"
+              decoding="async"
+              alt="Kesar saffron strands with cardamom, cinnamon, star anise and basmati rice"
+            />
+          </div>
+        </figure>
+
+        <figure class="story-media story-media-main story-media-mask story-reveal">
+          <div class="story-media-frame">
+            <img
+              src="/assets/story-page-mandi.png"
+              width="1672"
+              height="941"
+              loading="lazy"
+              decoding="async"
+              alt="Steaming slow-roasted mutton mandi served over fragrant basmati rice"
+            />
+          </div>
+        </figure>
+
+        <div class="story-copy story-reveal">
+          <p>
+            Kesar begins with the aroma of slow-roasted mutton,<br>
+            fragrant mandi rice and spices warmed over fire.
+          </p>
+          <p>
+            We honour the generosity of Arabian dining while<br>
+            presenting it with contemporary craft and quiet refinement.
+          </p>
+          <a class="story-cta" href="#story-craft">
+            <span>Discover our craft</span>
+            <span class="story-cta-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="story-craft"
+      class="story-chapter story-chapter-two"
+      aria-labelledby="storyChapterTwoTitle"
+    >
+      <div class="container story-chapter-two__grid">
+        <div class="story-chapter-two__content">
+          <div class="story-label story-reveal">
+            <span>The Kesar story</span>
           </div>
 
-          <div>
-            <h2 class="section-title story-title reveal">
-              Memory, season and spice—served with restraint.
-            </h2>
-            <div class="story-copy reveal">
-              <p>
-                Kesar begins with flavours we know by heart: smoke from the tandoor,
-                the perfume of saffron, the patience of a dum and the generosity of
-                an Indian table.
-              </p>
-              <p>
-                We refine those memories without losing their soul. The result is
-                expressive, modern food grounded in regional technique and honest
-                ingredients.
-              </p>
-              <a class="link-line magnetic" href="#menu">Discover the menu</a>
-            </div>
+          <h2 id="storyChapterTwoTitle" class="story-title story-reveal">
+            <span class="story-title-line"><span>Where fire</span></span>
+            <span class="story-title-line">
+              <span>becomes <em class="story-accent">flavour.</em></span>
+            </span>
+          </h2>
+
+          <span class="story-saffron-mark story-reveal" aria-hidden="true"></span>
+
+          <div class="story-copy story-reveal">
+            <p>
+              Our story begins with slow-roasted mutton,<br>
+              fragrant basmati and the spirit of gathering.
+            </p>
+            <p>
+              Kesar brings the warmth of mandi traditions<br>
+              into a contemporary dining experience.
+            </p>
+            <a class="story-cta" href="#menu">
+              <span>Explore our menu</span>
+              <span class="story-cta-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
 
-        <div class="story-images">
-          <figure class="reveal">
-            <img
-              src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1500&q=88"
-              alt="A refined Indian dining spread"
-            />
-            <figcaption class="caption">
-              <span>Seasonal table</span><span>01</span>
-            </figcaption>
+        <div class="story-chapter-two__media" aria-label="Kesar mandi and spice craft">
+          <figure
+            class="story-media story-media-craft-main story-reveal"
+            data-story-parallax="18"
+          >
+            <div class="story-media-frame">
+              <img
+                src="/assets/story-page-mandi.png"
+                width="1672"
+                height="941"
+                loading="lazy"
+                decoding="async"
+                alt="Close view of slow-roasted mutton and fragrant mandi rice"
+              />
+            </div>
           </figure>
 
-          <figure class="reveal">
-            <img
-              src="https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=1000&q=88"
-              alt="A contemporary paneer dish"
-            />
-            <figcaption class="caption">
-              <span>From the tandoor</span><span>02</span>
-            </figcaption>
+          <figure
+            class="story-media story-media-craft-spices story-reveal"
+            data-story-parallax="-28"
+          >
+            <div class="story-media-frame">
+              <img
+                src="/assets/story-page-spices.png"
+                width="1672"
+                height="941"
+                loading="lazy"
+                decoding="async"
+                alt="Saffron bowl surrounded by cardamom, cinnamon and warm Arabian spices"
+              />
+            </div>
           </figure>
         </div>
       </div>
