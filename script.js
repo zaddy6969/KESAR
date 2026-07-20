@@ -36,7 +36,7 @@
       { threshold: 0.12, rootMargin: "0px 0px -40px" }
     );
 
-    document.querySelectorAll(".reveal").forEach(item => revealObserver.observe(item));
+    document.querySelectorAll(".reveal, .story-reveal").forEach(item => revealObserver.observe(item));
 
     const statusWrap = document.getElementById("liveStatusWrap");
     const statusText = document.getElementById("liveStatus");
