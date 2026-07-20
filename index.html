@@ -246,76 +246,333 @@
       </div>
     </section>
 
-    <section class="menu-section" id="menu">
-      <div class="container">
-        <div class="menu-head">
-          <div>
-            <span class="kicker reveal">A tasting of Kesar</span>
-            <h2 class="section-title reveal" style="margin-top:22px">Signature plates.</h2>
-          </div>
-          <p class="reveal">
-            A concise seasonal selection. Vegetarian and tasting-menu options
-            are available on request.
-          </p>
-        </div>
+    <section class="menu-section" id="menu" aria-labelledby="menuTitle">
+      <div class="menu-ambient" aria-hidden="true"></div>
 
-        <div class="menu-layout">
-          <figure class="menu-image reveal">
+      <div class="container menu-premium-shell">
+        <header class="menu-premium-head">
+          <div>
+            <span class="kicker reveal">The Kesar feast</span>
+            <h2 id="menuTitle" class="section-title reveal">Built for the whole table.</h2>
+          </div>
+
+          <div class="menu-head-copy reveal">
+            <p>
+              Five generous mandi combinations for tables of two to ten—made with
+              organic spices, served with unlimited mandi rice and true Arabian hospitality.
+            </p>
+            <div class="menu-head-stats" aria-label="Menu overview">
+              <span><strong>05</strong> family feasts</span>
+              <span><strong>02—10</strong> guests</span>
+              <span><strong>₹499</strong> starting at</span>
+            </div>
+          </div>
+        </header>
+
+        <nav class="menu-index reveal" aria-label="Explore the Kesar menu">
+          <a href="#menu-combos">Feast combinations</a>
+          <a href="#menu-signatures">Signature dishes</a>
+          <a href="#menu-promises">Why Kesar</a>
+          <a href="#menu-visit">Visit</a>
+          <a class="menu-index-reserve" href="#reservation">Reserve a table <span aria-hidden="true">↗</span></a>
+        </nav>
+
+        <div class="menu-showcase" id="menu-combos">
+          <figure class="menu-showcase-media reveal">
             <img
-              src="https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1400&q=90"
-              alt="Kesar's signature butter chicken"
+              src="/assets/story-page-mandi.png"
+              width="1672"
+              height="941"
+              loading="lazy"
+              decoding="async"
+              alt="A generous Kesar mandi feast of roasted chicken and fragrant rice"
             />
+            <figcaption>
+              <span>Opening feast combinations</span>
+              <strong>Unlimited mandi rice</strong>
+            </figcaption>
           </figure>
 
-          <div>
-            <div class="menu-list">
-              <article class="menu-item reveal">
-                <div>
-                  <h3>Smoked Paneer, Kasundi & Charred Pepper</h3>
-                  <p>House-made paneer, mustard, sweet pepper and tandoor smoke.</p>
-                </div>
-                <span class="menu-price">₹475</span>
-              </article>
+          <div class="menu-party-panel reveal">
+            <span class="menu-eyebrow">Find your feast</span>
+            <h3>How many are at your table?</h3>
+            <p>Choose your party size and we will open the combination designed for your gathering.</p>
 
-              <article class="menu-item reveal">
-                <div>
-                  <h3>Kesar Butter Chicken</h3>
-                  <p>Charred chicken, cultured butter, tomato, fenugreek and cream.</p>
-                </div>
-                <span class="menu-price">₹625</span>
-              </article>
-
-              <article class="menu-item reveal">
-                <div>
-                  <h3>Royal Dum Biryani</h3>
-                  <p>Aged basmati, saffron, caramelised onion and slow-cooked spice.</p>
-                </div>
-                <span class="menu-price">₹575</span>
-              </article>
-
-              <article class="menu-item reveal">
-                <div>
-                  <h3>Black Dal, 18 Hours</h3>
-                  <p>Whole urad, tomato, cultured butter and patient fire.</p>
-                </div>
-                <span class="menu-price">₹395</span>
-              </article>
-
-              <article class="menu-item reveal">
-                <div>
-                  <h3>Saffron Milk, Pistachio & Rose</h3>
-                  <p>A delicate finish of kesar, toasted nuts and floral notes.</p>
-                </div>
-                <span class="menu-price">₹325</span>
-              </article>
+            <div class="menu-party-picker" role="group" aria-label="Choose a party size">
+              <button type="button" data-menu-combo-target="menu-combo-2" aria-pressed="true">
+                <strong>2</strong><span>guests</span>
+              </button>
+              <button type="button" data-menu-combo-target="menu-combo-5" aria-pressed="false">
+                <strong>4—5</strong><span>guests</span>
+              </button>
+              <button type="button" data-menu-combo-target="menu-combo-6" aria-pressed="false">
+                <strong>6</strong><span>guests</span>
+              </button>
+              <button type="button" data-menu-combo-target="menu-combo-8" aria-pressed="false">
+                <strong>8</strong><span>guests</span>
+              </button>
+              <button type="button" data-menu-combo-target="menu-combo-10" aria-pressed="false">
+                <strong>10</strong><span>guests</span>
+              </button>
             </div>
 
-            <div class="menu-note reveal">
-              <span>Seasonal tasting menu from ₹2,850 per guest.</span>
-              <a class="link-line magnetic" href="#reservation">View full menu</a>
-            </div>
+            <p class="menu-selection-status" id="menuSelectionStatus" aria-live="polite">
+              Mandi Combo for 2 · ₹499 · unlimited mandi rice included.
+            </p>
           </div>
         </div>
+
+        <section class="menu-combo-board" aria-labelledby="menuComboTitle">
+          <div class="menu-subhead reveal">
+            <div>
+              <span class="menu-eyebrow">Grand-opening combinations</span>
+              <h3 id="menuComboTitle">One table. One generous spread.</h3>
+            </div>
+            <p>Select a feast to see everything arriving at your table.</p>
+          </div>
+
+          <div class="menu-combo-list">
+            <details
+              class="menu-combo-card reveal is-selected"
+              id="menu-combo-2"
+              data-menu-combo-card
+              data-menu-combo-name="Mandi Combo"
+              data-menu-combo-party="2 guests"
+              data-menu-combo-price="₹499"
+              open
+            >
+              <summary>
+                <span class="menu-combo-number">01</span>
+                <span class="menu-combo-title"><small>Serves 2</small><strong>Mandi Combo</strong></span>
+                <span class="menu-combo-price"><strong>₹499</strong><small>complete feast</small></span>
+                <span class="menu-combo-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="menu-combo-body">
+                <div>
+                  <span class="menu-detail-label">At the table</span>
+                  <ul>
+                    <li>Half Al Faham chicken</li>
+                    <li>Unlimited mandi rice</li>
+                    <li>2 boiled eggs</li>
+                    <li>2 soft drinks</li>
+                  </ul>
+                </div>
+                <div class="menu-combo-action">
+                  <span>Organic spices · family style</span>
+                  <button type="button" data-menu-plan data-guests="2 guests">Plan this feast <span aria-hidden="true">↗</span></button>
+                </div>
+              </div>
+            </details>
+
+            <details
+              class="menu-combo-card reveal"
+              id="menu-combo-5"
+              data-menu-combo-card
+              data-menu-combo-name="Mandi Combo"
+              data-menu-combo-party="4 to 5 guests"
+              data-menu-combo-price="₹1,199"
+            >
+              <summary>
+                <span class="menu-combo-number">02</span>
+                <span class="menu-combo-title"><small>Serves 4—5</small><strong>Mandi Combo</strong></span>
+                <span class="menu-combo-price"><strong>₹1,199</strong><small>complete feast</small></span>
+                <span class="menu-combo-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="menu-combo-body">
+                <div>
+                  <span class="menu-detail-label">At the table</span>
+                  <ul>
+                    <li>Half Al Faham chicken</li>
+                    <li>Half tandoori chicken</li>
+                    <li>8-piece chicken kabab</li>
+                    <li>Unlimited mandi rice</li>
+                    <li>5 soft drinks</li>
+                  </ul>
+                </div>
+                <div class="menu-combo-action">
+                  <span>Organic spices · family style</span>
+                  <button type="button" data-menu-plan data-guests="5 guests">Plan this feast <span aria-hidden="true">↗</span></button>
+                </div>
+              </div>
+            </details>
+
+            <details
+              class="menu-combo-card reveal"
+              id="menu-combo-6"
+              data-menu-combo-card
+              data-menu-combo-name="Family Mandi Feast"
+              data-menu-combo-party="6 guests"
+              data-menu-combo-price="₹1,499"
+            >
+              <summary>
+                <span class="menu-combo-number">03</span>
+                <span class="menu-combo-title"><small>Serves 6</small><strong>Family Mandi Feast</strong></span>
+                <span class="menu-combo-price"><strong>₹1,499</strong><small>complete feast</small></span>
+                <span class="menu-combo-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="menu-combo-body">
+                <div>
+                  <span class="menu-detail-label">At the table</span>
+                  <ul>
+                    <li>Full Al Faham chicken</li>
+                    <li>12-piece chicken kabab</li>
+                    <li>Unlimited mandi rice</li>
+                    <li>6 boiled eggs</li>
+                    <li>6 soft drinks</li>
+                  </ul>
+                </div>
+                <div class="menu-combo-action">
+                  <span>Organic spices · family style</span>
+                  <button type="button" data-menu-plan data-guests="6 guests">Plan this feast <span aria-hidden="true">↗</span></button>
+                </div>
+              </div>
+            </details>
+
+            <details
+              class="menu-combo-card reveal"
+              id="menu-combo-8"
+              data-menu-combo-card
+              data-menu-combo-name="Mandi Combo"
+              data-menu-combo-party="8 guests"
+              data-menu-combo-price="₹1,999"
+            >
+              <summary>
+                <span class="menu-combo-number">04</span>
+                <span class="menu-combo-title"><small>Serves 8</small><strong>Mandi Combo</strong></span>
+                <span class="menu-combo-price"><strong>₹1,999</strong><small>complete feast</small></span>
+                <span class="menu-combo-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="menu-combo-body">
+                <div>
+                  <span class="menu-detail-label">At the table</span>
+                  <ul>
+                    <li>Half tandoori chicken</li>
+                    <li>Half Al Faham chicken</li>
+                    <li>8-piece chicken kabab</li>
+                    <li>8 boiled eggs</li>
+                    <li>Unlimited mandi rice</li>
+                    <li>8 soft drinks</li>
+                  </ul>
+                </div>
+                <div class="menu-combo-action">
+                  <span>Organic spices · family style</span>
+                  <button type="button" data-menu-plan data-guests="7+ guests">Plan this feast <span aria-hidden="true">↗</span></button>
+                </div>
+              </div>
+            </details>
+
+            <details
+              class="menu-combo-card reveal"
+              id="menu-combo-10"
+              data-menu-combo-card
+              data-menu-combo-name="Royal Mandi Platter"
+              data-menu-combo-party="10 guests"
+              data-menu-combo-price="₹2,499"
+            >
+              <summary>
+                <span class="menu-combo-number">05</span>
+                <span class="menu-combo-title"><small>Serves 10</small><strong>Royal Mandi Platter</strong></span>
+                <span class="menu-combo-price"><strong>₹2,499</strong><small>complete feast</small></span>
+                <span class="menu-combo-toggle" aria-hidden="true"></span>
+              </summary>
+              <div class="menu-combo-body">
+                <div>
+                  <span class="menu-detail-label">At the table</span>
+                  <ul>
+                    <li>Full Al Faham chicken</li>
+                    <li>Full tandoori chicken</li>
+                    <li>16-piece chicken kabab</li>
+                    <li>10 boiled eggs</li>
+                    <li>Unlimited mandi rice</li>
+                    <li>10 soft drinks</li>
+                  </ul>
+                </div>
+                <div class="menu-combo-action">
+                  <span>Organic spices · family style</span>
+                  <button type="button" data-menu-plan data-guests="7+ guests">Plan this feast <span aria-hidden="true">↗</span></button>
+                </div>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="menu-signatures" id="menu-signatures" aria-labelledby="menuSignatureTitle">
+          <div class="menu-subhead reveal">
+            <div>
+              <span class="menu-eyebrow">Eight house favourites</span>
+              <h3 id="menuSignatureTitle">Signature dishes.</h3>
+            </div>
+            <p>From charcoal and tandoor to fragrant rice—familiar favourites, prepared the Kesar way.</p>
+          </div>
+
+          <div class="menu-signature-grid">
+            <article class="menu-signature-card reveal"><span>01 · Mandi</span><h4>Chicken Mandi</h4></article>
+            <article class="menu-signature-card reveal"><span>02 · Charcoal</span><h4>Al Faham Chicken</h4></article>
+            <article class="menu-signature-card reveal"><span>03 · Tandoor</span><h4>Tandoori Chicken</h4></article>
+            <article class="menu-signature-card reveal"><span>04 · Grill</span><h4>Chicken Kabab</h4></article>
+            <article class="menu-signature-card reveal"><span>05 · Grill</span><h4>Grill Chicken</h4></article>
+            <article class="menu-signature-card reveal"><span>06 · Wrap</span><h4>Shawarma</h4></article>
+            <article class="menu-signature-card reveal"><span>07 · Rolls</span><h4>Kathi Rolls</h4></article>
+            <article class="menu-signature-card reveal"><span>08 · Rice</span><h4>Biryani</h4></article>
+          </div>
+        </section>
+
+        <section class="menu-promises" id="menu-promises" aria-labelledby="menuPromisesTitle">
+          <div class="menu-subhead reveal">
+            <div>
+              <span class="menu-eyebrow">Why visit us</span>
+              <h3 id="menuPromisesTitle">Hospitality in every detail.</h3>
+            </div>
+            <p>Family dining, friends getting together, authentic serving and a premium ambience.</p>
+          </div>
+
+          <div class="menu-promise-grid">
+            <article class="menu-promise reveal"><span>01</span><h4>Fresh ingredients</h4><p>Only organic spices.</p></article>
+            <article class="menu-promise reveal"><span>02</span><h4>Authentic Arabian recipes</h4><p>Time-honoured flavours.</p></article>
+            <article class="menu-promise reveal"><span>03</span><h4>Unlimited mandi rice</h4><p>Included with every combo.</p></article>
+            <article class="menu-promise reveal"><span>04</span><h4>Perfect family destination</h4><p>Feasts for 2 to 10.</p></article>
+            <article class="menu-promise reveal"><span>05</span><h4>Premium hospitality</h4><p>Attentive table service.</p></article>
+            <article class="menu-promise reveal"><span>06</span><h4>Affordable combos</h4><p>Complete feasts from ₹499.</p></article>
+            <article class="menu-promise reveal"><span>07</span><h4>Parking available</h4><p>A comfortable arrival.</p></article>
+            <article class="menu-promise reveal"><span>08</span><h4>Easy to locate</h4><p>In Peenya, Bengaluru.</p></article>
+          </div>
+        </section>
+
+        <section class="menu-visit" id="menu-visit" aria-labelledby="menuVisitTitle">
+          <div class="menu-visit-intro reveal">
+            <span class="menu-eyebrow">Visit Hotel Kesar</span>
+            <h3 id="menuVisitTitle">Come hungry.<br>Leave gathered.</h3>
+            <p>Reserve early to enjoy the authentic mandi experience without waiting.</p>
+            <a class="menu-visit-button" href="#reservation">Pre-book your table <span aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="menu-visit-details reveal">
+            <div>
+              <span class="menu-detail-label">Find us</span>
+              <address>
+                117, Rajagopalanagar Main Road<br>
+                2nd Stage, Peenya<br>
+                Bengaluru, Karnataka 560058
+              </address>
+              <a
+                class="menu-map-link"
+                href="https://www.google.com/maps/search/?api=1&amp;query=117%2C%20Rajagopalanagar%20Main%20Road%2C%202nd%20Stage%2C%20Peenya%2C%20Bengaluru%2C%20Karnataka%20560058"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Open in Google Maps <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <div>
+              <span class="menu-detail-label">Timings</span>
+              <dl class="menu-hours">
+                <div><dt>Monday—Thursday</dt><dd>1 PM—11 PM</dd></div>
+                <div><dt>Friday</dt><dd>5 PM—11 PM</dd></div>
+                <div><dt>Saturday</dt><dd>1 PM—11 PM</dd></div>
+                <div><dt>Sunday</dt><dd>1 PM—11 PM</dd></div>
+              </dl>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
 
