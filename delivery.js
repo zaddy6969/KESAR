@@ -56,6 +56,16 @@
     });
   }
 
+  function configureDeliveryImage() {
+    const image = document.querySelector("#order-online .delivery-section__media img");
+    if (!image) return;
+
+    image.src = "/assets/images/deliverypage.png";
+    image.alt = "Kesar mandi platter prepared for delivery";
+    image.removeAttribute("srcset");
+  }
+
   shortenLoader();
   configureDeliveryLinks();
+  configureDeliveryImage();
 })();
