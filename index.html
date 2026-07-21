@@ -1,963 +1,430 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#17130f" />
-  <meta name="description" content="Kesar — premium mandi house dining, biryani and slow-crafted flavours." />
-  <title>Kesar — Mandi House Dining</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Italiana&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/assets/story-page-mandi.png">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17130f">
+  <meta name="description" content="KESAR — premium mandi house dining in Bengaluru.">
+  <title>KESAR — Mandi House Dining</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="premium.css">
-  <link rel="stylesheet" href="mandi.css">
-  <link rel="stylesheet" href="menu-premium.css">
 </head>
-
 <body class="is-loading">
-  <div class="page-loader" id="pageLoader" aria-hidden="true">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="loader" id="loader" aria-hidden="true">
     <div class="loader-inner">
-      <span class="loader-kicker">MANDI HOUSE DINING</span>
-      <div class="loader-word">KESAR</div>
-      <div class="loader-rule"><span></span></div>
+      <span>MANDI HOUSE DINING</span>
+      <strong>KESAR</strong>
+      <i></i>
     </div>
   </div>
 
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
   <header class="site-header" id="siteHeader">
-    <div class="container nav">
+    <div class="shell nav">
       <div class="nav-left">
-        <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mobilePanel">Menu</button>
-        <a class="nav-link" href="#story">Story</a>
-        <a class="nav-link" href="#menu">Menu</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-controls="mobileMenu" aria-expanded="false">Menu</button>
+        <a href="#story">Story</a>
+        <a href="#menu">Menu</a>
       </div>
 
-      <a class="brand" href="#home" aria-label="Kesar home">
-        KESAR
-        <small>MANDI HOUSE DINING</small>
+      <a class="brand" href="#home" aria-label="KESAR home">
+        <strong>KESAR</strong>
+        <span>MANDI HOUSE DINING</span>
       </a>
 
       <div class="nav-right">
-        <a class="reserve-nav magnetic" href="#reservation">Reserve</a>
+        <a href="#why-kesar">Experience</a>
+        <a class="nav-reserve" href="#reservation">Reserve</a>
       </div>
     </div>
   </header>
 
-  <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
-    <nav class="mobile-links" aria-label="Mobile navigation">
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
       <a href="#story">Our Story</a>
       <a href="#menu">The Menu</a>
+      <a href="#signature-dishes">Signature Dishes</a>
+      <a href="#why-kesar">Why Kesar</a>
       <a href="#reservation">Reserve</a>
     </nav>
-    <div class="mobile-meta">
-      <span>Your City, India</span>
-      <span>+91 98765 43210</span>
-    </div>
+    <p>Bengaluru · Mandi House Dining</p>
   </div>
 
-  <main>
+  <main id="main">
     <section class="hero" id="home">
       <div class="hero-media" id="heroMedia" aria-hidden="true">
-        <video
-          class="hero-video"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-          poster="/assets/images/heropage-mandi-4k.webp"
-          tabindex="-1"
-        >
-          <source src="/assets/videos/heropage-mandi.mp4" type="video/mp4">
-        </video>
+        <img src="/assets/images/heropage-mandi-4k.webp" alt="">
         <div class="hero-shade"></div>
+        <div class="smoke">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
       </div>
 
-      <div class="container hero-inner">
-        <div class="hero-status reveal-load d1" id="liveStatusWrap" aria-live="polite">
-          <span class="status-dot"></span>
-          <span id="liveStatus">Live now · checking service</span>
-          <span class="hero-time" id="liveTime">IST</span>
+      <div class="shell hero-inner">
+        <div class="hero-status" id="heroStatus" aria-live="polite">
+          <i></i>
+          <span id="statusText">Checking service</span>
+          <span>—</span>
+          <span id="liveTime">Bengaluru time</span>
         </div>
 
-        <div class="hero-copy">
-          <h1 class="reveal-load d2">
+        <div class="hero-grid">
+          <h1>
             <span>Smoke.</span>
             <span>Spice.</span>
             <span>Mandi.</span>
           </h1>
 
-          <div class="hero-side reveal-load d3">
+          <div class="hero-side">
             <p>
               A contemporary celebration of mandi—where slow-cooked meats,
-              fragrant rice and time-honoured flavours come together in perfect harmony.
+              fragrant rice and time-honoured flavours come together for
+              generous tables.
             </p>
-            <a class="link-line magnetic" href="#reservation">Reserve a table</a>
+            <a class="line-link" href="#reservation">Reserve a table</a>
           </div>
         </div>
 
-        <div class="hero-bottom reveal-load d4">
+        <div class="hero-bottom">
+          <span id="todayHours">Checking today’s hours</span>
+          <a href="#story">Scroll to discover ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-one section" id="story">
+      <div class="shell">
+        <div class="story-heading">
+          <span class="kicker reveal">The Kesar story</span>
+          <h2 class="display reveal">A story written in <em>smoke and spice.</em></h2>
+        </div>
+
+        <div class="story-grid">
+          <figure class="portrait reveal">
+            <img src="/assets/story-page-mandi.png" alt="Slow-roasted mandi served over fragrant rice">
+          </figure>
+
+          <div class="story-copy reveal">
+            <p>
+              Kesar begins with warm Arabian-inspired cooking, fragrant mandi rice
+              and meats prepared slowly over fire.
+            </p>
+            <p>
+              Carefully selected spices are layered with patience, creating generous
+              flavour without unnecessary decoration.
+            </p>
+            <a class="line-link dark" href="#story-craft">Discover our craft</a>
+          </div>
+
+          <figure class="small-portrait reveal">
+            <img src="/assets/story-page-spices.png" alt="Fragrant biryani rice and warm spices">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="story-two section" id="story-craft">
+      <div class="shell story-two-grid">
+        <div class="story-two-copy">
+          <span class="kicker reveal">Fire and patience</span>
+          <h2 class="display reveal">Where fire becomes <em>flavour.</em></h2>
+          <p class="reveal">
+            From saffron and cardamom to slow-roasted meat and long-grain rice,
+            every element is treated with care and contemporary restraint.
+          </p>
+        </div>
+
+        <div class="story-collage">
+          <figure class="reveal"><img src="/assets/images/storypage-mandi2.png" alt="Mandi platter with roasted meat"></figure>
+          <figure class="reveal"><img src="/assets/story-page-spices.png" alt="Rice and spices"></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-intro section dark-section" id="menu">
+      <div class="shell">
+        <div class="menu-intro-grid">
           <div>
-            <span>Lunch 12:00—16:30</span>
-            <span>Dinner 19:00—23:30</span>
-          </div>
-          <a href="#story">Scroll to discover</a>
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="story"
-      class="story-chapter story-chapter-one"
-      aria-labelledby="storyChapterOneTitle"
-    >
-      <div class="container story-chapter-one__grid">
-        <div class="story-label story-reveal">
-          <span>The Kesar story</span>
-        </div>
-
-        <h2 id="storyChapterOneTitle" class="story-title story-reveal">
-          <span class="story-title-line"><span>A story</span></span>
-          <span class="story-title-line"><span>written in</span></span>
-          <span class="story-title-line">
-            <span>smoke and <em class="story-accent">spice.</em></span>
-          </span>
-        </h2>
-
-        <figure class="story-media story-media-spices story-reveal">
-          <div class="story-media-frame">
-            <img
-              src="/assets/story-page-spices.png"
-              width="1672"
-              height="941"
-              loading="lazy"
-              decoding="async"
-              alt="Kesar saffron strands with cardamom, cinnamon, star anise and basmati rice"
-            />
-          </div>
-        </figure>
-
-        <figure class="story-media story-media-main story-media-mask story-reveal">
-          <div class="story-media-frame">
-            <img
-              src="/assets/story-page-mandi.png"
-              width="1672"
-              height="941"
-              loading="lazy"
-              decoding="async"
-              alt="Steaming slow-roasted mutton mandi served over fragrant basmati rice"
-            />
-          </div>
-        </figure>
-
-        <div class="story-copy story-reveal">
-          <p>
-            Kesar uses only organic spices, selected for their purity,<br>
-            aroma and natural depth.
-          </p>
-          <p>
-            Layered with fragrant mandi rice and slow-roasted mutton,<br>
-            they create generous flavour with quiet refinement.
-          </p>
-          <a class="story-cta" href="#story-craft">
-            <span>Discover our craft</span>
-            <span class="story-cta-arrow" aria-hidden="true">↗</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="story-craft"
-      class="story-chapter story-chapter-two"
-      aria-labelledby="storyChapterTwoTitle"
-    >
-      <div class="container story-chapter-two__grid">
-        <div class="story-chapter-two__content">
-          <div class="story-label story-reveal">
-            <span>The Kesar story</span>
-          </div>
-
-          <h2 id="storyChapterTwoTitle" class="story-title story-reveal">
-            <span class="story-title-line"><span>Where fire</span></span>
-            <span class="story-title-line">
-              <span>becomes <em class="story-accent">flavour.</em></span>
-            </span>
-          </h2>
-
-          <span class="story-saffron-mark story-reveal" aria-hidden="true"></span>
-
-          <div class="story-copy story-reveal">
-            <p>
-              Our organic spices are carefully sourced, gently warmed<br>
-              and layered over fire to reveal their full character.
-            </p>
-            <p>
-              From saffron and cardamom to fragrant basmati,<br>
-              every ingredient is treated with patience and contemporary craft.
-            </p>
-            <a class="story-cta" href="#menu">
-              <span>Explore our menu</span>
-              <span class="story-cta-arrow" aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="story-chapter-two__media" aria-label="Kesar mandi and spice craft">
-          <figure
-            class="story-media story-media-craft-main story-reveal"
-            data-story-parallax="18"
-          >
-            <div class="story-media-frame">
-              <img
-                src="/assets/images/storypage-mandi2.png"
-                width="1122"
-                height="1402"
-                loading="lazy"
-                decoding="async"
-                alt="Close view of slow-roasted mutton and fragrant mandi rice"
-              />
-            </div>
-          </figure>
-
-          <figure
-            class="story-media story-media-craft-spices story-reveal"
-            data-story-parallax="-28"
-          >
-            <div class="story-media-frame">
-              <img
-                src="/assets/images/storypage-spices2.png"
-                width="1122"
-                height="1402"
-                loading="lazy"
-                decoding="async"
-                alt="Saffron bowl surrounded by cardamom, cinnamon and warm Arabian spices"
-              />
-            </div>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="menu"
-      class="menu-chapter menu-intro"
-      aria-labelledby="menuIntroTitle"
-      data-menu-chapter
-    >
-      <div class="container">
-        <header class="menu-intro__hero">
-          <div class="menu-intro__copy">
-            <span class="menu-kicker reveal">The Kesar menu</span>
-            <h2 id="menuIntroTitle" class="menu-display reveal">
-              <span>A feast for</span>
-              <span><em>every table.</em></span>
-            </h2>
-            <p class="menu-intro__lede reveal">
+            <span class="kicker light reveal">The Kesar menu</span>
+            <h2 class="display light reveal">A feast for <em>every table.</em></h2>
+            <p class="lede reveal">
               Slow-roasted meats, fragrant mandi rice and generous combinations
               designed for sharing.
             </p>
-            <div class="menu-intro__actions reveal">
-              <a class="menu-primary-action" href="#menu-combos">
-                Explore Combos <span aria-hidden="true">→</span>
-              </a>
-              <a class="menu-text-link" href="#signature-dishes">
-                View Signature Dishes <span aria-hidden="true">↗</span>
-              </a>
-            </div>
-            <span class="menu-ornament reveal" aria-hidden="true"></span>
           </div>
 
-          <div class="menu-intro__visual reveal">
-            <span class="menu-intro__glow" aria-hidden="true"></span>
-            <figure class="menu-intro__media">
-              <img
-                src="/assets/images/menupage-chicken mandi.png"
-                width="1122"
-                height="1402"
-                loading="lazy"
-                decoding="async"
-                alt="A generous chicken mandi platter served over fragrant basmati rice"
-              />
-            </figure>
-            <figure class="menu-intro__detail" aria-hidden="true">
-              <img
-                src="/assets/images/storypage-spices2.png"
-                width="1122"
-                height="1402"
-                loading="lazy"
-                decoding="async"
-                alt=""
-              />
-            </figure>
-          </div>
-        </header>
+          <figure class="menu-main-image reveal">
+            <img src="/assets/images/mandicombo-5-6ppl.png" alt="Chicken mandi platter">
+          </figure>
+        </div>
 
-        <section class="menu-selector reveal" aria-labelledby="menuSelectorTitle">
-          <header class="menu-selector__head">
+        <section class="party-selector reveal" aria-labelledby="partyTitle">
+          <div class="section-line">
             <div>
-              <span class="menu-section-number" aria-hidden="true">01</span>
-              <h3 id="menuSelectorTitle">How many are dining?</h3>
+              <span>01</span>
+              <h3 id="partyTitle">How many are dining?</h3>
             </div>
-            <p>Choose your gathering and discover the feast prepared for your table.</p>
-          </header>
-
-          <div class="menu-combo-selector" role="tablist" aria-label="Choose a party size">
-            <button
-              id="menuParty2"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="menuComboFeature"
-              tabindex="-1"
-              data-menu-party="2"
-            >2 People</button>
-            <button
-              id="menuParty5"
-              type="button"
-              role="tab"
-              aria-selected="true"
-              aria-controls="menuComboFeature"
-              data-menu-party="5"
-            >4–5 People</button>
-            <button
-              id="menuParty6"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="menuComboFeature"
-              tabindex="-1"
-              data-menu-party="6"
-            >6 People</button>
-            <button
-              id="menuParty8"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="menuComboFeature"
-              tabindex="-1"
-              data-menu-party="8"
-            >8 People</button>
-            <button
-              id="menuParty10"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="menuComboFeature"
-              tabindex="-1"
-              data-menu-party="10"
-            >10 People</button>
+            <p>Choose your gathering and preview the feast prepared for your table.</p>
           </div>
 
-          <article
-            id="menuComboFeature"
-            class="menu-combo-feature"
-            role="tabpanel"
-            aria-labelledby="menuParty5"
-            data-menu-feature
-          >
-            <figure class="menu-combo-feature__media">
-              <img
-                src="/assets/images/menupage-chicken mandi.png"
-                width="1122"
-                height="1402"
-                loading="lazy"
-                decoding="async"
-                alt="A Kesar mandi feast prepared for four to five people"
-                data-menu-feature-image
-              />
+          <div class="party-tabs" role="tablist" aria-label="Choose a party size">
+            <button role="tab" data-party="2" aria-selected="false" tabindex="-1">2 People</button>
+            <button role="tab" data-party="5" aria-selected="true">4–5 People</button>
+            <button role="tab" data-party="6" aria-selected="false" tabindex="-1">6 People</button>
+            <button role="tab" data-party="8" aria-selected="false" tabindex="-1">8 People</button>
+            <button role="tab" data-party="10" aria-selected="false" tabindex="-1">10 People</button>
+          </div>
+
+          <article class="featured-combo" id="featuredCombo" role="tabpanel">
+            <figure>
+              <img id="featuredImage" src="/assets/images/mandicombo-5-6ppl.png" alt="Mandi combo for four to five people">
             </figure>
-            <div class="menu-combo-feature__content">
-              <span class="menu-combo-badge" data-menu-feature-badge>Most Popular</span>
-              <div class="menu-combo-feature__title">
+            <div class="featured-copy">
+              <span class="badge" id="featuredBadge">Most Popular</span>
+              <div class="combo-title">
                 <div>
-                  <h3 data-menu-feature-name>Mandi Combo</h3>
-                  <p data-menu-feature-party>4 to 5 People</p>
+                  <h3 id="featuredName">Mandi Combo</h3>
+                  <p id="featuredParty">4 to 5 People</p>
                 </div>
-                <p class="menu-combo-feature__price" aria-label="Price 1,199 rupees">
-                  <span class="menu-price-symbol">₹</span><strong data-menu-feature-price>1,199</strong>
-                </p>
+                <strong id="featuredPrice">₹1,199</strong>
               </div>
-              <span class="menu-detail-label">Included at the table</span>
-              <ul class="menu-combo-feature__items" data-menu-feature-items>
+              <span class="detail-label">Included at the table</span>
+              <ul id="featuredItems">
                 <li>Half Al Faham Chicken</li>
                 <li>Half Tandoori Chicken</li>
                 <li>8 Pc Chicken Kabab</li>
-                <li>Unlimited Mandi Rice</li>
+                <li>Unlimited mandi rice on selected dine-in combinations</li>
                 <li>5 Soft Drinks</li>
               </ul>
-              <button class="menu-reserve-button" type="button" data-menu-reserve="5">
-                Reserve This Feast <span aria-hidden="true">→</span>
-              </button>
+              <button class="primary-button" type="button" data-reserve-combo>Reserve this feast →</button>
             </div>
           </article>
-
-          <p id="menuComboAnnouncement" class="menu-sr-only" aria-live="polite"></p>
         </section>
       </div>
     </section>
 
-    <section
-      id="menu-combos"
-      class="menu-chapter menu-combos"
-      aria-labelledby="menuCombosTitle"
-      data-menu-chapter
-    >
-      <div class="container">
-        <header class="menu-chapter-head">
+    <section class="combo-section section dark-section" id="menu-combos">
+      <div class="shell">
+        <header class="chapter-head">
           <div>
-            <span class="menu-kicker reveal">Complete combinations</span>
-            <h2 id="menuCombosTitle" class="menu-display reveal">
-              Choose your <em>gathering.</em>
-            </h2>
+            <span class="kicker light reveal">Complete combinations</span>
+            <h2 class="display light reveal">Choose your <em>gathering.</em></h2>
           </div>
           <p class="reveal">
-            From dinner for two to a royal table for ten, every Kesar combination
-            is prepared for generous sharing.
+            From dinner for two to a royal table for ten, each combination is
+            prepared for generous sharing.
           </p>
         </header>
 
-        <div class="menu-combos__layout">
-          <aside class="menu-combo-summary reveal" aria-label="Selected combo summary">
-            <figure class="menu-combo-summary__media">
-              <img
-                src="/assets/images/menupage-chicken mandi.png"
-                width="1122"
-                height="1402"
-                loading="lazy"
-                decoding="async"
-                alt="Selected Kesar mandi combination"
-                data-menu-comparison-image
-              />
-            </figure>
-            <div class="menu-combo-summary__caption">
-              <span data-menu-comparison-badge>Most Popular</span>
-              <div>
-                <strong data-menu-comparison-name>Mandi Combo</strong>
-                <p data-menu-comparison-party>4 to 5 People</p>
-              </div>
-              <p class="menu-combo-summary__price">
-                <span>₹</span><strong data-menu-comparison-price>1,199</strong>
-              </p>
+        <div class="combo-layout">
+          <aside class="combo-summary reveal">
+            <img id="summaryImage" src="/assets/images/mandicombo-5-6ppl.png" alt="Selected mandi combination">
+            <div>
+              <span id="summaryBadge">Most Popular</span>
+              <h3 id="summaryName">Mandi Combo</h3>
+              <p id="summaryParty">4 to 5 People</p>
+              <strong id="summaryPrice">₹1,199</strong>
             </div>
           </aside>
 
+          <div class="accordion" id="comboAccordion"></div>
+        </div>
+
+        <p class="combo-note">Unlimited mandi rice is available with selected dine-in combinations.</p>
+      </div>
+    </section>
+
+    <section class="signature-section section" id="signature-dishes">
+      <div class="shell">
+        <header class="chapter-head light-head">
           <div>
-            <div class="menu-combo-rows" id="menuComboRows"></div>
-            <p class="menu-combos__note">
-              Every combo includes unlimited mandi rice unless otherwise stated.
+            <span class="kicker reveal">Signature dishes</span>
+            <h2 class="display reveal">Beyond the <em>platter.</em></h2>
+          </div>
+          <p class="reveal">
+            Mandi, charcoal grills and biryani shaped by smoke, patience and
+            warm hospitality.
+          </p>
+        </header>
+
+        <div class="dish-tabs reveal" role="tablist" aria-label="Dish collections">
+          <button role="tab" data-dish-tab="nonveg" aria-selected="true">Non-Vegetarian</button>
+          <button role="tab" data-dish-tab="veg" aria-selected="false" tabindex="-1">Vegetarian</button>
+        </div>
+
+        <div class="dish-panel" id="nonvegPanel" data-dish-panel="nonveg">
+          <div class="dish-controls">
+            <p>House favourites</p>
+            <div>
+              <button id="dishPrev" type="button" aria-label="Previous dishes">←</button>
+              <button id="dishNext" type="button" aria-label="Next dishes">→</button>
+            </div>
+          </div>
+
+          <div class="dish-track" id="dishTrack" tabindex="0" aria-label="Signature dishes">
+            <article class="dish-card reveal" data-title="Chicken Mandi" data-category="Mandi · Signature" data-copy="Fragrant mandi rice served with tender, slow-roasted chicken." data-pairing="Best enjoyed with house sauces and fresh salad.">
+              <img src="/assets/images/mandicombo-5-6ppl.png" alt="Chicken mandi">
+              <div><span>Mandi · Signature</span><h3>Chicken Mandi</h3><p>Fragrant mandi rice served with tender, slow-roasted chicken.</p><button type="button" data-details>View details ↗</button></div>
+            </article>
+
+            <article class="dish-card reveal" data-title="Al Faham Chicken" data-category="Charcoal · Grill" data-copy="Charcoal-grilled chicken marinated with aromatic Arabian-inspired spices." data-pairing="Pair with mandi rice and cooling raita.">
+              <img src="/assets/images/menupage-al faham.png" alt="Al Faham chicken">
+              <div><span>Charcoal · Grill</span><h3>Al Faham Chicken</h3><p>Charcoal-grilled chicken with aromatic spices.</p><button type="button" data-details>View details ↗</button></div>
+            </article>
+
+            <article class="dish-card reveal" data-title="Hot Biryani" data-category="Rice · Classic" data-copy="Aromatic long-grain basmati layered with spice and tender meat." data-pairing="Complete the plate with raita and salad.">
+              <img src="/assets/images/menupage-biryani.png" alt="Hot biryani">
+              <div><span>Rice · Classic</span><h3>Hot Biryani</h3><p>Aromatic basmati layered with spice and tender meat.</p><button type="button" data-details>View details ↗</button></div>
+            </article>
+
+            <article class="dish-card reveal" data-title="Royal Mandi Platter" data-category="Mandi · Sharing" data-copy="A generous platter of rice and slow-roasted meat for the whole table." data-pairing="Made for shared dining and larger gatherings.">
+              <img src="/assets/story-page-mandi.png" alt="Royal mandi platter">
+              <div><span>Mandi · Sharing</span><h3>Royal Mandi Platter</h3><p>A generous platter prepared for the whole table.</p><button type="button" data-details>View details ↗</button></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="dish-panel veg-empty" id="vegPanel" data-dish-panel="veg" hidden>
+          <span aria-hidden="true">V</span>
+          <div>
+            <small>Vegetarian collection</small>
+            <h3>Vegetarian menu coming soon.</h3>
+            <p>
+              This section remains intentionally empty until KESAR provides
+              verified vegetarian dishes, descriptions and prices.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section
-      id="signature-dishes"
-      class="menu-chapter menu-signatures"
-      aria-labelledby="signatureDishesTitle"
-      data-menu-chapter
-    >
-      <div class="container">
-        <header class="menu-chapter-head menu-signatures__head">
+    <section class="why-section section" id="why-kesar">
+      <div class="shell">
+        <header class="chapter-head light-head">
           <div>
-            <span class="menu-kicker reveal">Signature dishes</span>
-            <h2 id="signatureDishesTitle" class="menu-display reveal">
-              Beyond the <em>platter.</em>
-            </h2>
+            <span class="kicker reveal">Why visit Kesar?</span>
+            <h2 class="display reveal">Made for <em>generous tables.</em></h2>
           </div>
           <p class="reveal">
-            From signature mandi to charcoal grills, rolls and biryani, every dish
-            carries the warmth of Arabian hospitality.
+            Familiar warmth, thoughtful service and cooking designed around the
+            pleasure of sharing.
           </p>
         </header>
 
-        <div class="menu-dish-tabs reveal" role="tablist" aria-label="Dish collections">
-          <button
-            id="menuNonVegTab"
-            type="button"
-            role="tab"
-            aria-selected="true"
-            aria-controls="menuNonVegPanel"
-            data-menu-dish-tab="nonveg"
-          >Non-Vegetarian</button>
-          <button
-            id="menuVegTab"
-            type="button"
-            role="tab"
-            aria-selected="false"
-            aria-controls="menuVegPanel"
-            tabindex="-1"
-            data-menu-dish-tab="veg"
-          >Vegetarian</button>
+        <div class="benefits">
+          <article class="reveal"><span>01</span><h3>Carefully Selected Ingredients</h3><p>Produce, spices and meats chosen for balanced flavour.</p></article>
+          <article class="reveal"><span>02</span><h3>Arabian-Inspired Slow Roasting</h3><p>Slow roasting, charcoal and fragrant spice shape each plate.</p></article>
+          <article class="reveal"><span>03</span><h3>Generous Mandi Rice</h3><p>Unlimited mandi rice is available with selected dine-in combinations.</p></article>
+          <article class="reveal"><span>04</span><h3>Made for Families</h3><p>Comfortable combinations prepared for gatherings of every size.</p></article>
         </div>
 
-        <div
-          id="menuNonVegPanel"
-          class="menu-dish-panel"
-          role="tabpanel"
-          aria-labelledby="menuNonVegTab"
-          data-menu-dish-panel="nonveg"
-        >
-          <div class="menu-carousel-controls reveal">
-            <p>Eight house favourites</p>
-            <div>
-              <button id="menuDishPrev" type="button" aria-label="Previous signature dishes">
-                <span aria-hidden="true">←</span>
-              </button>
-              <button id="menuDishNext" type="button" aria-label="Next signature dishes">
-                <span aria-hidden="true">→</span>
-              </button>
-            </div>
-          </div>
-
-          <div
-            id="menuDishTrack"
-            class="menu-dish-track"
-            role="list"
-            tabindex="0"
-            aria-label="Kesar signature dishes"
-          >
-            <article
-              class="menu-dish-card reveal"
-              role="listitem"
-              data-menu-dish
-              data-menu-pairing="Best enjoyed with aromatic mandi rice and house sauces."
-            >
-              <figure class="menu-dish-card__media">
-                <img src="/assets/images/menupage-chicken mandi.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Chicken mandi served over fragrant basmati rice" />
-              </figure>
-              <div class="menu-dish-card__body">
-                <span>Mandi · Signature</span>
-                <h3>Chicken Mandi</h3>
-                <p>Fragrant mandi rice served with tender, slow-roasted chicken.</p>
-                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
-              </div>
-            </article>
-
-            <article
-              class="menu-dish-card reveal"
-              role="listitem"
-              data-menu-dish
-              data-menu-pairing="Pair with warm flatbread, mandi rice and cooling raita."
-            >
-              <figure class="menu-dish-card__media">
-                <img src="/assets/images/menupage-al faham.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Charcoal-grilled Al Faham chicken with Arabian spices" />
-              </figure>
-              <div class="menu-dish-card__body">
-                <span>Charcoal · Grill</span>
-                <h3>Al Faham Chicken</h3>
-                <p>Charcoal-grilled chicken marinated with aromatic Arabian spices.</p>
-                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
-              </div>
-            </article>
-
-            <article
-              class="menu-dish-card reveal"
-              role="listitem"
-              data-menu-dish
-              data-menu-pairing="Pair with fragrant basmati rice, lemon and mint chutney."
-            >
-              <figure class="menu-dish-card__media">
-                <img src="/assets/images/menupage-tandoori chicken.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Clay-oven roasted tandoori chicken with lemon and onion" />
-              </figure>
-              <div class="menu-dish-card__body">
-                <span>Tandoor · Roast</span>
-                <h3>Tandoori Chicken</h3>
-                <p>Clay-oven roasted chicken with smoke, spice and rich flavour.</p>
-                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
-              </div>
-            </article>
-
-            <article
-              class="menu-dish-card reveal"
-              role="listitem"
-              data-menu-dish
-              data-menu-pairing="Serve with grilled vegetables, flatbread and house chutney."
-            >
-              <figure class="menu-dish-card__media">
-                <img src="/assets/images/menupage-chicken kebab.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Chicken kababs grilled until tender and lightly charred" />
-              </figure>
-              <div class="menu-dish-card__body">
-                <span>Grill · Kabab</span>
-                <h3>Chicken Kabab</h3>
-                <p>Juicy chicken kababs grilled until tender and lightly charred.</p>
-                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
-              </div>
-            </article>
-
-            <article
-              class="menu-dish-card reveal"
-              role="listitem"
-              data-menu-dish
-              data-menu-pairing="Pair with mandi rice, grilled lemon and creamy garlic sauce."
-            >
-              <figure class="menu-dish-card__media">
-                <img src="/assets/images/menupage-grill chicken.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Flame-grilled chicken with a smoky marinade" />
-              </figure>
-              <div class="menu-dish-card__body">
-                <span>Flame · Grill</span>
-                <h3>Grill Chicken</h3>
-                <p>Flame-grilled chicken with a balanced smoky marinade.</p>
-                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
-              </div>
-            </article>
-
-            <article
-              class="menu-dish-card reveal"
-              role="listitem"
-              data-menu-dish
-              data-menu-pairing="Enjoy with pickled vegetables, garlic sauce and a cool drink."
-            >
-              <figure class="menu-dish-card__media">
-                <img src="/assets/images/menupage-shawarma.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Arabian-style chicken shawarma with fresh fillings" />
-              </figure>
-              <div class="menu-dish-card__body">
-                <span>Arabian · Wrap</span>
-                <h3>Shawarma</h3>
-                <p>Arabian-style spiced chicken wrapped with fresh, flavourful fillings.</p>
-                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
-              </div>
-            </article>
-
-            <article
-              class="menu-dish-card reveal"
-              role="listitem"
-              data-menu-dish
-              data-menu-pairing="Pair with mint chutney, crisp onions and a chilled drink."
-            >
-              <figure class="menu-dish-card__media">
-                <img src="/assets/images/menupage-kathi rolles.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Kathi rolls filled with grilled chicken and vegetables" />
-              </figure>
-              <div class="menu-dish-card__body">
-                <span>Street · Rolls</span>
-                <h3>Kathi Rolls</h3>
-                <p>Soft rolls packed with grilled chicken, vegetables and house sauces.</p>
-                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
-              </div>
-            </article>
-
-            <article
-              class="menu-dish-card reveal"
-              role="listitem"
-              data-menu-dish
-              data-menu-pairing="Complete the plate with raita, salad and a squeeze of lemon."
-            >
-              <figure class="menu-dish-card__media">
-                <img src="/assets/images/menupage-biryani.png" width="1122" height="1402" loading="lazy" decoding="async" alt="Aromatic biryani layered with spice and tender meat" />
-              </figure>
-              <div class="menu-dish-card__body">
-                <span>Rice · Classic</span>
-                <h3>Biryani</h3>
-                <p>Aromatic long-grain basmati layered with spice and tender meat.</p>
-                <button type="button" data-menu-dish-details>View Details <span aria-hidden="true">↗</span></button>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div
-          id="menuVegPanel"
-          class="menu-dish-panel menu-dish-panel--empty"
-          role="tabpanel"
-          aria-labelledby="menuVegTab"
-          data-menu-dish-panel="veg"
-          hidden
-        >
-          <div class="menu-veg-empty">
-            <span class="menu-veg-empty__number" aria-hidden="true">V</span>
-            <div>
-              <span class="menu-kicker">Vegetarian collection</span>
-              <h3>Reserved for what comes next.</h3>
-              <p>Your vegetarian dishes can be added here when they are ready.</p>
-            </div>
-            <span class="menu-veg-empty__frame" aria-hidden="true"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="why-kesar"
-      class="menu-chapter menu-benefits"
-      aria-labelledby="whyKesarTitle"
-      data-menu-chapter
-    >
-      <div class="container">
-        <header class="menu-chapter-head">
+        <div class="experience-band reveal">
+          <figure><img src="/assets/images/storypage-mandi2.png" alt="Premium Kesar mandi dining atmosphere"></figure>
           <div>
-            <span class="menu-kicker reveal">Why visit Kesar?</span>
-            <h2 id="whyKesarTitle" class="menu-display reveal">
-              Made for <em>generous tables.</em>
-            </h2>
-          </div>
-          <p class="reveal">
-            Familiar warmth, thoughtful service and Arabian cooking designed
-            around the pleasure of sharing.
-          </p>
-        </header>
-
-        <div class="menu-benefits__layout">
-          <div class="menu-benefit-grid">
-            <article class="menu-benefit-card reveal">
-              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M39 9C23 10 12 18 11 32c8 1 15-1 20-6 5-5 7-11 8-17Z"/><path d="M10 38c6-10 14-17 25-24"/></svg>
-              <span>01</span>
-              <h3>Fresh Ingredients</h3>
-              <p>Carefully selected produce, spices and meats prepared for exceptional flavour.</p>
-            </article>
-            <article class="menu-benefit-card reveal">
-              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M25 5c2 8-5 10-5 17 0 4 3 7 7 7 6 0 10-5 9-11 5 4 7 9 7 14 0 8-7 13-17 13S8 40 8 31c0-8 6-13 11-18 2-2 4-5 6-8Z"/></svg>
-              <span>02</span>
-              <h3>Authentic Arabian Recipes</h3>
-              <p>Time-honoured recipes shaped by slow roasting, charcoal and fragrant spice.</p>
-            </article>
-            <article class="menu-benefit-card reveal">
-              <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 23h34c0 11-7 19-17 19S7 34 7 23Z"/><path d="M12 19c4-5 20-5 24 0M18 11c0 3 2 4 2 7M27 8c0 4 3 5 3 9"/></svg>
-              <span>03</span>
-              <h3>Unlimited Mandi Rice</h3>
-              <p>Generous servings of aromatic mandi rice made for sharing.</p>
-            </article>
-            <article class="menu-benefit-card reveal">
-              <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="15" r="6"/><circle cx="33" cy="18" r="5"/><path d="M7 39c0-9 5-14 12-14s12 5 12 14M27 29c2-3 5-5 8-5 6 0 9 5 9 12"/></svg>
-              <span>04</span>
-              <h3>Perfect for Families</h3>
-              <p>Comfortable combinations and welcoming service for every gathering.</p>
-            </article>
-          </div>
-
-          <div class="menu-hospitality-media reveal">
-            <figure class="menu-hospitality-media__main">
-              <img
-                src="/assets/images/menupage-al faham.png"
-                width="1122"
-                height="1402"
-                loading="lazy"
-                decoding="async"
-                alt="Charcoal-grilled Al Faham chicken prepared for sharing"
-              />
-            </figure>
-            <figure class="menu-hospitality-media__detail">
-              <img
-                src="/assets/images/menupage-shawarma.png"
-                width="1122"
-                height="1402"
-                loading="lazy"
-                decoding="async"
-                alt="Freshly wrapped Arabian chicken shawarma"
-              />
-            </figure>
+            <span class="kicker light">The Kesar experience</span>
+            <h3>An evening designed to unfold slowly.</h3>
+            <p>Warm light, generous food and a room built around shared conversation.</p>
           </div>
         </div>
 
-        <div class="menu-benefit-strip reveal" aria-label="More reasons to visit Kesar">
-          <span>Premium Hospitality</span>
-          <span>Affordable Combos</span>
-          <span>Parking Available</span>
-          <span>Easy to Locate</span>
-        </div>
-
-        <p class="menu-hospitality-line reveal">
-          Experience the true warmth of Arabian hospitality.
-        </p>
+        <aside class="compact-reservation reveal" id="menu-reservation">
+          <div>
+            <span class="kicker">Ready to reserve?</span>
+            <h3>Let us prepare your perfect feast.</h3>
+            <p>
+              Choose your gathering and continue to the reservation details.
+              Online sending remains disabled until a verified contact channel
+              is connected.
+            </p>
+            <a class="primary-button inline-button" href="#reservation">View reservation details →</a>
+          </div>
+          <div class="service-card">
+            <strong>Today’s service</strong>
+            <span id="compactHours">Checking Bengaluru time</span>
+            <span>Selected dine-in combinations include generous mandi rice.</span>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section
-      id="menu-reservation"
-      class="menu-chapter menu-reservation-cta"
-      aria-labelledby="menuReservationTitle"
-      data-menu-chapter
-    >
-      <div class="container menu-reservation-cta__layout">
-        <div class="menu-reservation-cta__copy">
-          <span class="menu-kicker reveal">Ready to reserve?</span>
-          <h2 id="menuReservationTitle" class="menu-display reveal">
-            <span>Let us prepare</span>
-            <span><em>your perfect feast.</em></span>
-          </h2>
-          <p class="reveal">
-            Choose your table, select your gathering and let Kesar prepare an
-            experience made for sharing.
-          </p>
-          <div class="menu-reservation-cta__actions reveal">
-            <a class="menu-primary-action" href="#reservation">
-              Reserve Your Table <span aria-hidden="true">→</span>
-            </a>
-            <a class="menu-text-link" href="#menu">Return to Menu <span aria-hidden="true">↑</span></a>
-          </div>
-          <ul class="menu-reservation-cta__status reveal" aria-label="Service information">
-            <li><span>Monday—Thursday</span>1 PM—11 PM</li>
-            <li><span>Friday</span>5 PM—11 PM</li>
-            <li><span>Weekend</span>1 PM—11 PM</li>
-          </ul>
-        </div>
-
-        <figure class="menu-reservation-cta__media reveal">
-          <img
-            src="/assets/images/storypage-mandi2.png"
-            width="1122"
-            height="1402"
-            loading="lazy"
-            decoding="async"
-            alt="A generous mandi feast with Arabian lanterns in a warm dining setting"
-          />
-        </figure>
-      </div>
-    </section>
-
-    <dialog
-      id="menuDishDialog"
-      class="menu-dish-modal"
-      aria-labelledby="menuDishDialogTitle"
-      aria-describedby="menuDishDialogDescription"
-    >
-      <div class="menu-dish-modal__shell">
-        <button class="menu-dish-modal__close" type="button" aria-label="Close dish details" data-menu-dialog-close>
-          <span aria-hidden="true">×</span>
-        </button>
-        <figure class="menu-dish-modal__media">
-          <img src="/assets/images/menupage-chicken mandi.png" width="1122" height="1402" decoding="async" alt="" data-menu-dialog-image />
-        </figure>
-        <div class="menu-dish-modal__content">
-          <span data-menu-dialog-category>Signature dish</span>
-          <h2 id="menuDishDialogTitle" data-menu-dialog-title>Chicken Mandi</h2>
-          <p id="menuDishDialogDescription" data-menu-dialog-description></p>
-          <div class="menu-dish-modal__pairing">
-            <span>Suggested pairing</span>
-            <p data-menu-dialog-pairing></p>
-          </div>
-          <a class="menu-primary-action" href="#reservation" data-menu-dialog-reserve>
-            Reserve a Table <span aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    </dialog>
-
-    <section class="reservation" id="reservation">
-      <div class="container">
-        <div class="reservation-head">
+    <section class="reservation section" id="reservation">
+      <div class="shell">
+        <header class="reservation-head">
           <div>
             <span class="kicker reveal">Reservations</span>
-            <h2 class="section-title reveal" style="margin-top:22px">
-              Join us at Kesar.
-            </h2>
+            <h2 class="display reveal">Join us at Kesar.</h2>
           </div>
           <p class="reveal">
-            Reservations are recommended for dinner and weekends. For parties
-            larger than six, please contact our team directly.
+            The form is shown exactly as it will appear, but no request is sent
+            until a verified phone, WhatsApp, email or booking system is connected.
           </p>
-        </div>
+        </header>
 
-        <form class="reservation-form reveal" id="reservationForm">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required />
-          </div>
-          <div class="field">
-            <label for="phone">Phone</label>
-            <input id="phone" name="phone" type="tel" autocomplete="tel" required />
-          </div>
-          <div class="field">
-            <label for="date">Date</label>
-            <input id="date" name="date" type="date" required />
-          </div>
-          <div class="field">
-            <label for="time">Time</label>
-            <select id="time" name="time" required>
-              <option value="">Choose</option>
-              <option>12:30 PM</option>
-              <option>1:30 PM</option>
-              <option>7:30 PM</option>
-              <option>8:30 PM</option>
-              <option>9:30 PM</option>
-            </select>
-          </div>
-          <div class="field wide">
-            <label for="guests">Number of guests</label>
-            <select id="guests" name="guests" required>
-              <option value="">Choose party size</option>
-              <option>2 guests</option>
-              <option>3 guests</option>
-              <option>4 guests</option>
-              <option>5 guests</option>
-              <option>6 guests</option>
-              <option>7+ guests</option>
-            </select>
-          </div>
-          <div class="field wide">
-            <label for="occasion">Occasion</label>
-            <select id="occasion" name="occasion">
-              <option>Dining</option>
-              <option>Birthday</option>
-              <option>Anniversary</option>
-              <option>Business dinner</option>
-              <option>Private event</option>
-            </select>
-          </div>
-          <div class="field full">
-            <label for="message">Notes</label>
-            <textarea id="message" name="message" placeholder="Dietary requirements or special requests"></textarea>
-          </div>
+        <form class="reservation-form reveal" id="reservationForm" novalidate>
+          <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required><span class="error"></span></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="10-digit mobile number" required><span class="error"></span></div>
+          <div class="field"><label for="date">Date</label><input id="date" name="date" type="date" required><span class="error"></span></div>
+          <div class="field"><label for="time">Time</label><select id="time" name="time" required disabled><option value="">Choose date first</option></select><span class="error"></span></div>
+          <div class="field half"><label for="guests">Number of guests</label><select id="guests" name="guests" required><option value="">Choose party size</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option><option>7+ guests</option></select><span class="error"></span></div>
+          <div class="field half"><label for="occasion">Occasion</label><select id="occasion" name="occasion"><option>Dining</option><option>Birthday</option><option>Anniversary</option><option>Business dinner</option><option>Private event</option></select><span class="error"></span></div>
+          <div class="field full"><label for="message">Notes</label><textarea id="message" name="message" placeholder="Dietary requirements or special requests"></textarea><span class="error"></span></div>
 
           <div class="submit-row">
             <p>
-              This demo form confirms the request on screen. Connect it to your
-              preferred reservation system, email or WhatsApp before launch.
+              Online reservations are being prepared. A verified booking channel will be connected before accepting requests. Bengaluru opening times are used throughout the form.
             </p>
-            <button class="submit-button magnetic" type="submit">Request a table</button>
+            <button type="submit" disabled aria-disabled="true">Reservations opening soon</button>
           </div>
         </form>
       </div>
     </section>
   </main>
 
-  <div class="menu-mobile-reserve" id="menuMobileReserve" hidden>
-    <div>
-      <span data-menu-mobile-name>Mandi Combo · 4–5 People</span>
-      <strong data-menu-mobile-price>₹1,199</strong>
-    </div>
-    <button type="button" data-menu-mobile-reserve>Reserve</button>
+  <div class="mobile-reserve" id="mobileReserve" hidden>
+    <div><span id="mobileComboName">Mandi Combo · 4–5 People</span><strong id="mobileComboPrice">₹1,199</strong></div>
+    <button type="button" id="mobileReserveButton">Reserve</button>
   </div>
 
-  <footer class="contact" id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div>
-          <h2 class="footer-brand reveal">KESAR</h2>
-        </div>
-        <div>
-          <h4>Visit</h4>
-          <p>123 Food Street<br>Your City, India</p>
-          <p style="margin-top:18px">+91 98765 43210<br>hello@kesarrestaurant.com</p>
-        </div>
-        <div>
-          <h4>Service</h4>
-          <ul>
-            <li>Lunch · 12:00—15:30</li>
-            <li>Dinner · 19:00—23:30</li>
-            <li>Private dining available</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="contact-bottom">
-        <span>© <span id="year"></span> Kesar Restaurant</span>
-        <span>Instagram · Facebook · WhatsApp</span>
+  <footer>
+    <div class="shell footer-grid">
+      <div>
+        <h2>KESAR</h2>
         <span>MANDI HOUSE DINING</span>
+        <p>Slow-roasted mandi, fragrant rice and generous dining shaped for shared tables in Bengaluru.</p>
       </div>
+      <div>
+        <h3>Hours</h3>
+        <p>Today · <strong id="footerToday">Checking</strong></p>
+        <p>Bengaluru time</p>
+        <p>Monday—Thursday · 1:00 PM–11:00 PM</p>
+        <p>Friday · 5:00 PM–11:00 PM</p>
+        <p>Saturday—Sunday · 1:00 PM–11:00 PM</p>
+      </div>
+    </div>
+    <div class="shell footer-bottom">
+      <span>© <span id="year"></span> Kesar Restaurant</span>
+      <span>Contact and directions will appear only after verification.</span>
+      <span>MANDI HOUSE DINING</span>
     </div>
   </footer>
 
-  <div class="toast" id="toast" role="status">
-    Your reservation request has been received. The Kesar team will contact you shortly.
-  </div>
+  <dialog id="dishDialog">
+    <div class="dialog-shell">
+      <button class="dialog-close" type="button" aria-label="Close dish details">×</button>
+      <img id="dialogImage" src="/assets/images/mandicombo-5-6ppl.png" alt="">
+      <div>
+        <span id="dialogCategory">Signature dish</span>
+        <h2 id="dialogTitle">Chicken Mandi</h2>
+        <p id="dialogCopy"></p>
+        <small>Suggested pairing</small>
+        <p id="dialogPairing"></p>
+        <a class="primary-button inline-button" href="#reservation" id="dialogReserve">View reservation details →</a>
+      </div>
+    </div>
+  </dialog>
 
   <script src="script.js"></script>
-  <script src="premium.js"></script>
-  <script src="menu-premium.js"></script>
 </body>
 </html>
