@@ -1,3 +1,8 @@
+/* Keep the complete loader sequence close to 1.5 seconds. */
+.loader{
+  transition:transform .85s cubic-bezier(.77,0,.18,1),visibility .85s!important;
+}
+
 .delivery-section{
   --delivery-paper:#f3eee6;
   --delivery-paper-deep:#e9e1d5;
