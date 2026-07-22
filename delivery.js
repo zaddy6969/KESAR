@@ -171,6 +171,16 @@
     });
   }
 
+  function footerIcon(type){
+    const icons={
+      phone:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 3.8 9 3.2l2.1 5-1.8 1.5c1 2.1 2.7 3.8 4.8 4.8l1.5-1.8 5 2.1-.6 2.4c-.3 1.3-1.5 2.2-2.8 2.1C9.7 18.7 5.3 14.3 4.7 6.6c-.1-1.3.8-2.5 1.9-2.8Z"/></svg>',
+      whatsapp:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.7a8 8 0 0 1-11.9 7L4 19.8l1.1-4a8 8 0 1 1 14.9-4.1Z"/><path d="M9.1 8.3c.3-.6.5-.6.9-.6h.4c.2 0 .4.1.5.5l.8 1.8c.1.3.1.5-.1.8l-.6.7c-.2.2-.2.4 0 .7.7 1.2 1.8 2.2 3 2.8.3.2.6.1.8-.1l.8-.9c.2-.3.5-.3.8-.2l1.8.9c.3.2.4.4.4.7 0 .6-.3 1.3-.8 1.7-.5.4-1.2.7-2 .7-1.1 0-2.4-.4-3.9-1.3-2.2-1.4-3.7-3.4-4.2-4.6-.5-1.1-.5-2.1-.2-2.9.2-.4.4-.6.6-.7Z"/></svg>',
+      email:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m4 7 8 6 8-6"/></svg>',
+      clock:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>'
+    };
+    return icons[type]||"";
+  }
+
   function applyCompactLayout(){
     const reservation=$("#reservation");
     const heading=reservation?.querySelector(".reservation-head");
@@ -198,9 +208,35 @@
     if(form)bindReservationActions(form);
 
     const footer=document.querySelector("footer");
-    if(footer&&!footer.classList.contains("footer-compact-ready")){
-      footer.classList.add("footer-compact-ready");
-      footer.innerHTML=`<div class="shell footer-grid footer-grid--compact"><div class="footer-brand"><h2>KESAR</h2><span>MANDI HOUSE DINING</span><p>Slow-roasted mandi, fragrant rice and generous dining in Bengaluru.</p></div><div class="footer-contact"><h3>Contact</h3><a href="tel:+918951919010">${hotel.phone}</a><a href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noopener noreferrer">WhatsApp reservations</a><a href="mailto:${hotel.email}">${hotel.email}</a></div><div class="footer-hours"><h3>Hours</h3><p>Daily · ${hotel.hours}</p><p>Today · <strong id="footerToday">${hotel.hours}</strong></p></div></div><div class="shell footer-bottom"><span>© <span id="year">${new Date().getFullYear()}</span> Hotel Kesar</span><span>Bengaluru · Mandi House Dining</span></div>`;
+    if(footer&&!footer.classList.contains("footer-luxury-ready")){
+      footer.className="footer-luxury-ready";
+      footer.innerHTML=`
+        <div class="shell footer-luxury-main">
+          <a class="footer-luxury-brand" href="#home" aria-label="KESAR home">KESAR</a>
+          <a class="footer-luxury-item" href="tel:+918951919010" aria-label="Call Hotel Kesar at ${hotel.phone}">
+            <span class="footer-luxury-icon">${footerIcon("phone")}</span>
+            <span class="footer-luxury-value">${hotel.phone}</span>
+          </a>
+          <a class="footer-luxury-item" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="Reserve Hotel Kesar through WhatsApp">
+            <span class="footer-luxury-icon">${footerIcon("whatsapp")}</span>
+            <span class="footer-luxury-value">WhatsApp Reservations</span>
+          </a>
+          <a class="footer-luxury-item footer-luxury-email" href="mailto:${hotel.email}" aria-label="Email Hotel Kesar at ${hotel.email}">
+            <span class="footer-luxury-icon">${footerIcon("email")}</span>
+            <span class="footer-luxury-value">${hotel.email}</span>
+          </a>
+          <div class="footer-luxury-item footer-luxury-hours">
+            <span class="footer-luxury-icon">${footerIcon("clock")}</span>
+            <span class="footer-luxury-copy"><small>DAILY</small><strong>${hotel.hours}</strong></span>
+          </div>
+          <div class="footer-luxury-item footer-luxury-hours footer-luxury-today">
+            <span class="footer-luxury-copy"><small>TODAY</small><strong id="footerToday">${hotel.hours}</strong></span>
+          </div>
+        </div>
+        <div class="shell footer-luxury-bottom">
+          <span>© ${new Date().getFullYear()} HOTEL KESAR</span>
+          <span>BENGALURU · MANDI HOUSE DINING</span>
+        </div>`;
     }
   }
 
