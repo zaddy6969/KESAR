@@ -1,10 +1,12 @@
 (() => {
   "use strict";
 
-  const STYLE_ID="kesarBulkCurveOutFix";
+  const STYLE_ID="kesarBulkSmoothLeftImage";
 
   function addStyles(){
+    document.getElementById("kesarBulkCurveOutFix")?.remove();
     if(document.getElementById(STYLE_ID))return;
+
     const style=document.createElement("style");
     style.id=STYLE_ID;
     style.textContent=`
@@ -18,31 +20,53 @@
       }
 
       @media (min-width:901px){
+        .bulk-orders-section::before{
+          inset:0 0 0 48.8%!important;
+        }
+
+        .bulk-orders-section::after{
+          left:48.8%!important;
+          right:0!important;
+        }
+
+        .bulk-orders-section__layout{
+          grid-template-columns:48.8% 51.2%!important;
+        }
+
         .bulk-orders-section__media{
-          clip-path:polygon(
-            24% 0,
-            100% 0,
-            100% 100%,
-            22% 100%,
-            20% 96%,
-            16% 90%,
-            12% 83%,
-            8% 75%,
-            4% 66%,
-            1% 57%,
-            0 50%,
-            1% 43%,
-            4% 34%,
-            8% 25%,
-            12% 17%,
-            16% 10%,
-            20% 5%
-          )!important;
-          filter:drop-shadow(-2px 0 0 rgba(183,135,67,.82));
+          grid-column:1!important;
+          grid-row:1!important;
+          clip-path:none!important;
+          filter:none!important;
+          overflow:hidden!important;
+        }
+
+        .bulk-orders-section__content{
+          grid-column:2!important;
+          grid-row:1!important;
         }
 
         .bulk-orders-section__media::before{
-          display:none!important;
+          display:block!important;
+          left:auto!important;
+          right:-225px!important;
+          top:-9%!important;
+          width:430px!important;
+          height:118%!important;
+          border-radius:50%!important;
+          background:var(--paper,#fbf5e9)!important;
+          box-shadow:
+            -23px 0 0 -20px var(--gold,#b78743),
+            -38px 0 70px rgba(40,25,13,.10)!important;
+          transform:translateZ(0);
+          backface-visibility:hidden;
+        }
+      }
+
+      @media (min-width:901px) and (max-width:1180px){
+        .bulk-orders-section__media::before{
+          right:-185px!important;
+          width:355px!important;
         }
       }
     `;
@@ -52,10 +76,13 @@
   function cleanSection(){
     const section=document.querySelector("#bulk-orders");
     if(!section)return false;
+
     section.querySelectorAll(
       ".bulk-orders-section__contacts, .bulk-orders-section__delivery"
     ).forEach(element=>element.remove());
-    section.classList.add("bulk-orders-curve-out");
+
+    section.classList.remove("bulk-orders-curve-out");
+    section.classList.add("bulk-orders-image-left","bulk-orders-smooth-curve");
     return true;
   }
 
