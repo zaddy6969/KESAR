@@ -44,7 +44,7 @@
       }
       if(!document.querySelector('script[data-kesar-bulk-curve-fix]')){
         const bulkCurveFix=document.createElement("script");
-        bulkCurveFix.src="/bulk-orders-curve-fix.js?v=curve-out-1";
+        bulkCurveFix.src="/bulk-orders-curve-fix.js?v=curve-left-smooth-1";
         bulkCurveFix.async=true;
         bulkCurveFix.dataset.kesarBulkCurveFix="true";
         document.body.append(bulkCurveFix);
