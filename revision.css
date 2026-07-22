@@ -82,7 +82,15 @@ body.loader-done .loader{display:none!important}
 @keyframes kesarFloatAccent{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(-8px,-18px,0)}}
 
 /* Eight-card dish rail with reliable drag and controls. */
-.dish-track{grid-auto-columns:minmax(290px,28%);scroll-behavior:smooth;overscroll-behavior-inline:contain;cursor:grab}
+.dish-track{
+  grid-auto-columns:minmax(290px,28%);
+  scroll-behavior:smooth;
+  overscroll-behavior-inline:contain;
+  cursor:grab;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.dish-track::-webkit-scrollbar{display:none;width:0;height:0}
 .dish-track.is-dragging{cursor:grabbing;scroll-snap-type:none}
 .dish-card{min-width:0}.dish-card p{min-height:56px}
 .dish-controls button{transition:background .2s,color .2s,transform .2s}.dish-controls button:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
