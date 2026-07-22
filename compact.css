@@ -4,7 +4,7 @@
 #reservation.reservation{padding:34px 0 50px!important}
 #reservation .reservation-head{display:block!important;margin:0 0 24px!important;padding:0 0 16px!important;border-bottom:1px solid var(--line)!important}
 #reservation .reservation-head>*{display:none!important}
-#reservation .reservation-head .reservation-simple-title{display:block!important;margin:0!important;color:var(--gold2)!important;font-family:"DM Sans",Arial,sans-serif!important;font-size:11px!important;font-weight:600!important;line-height:1.2!important;letter-spacing:.2em!important;text-transform:uppercase!important}
+#reservation .reservation-head::before{content:"TABLE RESERVATION";display:block;color:var(--gold2);font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:600;line-height:1.2;letter-spacing:.2em;text-transform:uppercase}
 .reservation-contact-bar{display:none!important}
 .reservation-contact-actions,.reservation-submit-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .reservation-email-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 16px;border:1px solid var(--ink);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:background .2s,color .2s}
@@ -25,7 +25,7 @@ footer .footer-bottom{margin-top:28px!important;padding:16px 0!important;grid-te
 @media(max-width:767px){
   #reservation.reservation{padding:28px 0 40px!important}
   #reservation .reservation-head{margin-bottom:20px!important;padding-bottom:13px!important}
-  #reservation .reservation-head .reservation-simple-title{font-size:10px!important}
+  #reservation .reservation-head::before{font-size:10px!important}
   .reservation-submit-actions{display:grid!important;grid-template-columns:1fr!important;width:100%!important}
   .reservation-submit-actions a{width:100%!important;text-align:center!important;justify-content:center!important}
   #reservation .reservation-form{gap:16px!important}
