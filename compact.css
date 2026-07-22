@@ -1,6 +1,37 @@
 /* Compact post-delivery flow: Delivery → Table Reservation → Footer. */
 #why-kesar{display:none!important}
 .delivery-benefits{display:none!important}
+
+/* Combined premium menu introduction + party selector. */
+#menu.menu-intro{padding:clamp(72px,6vw,100px) 0!important}
+#menu>.shell{display:grid!important;grid-template-columns:minmax(330px,.72fr) minmax(620px,1.28fr);gap:clamp(38px,4vw,64px);align-items:stretch}
+#menu .menu-intro-grid{display:flex!important;min-width:0;flex-direction:column;justify-content:center;gap:26px}
+#menu .menu-intro-grid>div{max-width:520px}
+#menu .menu-intro-grid .display{font-size:clamp(58px,6.3vw,96px)!important;line-height:.92!important}
+#menu .menu-intro-grid .lede{max-width:470px;margin-top:24px!important}
+#menu .menu-main-image{display:none!important}
+#menu .party-selector{display:grid!important;grid-template-rows:auto auto 1fr;min-width:0;margin:0!important;padding:clamp(22px,2.2vw,34px)!important;border:1px solid var(--line)!important;background:rgba(255,255,255,.42)!important;box-shadow:0 24px 70px rgba(62,38,18,.08)}
+#menu .section-line{display:grid!important;grid-template-columns:1fr!important;gap:8px!important;align-items:start!important}
+#menu .section-line>div{display:flex!important;align-items:center!important;gap:14px!important}
+#menu .section-line h3{margin:0!important;font-size:clamp(28px,2.3vw,38px)!important}
+#menu .section-line p{max-width:540px;margin:0!important;font-size:13px!important}
+#menu .party-tabs{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px!important;margin:20px 0 16px!important}
+#menu .party-tabs button{min-height:42px!important;padding:9px 8px!important;font-size:9px!important;letter-spacing:.1em!important}
+#menu .featured-combo{position:relative!important;display:block!important;min-height:440px!important;overflow:hidden!important;border:0!important;background:#1a120d!important}
+#menu .featured-combo figure{position:absolute!important;inset:0!important;margin:0!important;overflow:hidden!important}
+#menu .featured-combo figure img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important;transition:transform .75s cubic-bezier(.2,.65,.2,1),opacity .25s ease!important}
+#menu .featured-combo:hover figure img{transform:scale(1.025)!important}
+#menu .featured-combo::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(12,8,5,.86) 0%,rgba(12,8,5,.64) 44%,rgba(12,8,5,.12) 76%,rgba(12,8,5,.06) 100%),linear-gradient(0deg,rgba(12,8,5,.86),rgba(12,8,5,0) 64%);pointer-events:none}
+#menu .featured-copy{position:relative!important;z-index:2!important;display:flex!important;min-height:440px!important;width:min(690px,72%)!important;flex-direction:column!important;justify-content:flex-end!important;padding:clamp(24px,3vw,38px)!important;color:#fff!important}
+#menu .featured-copy .badge{align-self:flex-start!important;color:#e7b36f!important;border-color:currentColor!important}
+#menu .combo-title{margin:15px 0 12px!important;align-items:end!important}
+#menu .combo-title h3{color:#fff!important;font-size:clamp(36px,3.6vw,56px)!important;line-height:.95!important}
+#menu .combo-title p,#menu .detail-label,#menu .featured-copy ul{color:rgba(255,255,255,.78)!important}
+#menu .combo-title>strong{color:#f0c07f!important;font-size:clamp(30px,2.8vw,44px)!important}
+#menu .detail-label{font-size:8px!important}
+#menu #featuredItems{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 22px!important;max-width:650px;margin:10px 0 18px!important;padding-left:17px!important;line-height:1.45!important;font-size:12px!important}
+#menu .featured-copy .primary-button{background:#fff!important;border-color:#fff!important;color:var(--ink)!important}
+
 #reservation.reservation{padding:34px 0 50px!important}
 #reservation .reservation-head{display:block!important;margin:0 0 24px!important;padding:0 0 16px!important;border-bottom:1px solid var(--line)!important}
 #reservation .reservation-head>*{display:none!important}
@@ -22,7 +53,40 @@ footer .footer-contact,footer .footer-hours{display:grid;align-content:start;gap
 footer .footer-contact a{width:max-content;max-width:100%;border-bottom:1px solid transparent;overflow-wrap:anywhere}
 footer .footer-contact a:hover{border-color:currentColor}
 footer .footer-bottom{margin-top:28px!important;padding:16px 0!important;grid-template-columns:1fr auto!important;gap:24px!important}
+
+@media(max-width:1100px){
+  #menu>.shell{grid-template-columns:minmax(280px,.68fr) minmax(540px,1.32fr);gap:32px}
+  #menu .menu-intro-grid .display{font-size:clamp(52px,6vw,76px)!important}
+  #menu .featured-copy{width:82%!important}
+}
+
+@media(max-width:900px){
+  #menu>.shell{grid-template-columns:1fr!important;gap:34px!important}
+  #menu .menu-intro-grid{display:grid!important;grid-template-columns:1fr .8fr!important;align-items:end!important;gap:28px!important}
+  #menu .menu-intro-grid>div{max-width:none!important}
+  #menu .menu-intro-grid .lede{margin:0!important;align-self:end!important}
+  #menu .party-selector{padding:24px!important}
+}
+
 @media(max-width:767px){
+  #menu.menu-intro{padding:54px 0!important}
+  #menu>.shell{display:block!important}
+  #menu .menu-intro-grid{display:block!important;margin-bottom:28px!important}
+  #menu .menu-intro-grid .display{font-size:clamp(46px,14vw,68px)!important}
+  #menu .menu-intro-grid .lede{margin-top:18px!important}
+  #menu .party-selector{padding:14px!important;box-shadow:none!important}
+  #menu .section-line h3{font-size:28px!important}
+  #menu .section-line p{font-size:12px!important}
+  #menu .party-tabs{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;margin:18px 0 14px!important}
+  #menu .party-tabs button{min-height:46px!important;font-size:9px!important}
+  #menu .party-tabs button:last-child{grid-column:1/-1!important}
+  #menu .featured-combo{min-height:560px!important}
+  #menu .featured-combo::after{background:linear-gradient(0deg,rgba(10,7,5,.94) 0%,rgba(10,7,5,.73) 48%,rgba(10,7,5,.12) 82%)!important}
+  #menu .featured-copy{min-height:560px!important;width:100%!important;padding:22px!important}
+  #menu .combo-title{display:grid!important;grid-template-columns:1fr auto!important;gap:14px!important}
+  #menu .combo-title h3{font-size:38px!important}
+  #menu .combo-title>strong{font-size:30px!important}
+  #menu #featuredItems{grid-template-columns:1fr!important;gap:3px!important;font-size:11px!important;margin-bottom:16px!important}
   #reservation.reservation{padding:28px 0 40px!important}
   #reservation .reservation-head{margin-bottom:20px!important;padding-bottom:13px!important}
   #reservation .reservation-head::before{font-size:10px!important}
