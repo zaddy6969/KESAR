@@ -22,7 +22,7 @@
     if(document.querySelector('link[data-kesar-story-editorial]'))return;
     const link=document.createElement("link");
     link.rel="stylesheet";
-    link.href="/story-editorial.css?v=story-motion-1";
+    link.href="/story-editorial.css?v=rounded-frame-1";
     link.dataset.kesarStoryEditorial="true";
     document.head.append(link);
   }
