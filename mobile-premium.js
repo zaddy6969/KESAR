@@ -71,7 +71,7 @@
     if(document.querySelector('link[data-kesar-why-page]'))return;
     const link=document.createElement("link");
     link.rel="stylesheet";
-    link.href="/why-kesar.css?v=why-kesar-1";
+    link.href="/why-kesar.css?v=why-kesar-white-1";
     link.dataset.kesarWhyPage="true";
     document.head.append(link);
   }
