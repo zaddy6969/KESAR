@@ -30,7 +30,7 @@
       }
       if(!document.querySelector('script[data-kesar-premium-enhancements]')){
         const enhancement=document.createElement("script");
-        enhancement.src="/mobile-premium.js?v=bulk-reference-1";
+        enhancement.src="/mobile-premium.js?v=bulk-curve-out-2";
         enhancement.async=true;
         enhancement.dataset.kesarPremiumEnhancements="true";
         document.body.append(enhancement);
@@ -41,6 +41,13 @@
         hoursUpdate.async=true;
         hoursUpdate.dataset.kesarHoursUpdate="true";
         document.body.append(hoursUpdate);
+      }
+      if(!document.querySelector('script[data-kesar-bulk-curve-fix]')){
+        const bulkCurveFix=document.createElement("script");
+        bulkCurveFix.src="/bulk-orders-curve-fix.js?v=curve-out-1";
+        bulkCurveFix.async=true;
+        bulkCurveFix.dataset.kesarBulkCurveFix="true";
+        document.body.append(bulkCurveFix);
       }
     };
     if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});
