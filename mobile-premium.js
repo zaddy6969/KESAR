@@ -4,6 +4,7 @@
   const SITE_URL="https://kesar-beige.vercel.app/";
   const HERO_IMAGE=`${SITE_URL}assets/images/heropage-mandi-4k.webp`;
   const PHONE="8951919010";
+  const SECOND_PHONE="7204509931";
   const WHATSAPP="918951919010";
   const EMAIL="hotelkesar41@gmail.com";
   const SWIGGY="https://www.swiggy.com/city/bangalore/hotel-kesar-fine-dine-basaveshwaranagar-rest1288354";
@@ -95,51 +96,54 @@
     const orderOnline=document.querySelector("#order-online");
     if(!orderOnline)return null;
 
-    loadStylesheet("/bulk-orders.css?v=bulk-orders-1","bulk-orders");
+    loadStylesheet("/bulk-orders.css?v=bulk-reference-1","bulk-orders");
+    const enquiry=encodeURIComponent("Hello Hotel Kesar, I would like to enquire about a bulk order for a celebration. Please share the menu, delivery options and current Monsoon Offer details.");
     let section=document.querySelector("#bulk-orders");
     if(!section){
-      const enquiry=encodeURIComponent("Hello Hotel Kesar, I would like to enquire about a bulk food order for a celebration. Please share available packages, delivery options and current offers.");
       section=document.createElement("section");
       section.id="bulk-orders";
       section.className="bulk-orders-section";
       section.setAttribute("aria-labelledby","bulkOrdersTitle");
-      section.innerHTML=`<div class="bulk-orders-section__layout">
-        <div class="bulk-orders-section__content">
-          <span class="bulk-orders-section__eyebrow" data-bulk-reveal>Celebrations &amp; Catering</span>
-          <h2 class="bulk-orders-section__title" id="bulkOrdersTitle" data-bulk-reveal>Bulk <em>Orders.</em></h2>
-          <p class="bulk-orders-section__intro" data-bulk-reveal>Bring KESAR to birthdays, office gatherings, family celebrations and larger tables with freshly prepared mandi, grills and generous combinations.</p>
-          <div class="bulk-orders-section__features" data-bulk-reveal>
-            <article class="bulk-orders-section__feature">
-              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 25h22M8 25V14h16v11M11 14V9h10v5M13 9V6h6v3"/><path d="M12 19h8M12 22h8"/></svg>
-              <div><small>Made for gatherings</small><strong>Party-size orders</strong></div>
-            </article>
-            <article class="bulk-orders-section__feature">
-              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 8h17v15H4zM21 13h4l3 4v6h-7z"/><circle cx="9" cy="24" r="2.5"/><circle cx="24" cy="24" r="2.5"/></svg>
-              <div><small>Planned with care</small><strong>Delivery support</strong></div>
-            </article>
-          </div>
-          <div class="bulk-orders-section__availability" data-bulk-reveal>
-            <span>Also available on</span>
-            <a class="bulk-orders-section__platform" href="${SWIGGY}" target="_blank" rel="noopener noreferrer" aria-label="View KESAR on Swiggy">Swiggy ↗</a>
-            <a class="bulk-orders-section__platform" href="${ZOMATO}" target="_blank" rel="noopener noreferrer" aria-label="View KESAR on Zomato">Zomato ↗</a>
-          </div>
-          <div class="bulk-orders-section__contacts" data-bulk-reveal>
-            <div class="bulk-orders-section__contact"><span>Call for bulk orders</span><a href="tel:+91${PHONE}">+91 89519 19010</a></div>
-            <div class="bulk-orders-section__contact"><span>WhatsApp enquiries</span><a href="https://wa.me/${WHATSAPP}?text=${enquiry}" target="_blank" rel="noopener noreferrer">+91 89519 19010</a></div>
-          </div>
-          <div class="bulk-orders-section__actions" data-bulk-reveal>
-            <a class="bulk-orders-section__primary" href="https://wa.me/${WHATSAPP}?text=${enquiry}" target="_blank" rel="noopener noreferrer">Enquire on WhatsApp →</a>
-            <a class="bulk-orders-section__secondary" href="tel:+91${PHONE}">Call KESAR ↗</a>
-          </div>
-        </div>
-        <figure class="bulk-orders-section__media" data-bulk-reveal>
-          <img src="/assets/images/bulk-order.png" loading="lazy" decoding="async" alt="KESAR grilled chicken prepared for bulk orders and celebrations">
-          <figcaption class="bulk-orders-section__offer" aria-label="Monsoon offer available for bulk orders">
-            <small>Seasonal</small><strong>Monsoon Offer</strong><span>Ask our team for current bulk-order rates</span>
-          </figcaption>
-        </figure>
-      </div>`;
     }
+
+    section.innerHTML=`<div class="bulk-orders-section__layout">
+      <div class="bulk-orders-section__content">
+        <span class="bulk-orders-section__eyebrow" data-bulk-reveal><i></i>Bulk Orders &amp; Catering<i></i></span>
+        <h2 class="bulk-orders-section__title" id="bulkOrdersTitle" data-bulk-reveal>Make Every Celebration <em>Delicious.</em></h2>
+        <p class="bulk-orders-section__intro" data-bulk-reveal>From house parties to office events — enjoy Kesar's authentic mandi, biryani, and grills, prepared fresh and delivered with care.</p>
+        <div class="bulk-orders-section__features" data-bulk-reveal>
+          <article class="bulk-orders-section__feature">
+            <svg viewBox="0 0 44 44" aria-hidden="true"><path d="M10 25h24v10H10zM13 25v-7h18v7M16 18v-5h12v5"/><path d="M19 13V9h6v4M15 30h14"/></svg>
+            <div><small>Perfect for</small><strong>15+ Guests</strong></div>
+          </article>
+          <article class="bulk-orders-section__feature">
+            <svg viewBox="0 0 44 44" aria-hidden="true"><path d="M7 13h22v18H7zM29 19h6l4 5v7H29z"/><circle cx="14" cy="33" r="3"/><circle cx="34" cy="33" r="3"/><path d="M11 18h12M11 22h9"/></svg>
+            <div><small>Delivery across</small><strong>Bengaluru</strong></div>
+          </article>
+        </div>
+        <div class="bulk-orders-section__availability" data-bulk-reveal>
+          <span>Also available on</span>
+          <a class="bulk-orders-section__platform bulk-orders-section__platform--swiggy" href="${SWIGGY}" target="_blank" rel="noopener noreferrer" aria-label="View KESAR on Swiggy"><b aria-hidden="true">S</b><strong>Swiggy</strong></a>
+          <a class="bulk-orders-section__platform bulk-orders-section__platform--zomato" href="${ZOMATO}" target="_blank" rel="noopener noreferrer" aria-label="View KESAR on Zomato"><b aria-hidden="true">Z</b><strong>Zomato</strong></a>
+        </div>
+        <div class="bulk-orders-section__contacts" data-bulk-reveal>
+          <a href="tel:+91${PHONE}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.5 10 8l-2 2.1c1.2 2.4 3.3 4.5 5.8 5.7l2-2 4.6 2.9-.8 3.2c-.2.8-.9 1.3-1.7 1.3C10 21.2 2.8 14 2.8 6.1c0-.8.5-1.5 1.3-1.7z"/></svg>+91 89519 19010</a>
+          <a href="tel:+91${SECOND_PHONE}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.5 10 8l-2 2.1c1.2 2.4 3.3 4.5 5.8 5.7l2-2 4.6 2.9-.8 3.2c-.2.8-.9 1.3-1.7 1.3C10 21.2 2.8 14 2.8 6.1c0-.8.5-1.5 1.3-1.7z"/></svg>+91 72045 09931</a>
+        </div>
+        <div class="bulk-orders-section__actions" data-bulk-reveal>
+          <a class="bulk-orders-section__primary" href="https://wa.me/${WHATSAPP}?text=${enquiry}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L3.5 20l1-4.4a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.1 7.6c.4-.4.8-.3 1.1.2l.9 2c.2.4.1.7-.2 1l-.6.7c.9 1.8 2.2 3 4 3.8l.6-.8c.3-.4.6-.5 1-.3l1.9.9c.5.2.6.6.3 1-.7 1-1.7 1.5-2.9 1.4-3.7-.4-7.5-4-8-7.8-.2-1.2.4-2.2 1.9-2.1Z"/></svg>Enquire on WhatsApp</a>
+          <a class="bulk-orders-section__secondary" href="tel:+91${PHONE}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.5 10 8l-2 2.1c1.2 2.4 3.3 4.5 5.8 5.7l2-2 4.6 2.9-.8 3.2c-.2.8-.9 1.3-1.7 1.3C10 21.2 2.8 14 2.8 6.1c0-.8.5-1.5 1.3-1.7z"/></svg>Call to Order</a>
+        </div>
+        <p class="bulk-orders-section__note" data-bulk-reveal>Advance notice recommended for large orders.</p>
+      </div>
+      <figure class="bulk-orders-section__media" data-bulk-reveal>
+        <img src="/assets/images/bulk-order.png" loading="lazy" decoding="async" alt="KESAR grilled chicken prepared for bulk orders and celebrations">
+        <figcaption class="bulk-orders-section__offer" aria-label="Monsoon offer: 12 percent off orders above 8999 rupees">
+          <small>Monsoon</small><strong>Offer</strong><span>12%</span><b>On orders above ₹8,999*</b>
+        </figcaption>
+        <p class="bulk-orders-section__terms">*Terms &amp; conditions apply.</p>
+      </figure>
+    </div>`;
 
     if(section.previousElementSibling!==orderOnline)orderOnline.insertAdjacentElement("afterend",section);
     observeEntrance(section,"is-visible");
