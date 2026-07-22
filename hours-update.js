@@ -84,7 +84,43 @@
     select.disabled = false;
   }
 
+  function ensureCateringNavigation() {
+    const cateringLink = `
+      <a
+        class="nav-catering"
+        href="https://house-of-saara.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit House of Saara catering services, opens in a new tab"
+      >
+        Catering Services
+        <span aria-hidden="true">↗</span>
+      </a>`;
+
+    const desktopReserve = $(".nav-right .nav-reserve");
+    if (desktopReserve && !$(".nav-right .nav-catering")) {
+      desktopReserve.insertAdjacentHTML("beforebegin", cateringLink);
+    }
+
+    const mobileNav = $("#mobileMenu nav");
+    const mobileReserve = mobileNav?.querySelector('a[href="#reservation"]');
+    if (mobileReserve && !mobileNav.querySelector(".nav-catering")) {
+      mobileReserve.insertAdjacentHTML("beforebegin", cateringLink);
+      const mobileCatering = mobileNav.querySelector(".nav-catering");
+      mobileCatering?.addEventListener("click", () => {
+        const menu = $("#mobileMenu");
+        const toggle = $("#menuToggle");
+        menu?.classList.remove("open");
+        menu?.setAttribute("aria-hidden", "true");
+        toggle?.setAttribute("aria-expanded", "false");
+        if (toggle) toggle.textContent = "Menu";
+        document.body.classList.remove("menu-open");
+      });
+    }
+  }
+
   function refresh() {
+    ensureCateringNavigation();
     syncLiveHours();
     syncStaticHours();
     populateReservationTimes();
