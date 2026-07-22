@@ -4,6 +4,7 @@
   const OPEN_MINUTES = 12 * 60 + 30;
   const CLOSE_MINUTES = 23 * 60;
   const HOURS_LABEL = "12:30 PM–11:00 PM";
+  const WHY_KESAR_IMAGE = "/assets/images/why-kesar.png";
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
@@ -53,11 +54,65 @@
 
     setText($(".reservation-contact-bar strong"), `Daily · ${HOURS_LABEL}`);
     setText($(".footer-luxury-hours:not(.footer-luxury-today) strong"), HOURS_LABEL);
+    setText($("#why-kesar-page .why-kesar-page__hours strong"), HOURS_LABEL);
 
     const oldFooterParagraphs = $$("footer:not(.footer-luxury-ready) .footer-grid > div:nth-child(2) p");
     if (oldFooterParagraphs[2]) setText(oldFooterParagraphs[2], `Daily · ${HOURS_LABEL}`);
     if (oldFooterParagraphs[3]) oldFooterParagraphs[3].hidden = true;
     if (oldFooterParagraphs[4]) oldFooterParagraphs[4].hidden = true;
+  }
+
+  function ensureWhyKesarStyle() {
+    if (document.getElementById("kesarWhyKesarImageFade")) return;
+    const style = document.createElement("style");
+    style.id = "kesarWhyKesarImageFade";
+    style.textContent = `
+      #why-kesar-page .why-kesar-page__media::after {
+        background:
+          linear-gradient(90deg,
+            rgba(246,241,233,.98) 0%,
+            rgba(246,241,233,.84) 14%,
+            rgba(246,241,233,.52) 29%,
+            rgba(246,241,233,.18) 45%,
+            rgba(246,241,233,0) 62%),
+          linear-gradient(0deg,
+            rgba(16,12,8,.62) 0%,
+            rgba(16,12,8,.22) 25%,
+            rgba(16,12,8,0) 48%) !important;
+      }
+      #why-kesar-page .why-kesar-page__media img {
+        object-position:center center !important;
+      }
+      @media (max-width:767px) {
+        #why-kesar-page .why-kesar-page__media::after {
+          background:
+            linear-gradient(90deg,
+              rgba(246,241,233,.78) 0%,
+              rgba(246,241,233,.34) 18%,
+              rgba(246,241,233,0) 42%),
+            linear-gradient(0deg,
+              rgba(16,12,8,.66) 0%,
+              rgba(16,12,8,.22) 28%,
+              rgba(16,12,8,0) 52%) !important;
+        }
+      }
+    `;
+    document.head.append(style);
+  }
+
+  function syncWhyKesar() {
+    ensureWhyKesarStyle();
+    const image = $("#why-kesar-page .why-kesar-page__media img");
+    if (!image) return;
+
+    if (image.getAttribute("src") !== WHY_KESAR_IMAGE) {
+      image.src = WHY_KESAR_IMAGE;
+      image.removeAttribute("width");
+      image.removeAttribute("height");
+    }
+    if (image.alt !== "Hotel KESAR family dining experience") {
+      image.alt = "Hotel KESAR family dining experience";
+    }
   }
 
   function populateReservationTimes() {
@@ -123,6 +178,7 @@
     ensureCateringNavigation();
     syncLiveHours();
     syncStaticHours();
+    syncWhyKesar();
     populateReservationTimes();
   }
 
