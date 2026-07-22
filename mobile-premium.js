@@ -4,7 +4,7 @@
   const SITE_URL="https://kesar-beige.vercel.app/";
   const HERO_IMAGE=`${SITE_URL}assets/images/heropage-mandi-4k.webp`;
   const PHONE="8951919010";
-  const SECOND_PHONE="7204509931";
+  const SECOND_PHONE="9823209987";
   const WHATSAPP="918951919010";
   const EMAIL="hotelkesar41@gmail.com";
   const SWIGGY="https://www.swiggy.com/city/bangalore/hotel-kesar-fine-dine-basaveshwaranagar-rest1288354";
@@ -33,36 +33,15 @@
     setMeta('meta[name="twitter:title"]',{name:"twitter:title",content:"KESAR — Mandi House Dining"});
     setMeta('meta[name="twitter:description"]',{name:"twitter:description",content:"Premium mandi, family dining and bulk orders in Bengaluru."});
     setMeta('meta[name="twitter:image"]',{name:"twitter:image",content:HERO_IMAGE});
-
     let canonical=document.head.querySelector('link[rel="canonical"]');
     if(!canonical){canonical=document.createElement("link");canonical.rel="canonical";document.head.append(canonical);}
     canonical.href=SITE_URL;
-
     let structured=document.getElementById("kesarRestaurantSchema");
-    if(!structured){
-      structured=document.createElement("script");
-      structured.type="application/ld+json";
-      structured.id="kesarRestaurantSchema";
-      document.head.append(structured);
-    }
+    if(!structured){structured=document.createElement("script");structured.type="application/ld+json";structured.id="kesarRestaurantSchema";document.head.append(structured);}
     structured.textContent=JSON.stringify({
-      "@context":"https://schema.org",
-      "@type":"Restaurant",
-      name:"Hotel KESAR",
-      alternateName:"KESAR Mandi House Dining",
-      url:SITE_URL,
-      image:HERO_IMAGE,
-      telephone:`+91${PHONE}`,
-      email:EMAIL,
-      servesCuisine:["Mandi","Arabian","Biryani","Indian","Grill"],
-      priceRange:"₹₹",
-      areaServed:"Bengaluru",
-      openingHoursSpecification:[{
-        "@type":"OpeningHoursSpecification",
-        dayOfWeek:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-        opens:"10:00",
-        closes:"23:00"
-      }],
+      "@context":"https://schema.org","@type":"Restaurant",name:"Hotel KESAR",alternateName:"KESAR Mandi House Dining",url:SITE_URL,image:HERO_IMAGE,
+      telephone:`+91${PHONE}`,email:EMAIL,servesCuisine:["Mandi","Arabian","Biryani","Indian","Grill"],priceRange:"₹₹",areaServed:"Bengaluru",
+      openingHoursSpecification:[{"@type":"OpeningHoursSpecification",dayOfWeek:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],opens:"10:00",closes:"23:00"}],
       sameAs:[SWIGGY,ZOMATO]
     });
   }
@@ -83,10 +62,7 @@
     if(matchMedia("(prefers-reduced-motion: reduce)").matches){show();return;}
     if("IntersectionObserver" in window){
       const observer=new IntersectionObserver(entries=>{
-        if(entries.some(entry=>entry.isIntersecting)){
-          show();
-          observer.disconnect();
-        }
+        if(entries.some(entry=>entry.isIntersecting)){show();observer.disconnect();}
       },{threshold:.14,rootMargin:"0px 0px -8% 0px"});
       observer.observe(section);
     }else show();
@@ -95,56 +71,54 @@
   function buildBulkOrders(){
     const orderOnline=document.querySelector("#order-online");
     if(!orderOnline)return null;
-
-    loadStylesheet("/bulk-orders.css?v=bulk-reference-1","bulk-orders");
-    const enquiry=encodeURIComponent("Hello Hotel Kesar, I would like to enquire about a bulk order for a celebration. Please share the menu, delivery options and current Monsoon Offer details.");
+    loadStylesheet("/bulk-orders-reference.css?v=bulk-direct-reference-1","bulk-orders");
+    const enquiry=encodeURIComponent("Hello Hotel Kesar, I would like to enquire about a bulk order. Please share the direct-order menu, current offers and delivery charges for my location.");
     let section=document.querySelector("#bulk-orders");
-    if(!section){
-      section=document.createElement("section");
-      section.id="bulk-orders";
-      section.className="bulk-orders-section";
-      section.setAttribute("aria-labelledby","bulkOrdersTitle");
-    }
-
+    if(!section){section=document.createElement("section");section.id="bulk-orders";section.className="bulk-orders-section";section.setAttribute("aria-labelledby","bulkOrdersTitle");}
     section.innerHTML=`<div class="bulk-orders-section__layout">
       <div class="bulk-orders-section__content">
-        <span class="bulk-orders-section__eyebrow" data-bulk-reveal><i></i>Bulk Orders &amp; Catering<i></i></span>
-        <h2 class="bulk-orders-section__title" id="bulkOrdersTitle" data-bulk-reveal>Make Every Celebration <em>Delicious.</em></h2>
-        <p class="bulk-orders-section__intro" data-bulk-reveal>From house parties to office events — enjoy Kesar's authentic mandi, biryani, and grills, prepared fresh and delivered with care.</p>
-        <div class="bulk-orders-section__features" data-bulk-reveal>
-          <article class="bulk-orders-section__feature">
-            <svg viewBox="0 0 44 44" aria-hidden="true"><path d="M10 25h24v10H10zM13 25v-7h18v7M16 18v-5h12v5"/><path d="M19 13V9h6v4M15 30h14"/></svg>
-            <div><small>Perfect for</small><strong>15+ Guests</strong></div>
-          </article>
-          <article class="bulk-orders-section__feature">
-            <svg viewBox="0 0 44 44" aria-hidden="true"><path d="M7 13h22v18H7zM29 19h6l4 5v7H29z"/><circle cx="14" cy="33" r="3"/><circle cx="34" cy="33" r="3"/><path d="M11 18h12M11 22h9"/></svg>
-            <div><small>Delivery across</small><strong>Bengaluru</strong></div>
-          </article>
+        <header class="bulk-orders-section__brand" data-bulk-reveal>
+          <div class="bulk-orders-section__crest" aria-hidden="true"><strong>K</strong><span>Hotel Kesar</span></div>
+          <div class="bulk-orders-section__brand-copy"><strong>HOTEL KESAR</strong><span>Family Fine Dining Restaurant</span></div>
+        </header>
+        <div class="bulk-orders-section__body">
+          <span class="bulk-orders-section__eyebrow" data-bulk-reveal><i aria-hidden="true"></i>Celebrations &amp; Catering</span>
+          <h2 class="bulk-orders-section__title" id="bulkOrdersTitle" data-bulk-reveal>Bulk Orders</h2>
+          <p class="bulk-orders-section__subtitle" data-bulk-reveal>For birthdays, kitty parties and group gatherings.</p>
+          <div class="bulk-orders-section__ornament" aria-hidden="true"><span></span></div>
+          <p class="bulk-orders-section__intro" data-bulk-reveal>From intimate get-togethers to grand celebrations, we serve mouthwatering dishes with generous portions, exclusive discounts and on-time delivery you can trust.</p>
+          <div class="bulk-orders-section__features" data-bulk-reveal>
+            <article class="bulk-orders-section__feature"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 25h20M8 25V14h16v11M11 14V9h10v5M13 9V6h6v3"/><path d="M12 19h8M12 22h8"/></svg><strong>Birthday Parties</strong></article>
+            <article class="bulk-orders-section__feature"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="10" r="4"/><circle cx="22" cy="11" r="3.5"/><path d="M4 26v-5c0-4 3-7 7-7s7 3 7 7v5M18 17c1-.8 2.2-1.2 3.5-1.2 3.6 0 6.5 2.8 6.5 6.4V26"/></svg><strong>Kitty Parties</strong></article>
+            <article class="bulk-orders-section__feature"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 24h22M8 24v-8h16v8M11 16a5 5 0 0 1 10 0"/><path d="M16 8V5M9 12l-2-2M23 12l2-2"/></svg><strong>Bulk Orders</strong></article>
+            <article class="bulk-orders-section__feature"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="6" width="20" height="20" rx="5"/><path d="m11 21 10-10M11 12h.01M21 20h.01"/></svg><strong>Discounted Direct Rates</strong></article>
+            <article class="bulk-orders-section__feature"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 9h17v15H4zM21 14h4l3 4v6h-7z"/><circle cx="9" cy="25" r="2.5"/><circle cx="24" cy="25" r="2.5"/></svg><strong>Free Delivery Within 1 KM</strong></article>
+            <article class="bulk-orders-section__feature"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28s9-8 9-16a9 9 0 1 0-18 0c0 8 9 16 9 16Z"/><circle cx="16" cy="12" r="3"/></svg><strong>Charges Beyond 1 KM</strong></article>
+          </div>
+          <p class="bulk-orders-section__direct" data-bulk-reveal><span aria-hidden="true">✦</span><span><strong>Order directly from KESAR for better value.</strong> Marketplace prices on Swiggy or Zomato may be higher.</span></p>
+          <div class="bulk-orders-section__availability" data-bulk-reveal>
+            <span>Available on</span>
+            <a class="bulk-orders-section__platform bulk-orders-section__platform--swiggy" href="${SWIGGY}" target="_blank" rel="noopener noreferrer" aria-label="View KESAR on Swiggy"><b aria-hidden="true"><span>S</span></b><strong>Swiggy</strong></a>
+            <a class="bulk-orders-section__platform bulk-orders-section__platform--zomato" href="${ZOMATO}" target="_blank" rel="noopener noreferrer" aria-label="View KESAR on Zomato"><b aria-hidden="true"><span>Z</span></b><strong>Zomato</strong></a>
+          </div>
+          <div class="bulk-orders-section__contacts" data-bulk-reveal>
+            <div class="bulk-orders-section__contact"><span class="bulk-orders-section__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.1 3.5 10 8l-2 2.1c1.2 2.4 3.3 4.5 5.8 5.7l2-2 4.6 2.9-.8 3.2c-.2.8-.9 1.3-1.7 1.3C10 21.2 2.8 14 2.8 6.1c0-.8.5-1.5 1.3-1.7z"/></svg></span><div><a href="tel:+918951919010">89519 19010</a><small>Verified Contact</small></div></div>
+            <div class="bulk-orders-section__contact"><span class="bulk-orders-section__contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.1 3.5 10 8l-2 2.1c1.2 2.4 3.3 4.5 5.8 5.7l2-2 4.6 2.9-.8 3.2c-.2.8-.9 1.3-1.7 1.3C10 21.2 2.8 14 2.8 6.1c0-.8.5-1.5 1.3-1.7z"/></svg></span><div><a href="tel:+919823209987">98232 09987</a><small>Verified Contact</small></div></div>
+          </div>
+          <div class="bulk-orders-section__delivery" data-bulk-reveal aria-label="Bulk order delivery terms"><span><b>Within 1 KM:</b> Free delivery on eligible bulk orders.</span><span><b>Beyond 1 KM:</b> Delivery charges apply based on distance.</span></div>
+          <div class="bulk-orders-section__actions" data-bulk-reveal>
+            <a class="bulk-orders-section__primary" href="https://wa.me/${WHATSAPP}?text=${enquiry}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L3.5 20l1-4.4a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.1 7.6c.4-.4.8-.3 1.1.2l.9 2c.2.4.1.7-.2 1l-.6.7c.9 1.8 2.2 3 4 3.8l.6-.8c.3-.4.6-.5 1-.3l1.9.9c.5.2.6.6.3 1-.7 1-1.7 1.5-2.9 1.4-3.7-.4-7.5-4-8-7.8-.2-1.2.4-2.2 1.9-2.1Z"/></svg>Enquire on WhatsApp</a>
+            <a class="bulk-orders-call-button" href="tel:+918951919010" aria-label="Call KESAR for bulk orders on 89519 19010"><span aria-hidden="true">☎</span><span>Call Us</span></a>
+          </div>
+          <p class="bulk-orders-section__note">Advance notice is recommended for large orders.</p>
         </div>
-        <div class="bulk-orders-section__availability" data-bulk-reveal>
-          <span>Also available on</span>
-          <a class="bulk-orders-section__platform bulk-orders-section__platform--swiggy" href="${SWIGGY}" target="_blank" rel="noopener noreferrer" aria-label="View KESAR on Swiggy"><b aria-hidden="true">S</b><strong>Swiggy</strong></a>
-          <a class="bulk-orders-section__platform bulk-orders-section__platform--zomato" href="${ZOMATO}" target="_blank" rel="noopener noreferrer" aria-label="View KESAR on Zomato"><b aria-hidden="true">Z</b><strong>Zomato</strong></a>
-        </div>
-        <div class="bulk-orders-section__contacts" data-bulk-reveal>
-          <a href="tel:+91${PHONE}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.5 10 8l-2 2.1c1.2 2.4 3.3 4.5 5.8 5.7l2-2 4.6 2.9-.8 3.2c-.2.8-.9 1.3-1.7 1.3C10 21.2 2.8 14 2.8 6.1c0-.8.5-1.5 1.3-1.7z"/></svg>+91 89519 19010</a>
-          <a href="tel:+91${SECOND_PHONE}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.5 10 8l-2 2.1c1.2 2.4 3.3 4.5 5.8 5.7l2-2 4.6 2.9-.8 3.2c-.2.8-.9 1.3-1.7 1.3C10 21.2 2.8 14 2.8 6.1c0-.8.5-1.5 1.3-1.7z"/></svg>+91 72045 09931</a>
-        </div>
-        <div class="bulk-orders-section__actions" data-bulk-reveal>
-          <a class="bulk-orders-section__primary" href="https://wa.me/${WHATSAPP}?text=${enquiry}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L3.5 20l1-4.4a8.4 8.4 0 1 1 16-3.9Z"/><path d="M8.1 7.6c.4-.4.8-.3 1.1.2l.9 2c.2.4.1.7-.2 1l-.6.7c.9 1.8 2.2 3 4 3.8l.6-.8c.3-.4.6-.5 1-.3l1.9.9c.5.2.6.6.3 1-.7 1-1.7 1.5-2.9 1.4-3.7-.4-7.5-4-8-7.8-.2-1.2.4-2.2 1.9-2.1Z"/></svg>Enquire on WhatsApp</a>
-          <a class="bulk-orders-section__secondary" href="tel:+91${PHONE}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.1 3.5 10 8l-2 2.1c1.2 2.4 3.3 4.5 5.8 5.7l2-2 4.6 2.9-.8 3.2c-.2.8-.9 1.3-1.7 1.3C10 21.2 2.8 14 2.8 6.1c0-.8.5-1.5 1.3-1.7z"/></svg>Call to Order</a>
-        </div>
-        <p class="bulk-orders-section__note" data-bulk-reveal>Advance notice recommended for large orders.</p>
       </div>
       <figure class="bulk-orders-section__media" data-bulk-reveal>
         <img src="/assets/images/bulk-order.png" loading="lazy" decoding="async" alt="KESAR grilled chicken prepared for bulk orders and celebrations">
-        <figcaption class="bulk-orders-section__offer" aria-label="Monsoon offer: 12 percent off orders above 8999 rupees">
-          <small>Monsoon</small><strong>Offer</strong><span>12%</span><b>On orders above ₹8,999*</b>
-        </figcaption>
+        <figcaption class="bulk-orders-section__offer" aria-label="Monsoon offer: 12 percent off orders above 8999 rupees"><small>Monsoon</small><strong>Offer</strong><span>12% OFF</span><b>On orders above ₹8,999*</b></figcaption>
         <p class="bulk-orders-section__terms">*Terms &amp; conditions apply.</p>
       </figure>
     </div>`;
-
     if(section.previousElementSibling!==orderOnline)orderOnline.insertAdjacentElement("afterend",section);
     observeEntrance(section,"is-visible");
     return section;
@@ -154,7 +128,6 @@
     loadStylesheet("/why-kesar.css?v=why-kesar-white-1","why-page");
     const anchor=document.querySelector("#bulk-orders")||document.querySelector("#order-online");
     if(!anchor)return;
-
     let section=document.querySelector("#why-kesar-page");
     if(!section){
       section=document.createElement("section");
@@ -172,18 +145,11 @@
             <article class="why-kesar-page__reason"><span>03</span><h3>Fragrant mandi rice</h3><p>Long-grain rice, warm spices and careful balance complete every KESAR platter.</p></article>
             <article class="why-kesar-page__reason"><span>04</span><h3>Hospitality that feels personal</h3><p>From the first welcome to the final serving, the experience is warm and unhurried.</p></article>
           </div>
-          <div class="why-kesar-page__actions" data-why-reveal>
-            <a class="why-kesar-page__primary" href="#reservation">Reserve a table →</a>
-            <a class="why-kesar-page__secondary" href="#order-online">Order online ↗</a>
-          </div>
+          <div class="why-kesar-page__actions" data-why-reveal><a class="why-kesar-page__primary" href="#reservation">Reserve a table →</a><a class="why-kesar-page__secondary" href="#order-online">Order online ↗</a></div>
         </div>
-        <figure class="why-kesar-page__media" data-why-reveal>
-          <img src="/assets/images/storypage-mandi2.png" width="1122" height="1402" loading="lazy" decoding="async" alt="A generous KESAR mandi feast prepared for sharing">
-          <figcaption class="why-kesar-page__hours"><span>Open daily</span><strong>10:00 AM–11:00 PM</strong></figcaption>
-        </figure>
+        <figure class="why-kesar-page__media" data-why-reveal><img src="/assets/images/storypage-mandi2.png" width="1122" height="1402" loading="lazy" decoding="async" alt="A generous KESAR mandi feast prepared for sharing"><figcaption class="why-kesar-page__hours"><span>Open daily</span><strong>10:00 AM–11:00 PM</strong></figcaption></figure>
       </div>`;
     }
-
     if(section.previousElementSibling!==anchor)anchor.insertAdjacentElement("afterend",section);
     observeEntrance(section,"is-visible");
   }
@@ -191,12 +157,7 @@
   function optimizeImages(){
     const hero=document.querySelector("#heroMedia img");
     if(hero){hero.fetchPriority="high";hero.decoding="async";hero.removeAttribute("loading");}
-    document.querySelectorAll("main img").forEach(img=>{
-      if(img===hero)return;
-      img.loading="lazy";
-      img.decoding="async";
-      img.fetchPriority="low";
-    });
+    document.querySelectorAll("main img").forEach(img=>{if(img===hero)return;img.loading="lazy";img.decoding="async";img.fetchPriority="low";});
   }
 
   function trimMobileDom(){
@@ -214,12 +175,9 @@
     bar.innerHTML=`<a class="kesar-mobile-actions__whatsapp" href="https://wa.me/${WHATSAPP}?text=${text}" target="_blank" rel="noopener noreferrer" aria-label="Contact Hotel Kesar on WhatsApp">WhatsApp</a><a class="kesar-mobile-actions__reserve" href="#reservation">Reserve</a>`;
     document.body.append(bar);
     document.body.classList.add("has-kesar-mobile-actions");
-
     const reservationActions=document.querySelector("#reservation .reservation-submit-actions");
     if(reservationActions&&"IntersectionObserver" in window){
-      const observer=new IntersectionObserver(entries=>{
-        bar.classList.toggle("is-hidden",entries.some(entry=>entry.isIntersecting));
-      },{threshold:.12});
+      const observer=new IntersectionObserver(entries=>{bar.classList.toggle("is-hidden",entries.some(entry=>entry.isIntersecting));},{threshold:.12});
       observer.observe(reservationActions);
     }
   }
