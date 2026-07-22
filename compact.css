@@ -1,0 +1,41 @@
+/* Compact post-delivery flow: Delivery → Reservations → Footer. */
+#why-kesar{display:none!important}
+#reservation.reservation{padding:clamp(64px,6vw,92px) 0 58px!important}
+#reservation .reservation-head{margin-bottom:34px}
+#reservation .reservation-head .display{font-size:clamp(48px,6vw,86px);line-height:.94}
+#reservation .reservation-head>p{max-width:570px}
+#reservation .reservation-head a{color:inherit;border-bottom:1px solid currentColor}
+.reservation-contact-bar{display:flex;align-items:center;justify-content:space-between;gap:28px;margin:0 0 28px;padding:22px 24px;border:1px solid var(--line);background:rgba(255,255,255,.38)}
+.reservation-contact-bar>div:first-child{display:grid;gap:4px}
+.reservation-contact-bar span{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold2)}
+.reservation-contact-bar strong{font:400 24px Georgia,serif}
+.reservation-contact-actions,.reservation-submit-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.reservation-contact-actions a,.reservation-email-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:11px 16px;border:1px solid var(--ink);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:background .2s,color .2s}
+.reservation-contact-actions a:first-child,.reservation-contact-actions a:hover,.reservation-email-link:hover{background:var(--ink);color:var(--paper)}
+#reservation .reservation-form{margin-top:0}
+#reservation .submit-row{margin-top:26px;align-items:center}
+#reservation .submit-row>p{max-width:560px}
+#reservation .primary-button{white-space:nowrap}
+footer{padding:42px 0 0!important}
+footer .footer-grid{grid-template-columns:1.15fr .78fr .78fr!important;gap:clamp(28px,4vw,56px)!important;align-items:start!important}
+footer .footer-grid h2{margin:0 0 7px;font-size:clamp(32px,4vw,52px)}
+footer .footer-grid h3{margin:0 0 12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+footer .footer-grid p{margin:5px 0;max-width:420px}
+footer .footer-contact,footer .footer-hours{display:grid;align-content:start;gap:5px}
+footer .footer-contact a{width:max-content;max-width:100%;border-bottom:1px solid transparent;overflow-wrap:anywhere}
+footer .footer-contact a:hover{border-color:currentColor}
+footer .footer-bottom{margin-top:28px!important;padding:16px 0!important;grid-template-columns:1fr auto!important;gap:24px!important}
+@media(max-width:767px){
+  #reservation.reservation{padding:54px 0 42px!important}
+  #reservation .reservation-head{display:grid!important;grid-template-columns:1fr!important;gap:18px!important;margin-bottom:26px!important}
+  #reservation .reservation-head .display{font-size:clamp(42px,13vw,62px)!important}
+  .reservation-contact-bar{display:grid!important;gap:18px!important;padding:20px!important;margin-bottom:22px!important}
+  .reservation-contact-actions,.reservation-submit-actions{display:grid!important;grid-template-columns:1fr!important;width:100%!important}
+  .reservation-contact-actions a,.reservation-submit-actions a{width:100%!important;text-align:center!important;justify-content:center!important}
+  #reservation .reservation-form{gap:16px!important}
+  #reservation .submit-row{display:grid!important;grid-template-columns:1fr!important;gap:18px!important}
+  footer{padding:34px 0 0!important}
+  footer .footer-grid{display:grid!important;grid-template-columns:1fr!important;gap:24px!important}
+  footer .footer-grid>div{padding:0!important;border:0!important}
+  footer .footer-bottom{display:grid!important;grid-template-columns:1fr!important;gap:7px!important;margin-top:24px!important;padding:15px 0 18px!important}
+}
