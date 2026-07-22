@@ -21,6 +21,17 @@
   const LOADER_HOLD_MS = Math.max(0, LOADER_TOTAL_MS - LOADER_EXIT_MS);
   const loaderStart = performance.now();
 
+  function loadMobileStyles() {
+    if (document.querySelector('link[data-kesar-mobile]')) return;
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "/mobile.css?v=851dfdd";
+    link.media = "(max-width: 767px)";
+    link.dataset.kesarMobile = "true";
+    document.head.append(link);
+  }
+
   function shortenLoader() {
     const elapsed = performance.now() - loaderStart;
     window.setTimeout(() => {
@@ -65,6 +76,7 @@
     image.removeAttribute("srcset");
   }
 
+  loadMobileStyles();
   shortenLoader();
   configureDeliveryLinks();
   configureDeliveryImage();
