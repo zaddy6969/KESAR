@@ -63,41 +63,124 @@
   }
 
   function ensureWhyKesarStyle() {
-    if (document.getElementById("kesarWhyKesarImageFade")) return;
-    const style = document.createElement("style");
-    style.id = "kesarWhyKesarImageFade";
+    let style = document.getElementById("kesarWhyKesarImageFade");
+    if (!style) {
+      style = document.createElement("style");
+      style.id = "kesarWhyKesarImageFade";
+      document.head.append(style);
+    }
+
     style.textContent = `
-      #why-kesar-page .why-kesar-page__media::after {
-        background:
-          linear-gradient(90deg,
-            rgba(246,241,233,.98) 0%,
-            rgba(246,241,233,.84) 14%,
-            rgba(246,241,233,.52) 29%,
-            rgba(246,241,233,.18) 45%,
-            rgba(246,241,233,0) 62%),
-          linear-gradient(0deg,
-            rgba(16,12,8,.62) 0%,
-            rgba(16,12,8,.22) 25%,
-            rgba(16,12,8,0) 48%) !important;
+      #why-kesar-page {
+        overflow: hidden !important;
       }
+
+      #why-kesar-page .why-kesar-page__shell {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr) !important;
+      }
+
+      #why-kesar-page .why-kesar-page__copy {
+        padding-left: clamp(28px, 5vw, 96px) !important;
+      }
+
+      #why-kesar-page .why-kesar-page__media {
+        position: relative !important;
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+        border: 0 !important;
+        clip-path: none !important;
+        background: #000 !important;
+      }
+
       #why-kesar-page .why-kesar-page__media img {
-        object-position:center center !important;
+        position: absolute !important;
+        inset: 0 !important;
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        transform: scale(1.015) !important;
       }
-      @media (max-width:767px) {
+
+      #why-kesar-page .why-kesar-page__media::after {
+        content: "" !important;
+        position: absolute !important;
+        inset: 0 !important;
+        z-index: 1 !important;
+        pointer-events: none !important;
+        background: linear-gradient(
+          90deg,
+          rgba(246, 241, 233, 1) 0%,
+          rgba(246, 241, 233, .72) 16%,
+          rgba(246, 241, 233, .28) 34%,
+          rgba(20, 16, 12, .18) 52%,
+          rgba(0, 0, 0, .52) 76%,
+          rgba(0, 0, 0, .88) 100%
+        ) !important;
+      }
+
+      #why-kesar-page .why-kesar-page__hours {
+        z-index: 2 !important;
+      }
+
+      @media (max-width: 767px) {
+        #why-kesar-page .why-kesar-page__shell {
+          display: block !important;
+          width: 100% !important;
+          max-width: none !important;
+          margin: 0 !important;
+        }
+
+        #why-kesar-page .why-kesar-page__copy {
+          width: 100% !important;
+          padding: 54px 16px 34px !important;
+        }
+
+        #why-kesar-page .why-kesar-page__media,
+        #why-kesar-page .why-kesar-page__media[data-why-reveal] {
+          left: auto !important;
+          right: auto !important;
+          width: 100% !important;
+          max-width: none !important;
+          min-height: 520px !important;
+          height: 68svh !important;
+          margin: 0 !important;
+          transform: none !important;
+          clip-path: none !important;
+          border: 0 !important;
+        }
+
+        #why-kesar-page .why-kesar-page__media img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          object-position: center center !important;
+          transform: scale(1.02) !important;
+        }
+
         #why-kesar-page .why-kesar-page__media::after {
-          background:
-            linear-gradient(90deg,
-              rgba(246,241,233,.78) 0%,
-              rgba(246,241,233,.34) 18%,
-              rgba(246,241,233,0) 42%),
-            linear-gradient(0deg,
-              rgba(16,12,8,.66) 0%,
-              rgba(16,12,8,.22) 28%,
-              rgba(16,12,8,0) 52%) !important;
+          background: linear-gradient(
+            90deg,
+            rgba(246, 241, 233, 1) 0%,
+            rgba(246, 241, 233, .62) 18%,
+            rgba(246, 241, 233, .18) 36%,
+            rgba(0, 0, 0, .24) 54%,
+            rgba(0, 0, 0, .60) 78%,
+            rgba(0, 0, 0, .90) 100%
+          ) !important;
         }
       }
     `;
-    document.head.append(style);
   }
 
   function syncWhyKesar() {
