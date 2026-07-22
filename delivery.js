@@ -11,37 +11,30 @@
     email:"hotelkesar41@gmail.com",
     hours:"10:00 AM–11:00 PM"
   };
+  const $=(selector,root=document)=>root.querySelector(selector);
+  const PENDING_KEY="kesarReservationGreeting";
 
-  if(!document.querySelector('link[data-kesar-mobile]')){
-    const mobile=document.createElement("link");
-    mobile.rel="stylesheet";
-    mobile.href="/mobile.css";
-    mobile.media="(max-width: 767px)";
-    mobile.dataset.kesarMobile="true";
-    document.head.append(mobile);
+  function loadStylesheet(href,key,media){
+    if(document.querySelector(`link[data-kesar-${key}]`))return;
+    const link=document.createElement("link");
+    link.rel="stylesheet";
+    link.href=href;
+    if(media)link.media=media;
+    link.dataset[`kesar${key[0].toUpperCase()}${key.slice(1)}`]="true";
+    document.head.append(link);
   }
 
-  if(!document.querySelector('link[data-kesar-compact]')){
-    const compact=document.createElement("link");
-    compact.rel="stylesheet";
-    compact.href="/compact.css";
-    compact.dataset.kesarCompact="true";
-    document.head.append(compact);
-  }
+  loadStylesheet("/mobile.css","mobile","(max-width: 767px)");
+  loadStylesheet("/compact.css","compact");
+  loadStylesheet("/reservation-success.css","reservationSuccess");
 
   document.querySelectorAll("[data-delivery-platform]").forEach(link=>{
     const platform=link.dataset.deliveryPlatform;
     const url=platforms[platform];
-    if(!url){
-      link.hidden=true;
-      link.removeAttribute("href");
-      return;
-    }
+    if(!url){link.hidden=true;link.removeAttribute("href");return;}
     link.href=url;
     link.addEventListener("click",()=>window.dataLayer?.push({event:"delivery_platform_click",platform}));
   });
-
-  const $=(selector,root=document)=>root.querySelector(selector);
 
   function setFieldError(field,message){
     if(!field)return;
@@ -59,7 +52,6 @@
       [$("#guests",form),"Please choose the number of guests."]
     ];
     let firstInvalid=null;
-
     checks.forEach(([field,requiredMessage])=>{
       if(!field)return;
       const value=field.value.trim();
@@ -71,7 +63,6 @@
       setFieldError(field,message);
       if(message&&!firstInvalid)firstInvalid=field;
     });
-
     if(firstInvalid){
       firstInvalid.focus();
       firstInvalid.scrollIntoView({behavior:"smooth",block:"center"});
@@ -84,52 +75,31 @@
     if(!value)return "";
     const [year,month,day]=value.split("-").map(Number);
     return new Intl.DateTimeFormat("en-IN",{
-      day:"2-digit",
-      month:"long",
-      year:"numeric",
-      timeZone:"Asia/Kolkata"
+      day:"2-digit",month:"long",year:"numeric",timeZone:"Asia/Kolkata"
     }).format(new Date(Date.UTC(year,month-1,day,12)));
   }
 
   function reservationDetails(form){
-    const name=$("#name",form)?.value.trim()||"";
-    const phone=$("#phone",form)?.value.trim()||"";
-    const date=$("#date",form)?.value||"";
     const timeField=$("#time",form);
-    const time=timeField?.selectedOptions?.[0]?.textContent?.trim()||timeField?.value||"";
-    const guests=$("#guests",form)?.value||"";
-    const occasion=$("#occasion",form)?.value||"Dining";
-    const notes=$("#message",form)?.value.trim()||"None";
-
     return {
-      name,
-      phone,
-      date:readableDate(date),
-      time,
-      guests,
-      occasion,
-      notes
+      name:$("#name",form)?.value.trim()||"Guest",
+      phone:$("#phone",form)?.value.trim()||"",
+      date:readableDate($("#date",form)?.value||""),
+      time:timeField?.selectedOptions?.[0]?.textContent?.trim()||timeField?.value||"",
+      guests:$("#guests",form)?.value||"",
+      occasion:$("#occasion",form)?.value||"Dining",
+      notes:$("#message",form)?.value.trim()||"None"
     };
   }
 
   function reservationMessage(form){
     const details=reservationDetails(form);
     return [
-      "Hello Hotel Kesar,",
-      "",
-      "I would like to reserve a table.",
-      "",
-      `Name: ${details.name}`,
-      `Phone: ${details.phone}`,
-      `Date: ${details.date}`,
-      `Time: ${details.time}`,
-      `Guests: ${details.guests}`,
-      `Occasion: ${details.occasion}`,
-      `Notes: ${details.notes}`,
-      "",
-      "Please confirm availability.",
-      "",
-      "Sent from the Hotel Kesar website."
+      "Hello Hotel Kesar,","","I would like to reserve a table.","",
+      `Name: ${details.name}`,`Phone: ${details.phone}`,`Date: ${details.date}`,
+      `Time: ${details.time}`,`Guests: ${details.guests}`,
+      `Occasion: ${details.occasion}`,`Notes: ${details.notes}`,"",
+      "Please confirm availability.","","Sent from the Hotel Kesar website."
     ].join("\n");
   }
 
@@ -147,6 +117,85 @@
     return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(hotel.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
   }
 
+  function greetingMarkup(){
+    return `<div class="reservation-greeting" id="reservationGreeting" role="dialog" aria-modal="true" aria-labelledby="reservationGreetingTitle" aria-hidden="true">
+      <div class="reservation-greeting__panel" role="document">
+        <div class="reservation-greeting__icon" aria-hidden="true"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="19"></circle><path d="m15 24 6 6 13-14"></path></svg></div>
+        <span class="reservation-greeting__eyebrow">Reservation request</span>
+        <h2 id="reservationGreetingTitle">Thank you.</h2>
+        <p class="reservation-greeting__message" id="reservationGreetingMessage"></p>
+        <div class="reservation-greeting__summary">
+          <div><small>Date</small><strong id="reservationGreetingDate"></strong></div>
+          <div><small>Time</small><strong id="reservationGreetingTime"></strong></div>
+          <div><small>Guests</small><strong id="reservationGreetingGuests"></strong></div>
+        </div>
+        <p class="reservation-greeting__note">Your table is confirmed only after Hotel KESAR replies with availability.</p>
+        <button class="reservation-greeting__close" type="button">Continue</button>
+      </div>
+    </div>`;
+  }
+
+  function ensureGreeting(){
+    let greeting=$("#reservationGreeting");
+    if(greeting)return greeting;
+    document.body.insertAdjacentHTML("beforeend",greetingMarkup());
+    greeting=$("#reservationGreeting");
+    const close=()=>closeGreeting();
+    $(".reservation-greeting__close",greeting)?.addEventListener("click",close);
+    greeting.addEventListener("click",event=>{if(event.target===greeting)close();});
+    document.addEventListener("keydown",event=>{if(event.key==="Escape"&&greeting.classList.contains("is-open"))close();});
+    return greeting;
+  }
+
+  let greetingReturnFocus=null;
+  function showGreeting(details,type){
+    const greeting=ensureGreeting();
+    greetingReturnFocus=document.activeElement;
+    $("#reservationGreetingTitle",greeting).textContent=`Thank you, ${details.name}.`;
+    $("#reservationGreetingMessage",greeting).textContent=type==="whatsapp"
+      ?"Your reservation request is ready in WhatsApp. Send the message and Hotel KESAR will confirm availability shortly."
+      :"Your reservation email is ready in Gmail. Send the email and Hotel KESAR will confirm availability shortly.";
+    $("#reservationGreetingDate",greeting).textContent=details.date;
+    $("#reservationGreetingTime",greeting).textContent=details.time;
+    $("#reservationGreetingGuests",greeting).textContent=details.guests;
+    greeting.setAttribute("aria-hidden","false");
+    document.body.classList.add("reservation-greeting-open");
+    requestAnimationFrame(()=>{
+      greeting.classList.add("is-open");
+      setTimeout(()=>$(".reservation-greeting__close",greeting)?.focus(),520);
+    });
+  }
+
+  function closeGreeting(){
+    const greeting=$("#reservationGreeting");
+    if(!greeting)return;
+    greeting.classList.remove("is-open");
+    greeting.setAttribute("aria-hidden","true");
+    document.body.classList.remove("reservation-greeting-open");
+    if(greetingReturnFocus instanceof HTMLElement)setTimeout(()=>greetingReturnFocus.focus(),430);
+  }
+
+  function storePendingGreeting(details,type){
+    try{sessionStorage.setItem(PENDING_KEY,JSON.stringify({details,type,created:Date.now()}));}catch{}
+  }
+
+  function consumePendingGreeting(){
+    let pending=null;
+    try{
+      pending=JSON.parse(sessionStorage.getItem(PENDING_KEY)||"null");
+      sessionStorage.removeItem(PENDING_KEY);
+    }catch{}
+    if(!pending||Date.now()-pending.created>10*60*1000)return;
+    showGreeting(pending.details,pending.type);
+  }
+
+  function queueGreeting(details,type){
+    storePendingGreeting(details,type);
+    setTimeout(()=>{
+      if(document.visibilityState==="visible")consumePendingGreeting();
+    },550);
+  }
+
   function bindReservationActions(form){
     form.querySelectorAll("[data-reservation-action]").forEach(action=>{
       if(action.dataset.bound==="true")return;
@@ -154,22 +203,26 @@
       action.addEventListener("click",event=>{
         event.preventDefault();
         if(!validateReservation(form))return;
-
+        const details=reservationDetails(form);
         const message=reservationMessage(form);
         const type=action.dataset.reservationAction;
+        queueGreeting(details,type);
         if(type==="whatsapp"){
           openExternal(`https://wa.me/${hotel.whatsapp}?text=${encodeURIComponent(message)}`);
           window.dataLayer?.push({event:"reservation_whatsapp_click"});
           return;
         }
-
-        const details=reservationDetails(form);
         const subject=`Table Reservation - ${details.name} - ${details.date}`;
         openExternal(gmailComposeUrl(subject,message));
         window.dataLayer?.push({event:"reservation_email_click",email_provider:"gmail_web"});
       });
     });
   }
+
+  document.addEventListener("visibilitychange",()=>{
+    if(document.visibilityState==="visible")setTimeout(consumePendingGreeting,180);
+  });
+  window.addEventListener("pageshow",()=>setTimeout(consumePendingGreeting,180));
 
   function footerIcon(type){
     const icons={
@@ -197,55 +250,31 @@
     if(form&&!reservation.querySelector(".reservation-contact-bar")){
       const contact=document.createElement("div");
       contact.className="reservation-contact-bar reveal visible";
-      contact.innerHTML=`<div><span>Hotel Kesar reservations</span><strong>Daily · ${hotel.hours}</strong></div><div class="reservation-contact-actions"><a href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Hotel Kesar at ${hotel.phone}">WhatsApp ${hotel.phone}</a><a href="mailto:${hotel.email}" aria-label="Email Hotel Kesar at ${hotel.email}">Email us</a></div>`;
+      contact.innerHTML=`<div><span>Hotel Kesar reservations</span><strong>Daily · ${hotel.hours}</strong></div><div class="reservation-contact-actions"><a href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noopener noreferrer">WhatsApp ${hotel.phone}</a><a href="mailto:${hotel.email}">Email us</a></div>`;
       form.before(contact);
     }
 
     const submit=form?.querySelector(".submit-row");
-    if(submit){
-      submit.innerHTML=`<p>Complete all required details, then send the full reservation request through WhatsApp or email.</p><div class="reservation-submit-actions"><a class="primary-button inline-button" href="#" data-reservation-action="whatsapp">WhatsApp to reserve →</a><a class="reservation-email-link" href="#" data-reservation-action="email">Email reservation ↗</a></div>`;
-    }
+    if(submit)submit.innerHTML=`<p>Complete all required details, then send the full reservation request through WhatsApp or email.</p><div class="reservation-submit-actions"><a class="primary-button inline-button" href="#" data-reservation-action="whatsapp">WhatsApp to reserve →</a><a class="reservation-email-link" href="#" data-reservation-action="email">Email reservation ↗</a></div>`;
     if(form)bindReservationActions(form);
 
     const footer=document.querySelector("footer");
     if(footer&&!footer.classList.contains("footer-luxury-ready")){
       footer.className="footer-luxury-ready";
-      footer.innerHTML=`
-        <div class="shell footer-luxury-main">
-          <a class="footer-luxury-brand" href="#home" aria-label="KESAR home">KESAR</a>
-          <a class="footer-luxury-item" href="tel:+918951919010" aria-label="Call Hotel Kesar at ${hotel.phone}">
-            <span class="footer-luxury-icon">${footerIcon("phone")}</span>
-            <span class="footer-luxury-value">${hotel.phone}</span>
-          </a>
-          <a class="footer-luxury-item" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noopener noreferrer" aria-label="Reserve Hotel Kesar through WhatsApp">
-            <span class="footer-luxury-icon">${footerIcon("whatsapp")}</span>
-            <span class="footer-luxury-value">WhatsApp Reservations</span>
-          </a>
-          <a class="footer-luxury-item footer-luxury-email" href="mailto:${hotel.email}" aria-label="Email Hotel Kesar at ${hotel.email}">
-            <span class="footer-luxury-icon">${footerIcon("email")}</span>
-            <span class="footer-luxury-value">${hotel.email}</span>
-          </a>
-          <div class="footer-luxury-item footer-luxury-hours">
-            <span class="footer-luxury-icon">${footerIcon("clock")}</span>
-            <span class="footer-luxury-copy"><small>DAILY</small><strong>${hotel.hours}</strong></span>
-          </div>
-          <div class="footer-luxury-item footer-luxury-hours footer-luxury-today">
-            <span class="footer-luxury-copy"><small>TODAY</small><strong id="footerToday">${hotel.hours}</strong></span>
-          </div>
-        </div>
-        <div class="shell footer-luxury-bottom">
-          <span>© ${new Date().getFullYear()} HOTEL KESAR</span>
-          <span>BENGALURU · MANDI HOUSE DINING</span>
-        </div>`;
+      footer.innerHTML=`<div class="shell footer-luxury-main">
+        <a class="footer-luxury-brand" href="#home" aria-label="KESAR home">KESAR</a>
+        <a class="footer-luxury-item" href="tel:+918951919010"><span class="footer-luxury-icon">${footerIcon("phone")}</span><span class="footer-luxury-value">${hotel.phone}</span></a>
+        <a class="footer-luxury-item" href="https://wa.me/${hotel.whatsapp}" target="_blank" rel="noopener noreferrer"><span class="footer-luxury-icon">${footerIcon("whatsapp")}</span><span class="footer-luxury-value">WhatsApp Reservations</span></a>
+        <a class="footer-luxury-item footer-luxury-email" href="mailto:${hotel.email}"><span class="footer-luxury-icon">${footerIcon("email")}</span><span class="footer-luxury-value">${hotel.email}</span></a>
+        <div class="footer-luxury-item footer-luxury-hours"><span class="footer-luxury-icon">${footerIcon("clock")}</span><span class="footer-luxury-copy"><small>DAILY</small><strong>${hotel.hours}</strong></span></div>
+        <div class="footer-luxury-item footer-luxury-hours footer-luxury-today"><span class="footer-luxury-copy"><small>TODAY</small><strong id="footerToday">${hotel.hours}</strong></span></div>
+      </div><div class="shell footer-luxury-bottom"><span>© ${new Date().getFullYear()} HOTEL KESAR</span><span>BENGALURU · MANDI HOUSE DINING</span></div>`;
     }
   }
 
   function indiaTime(){
     return Object.fromEntries(new Intl.DateTimeFormat("en-GB",{
-      timeZone:"Asia/Kolkata",
-      hour:"2-digit",
-      minute:"2-digit",
-      hourCycle:"h23"
+      timeZone:"Asia/Kolkata",hour:"2-digit",minute:"2-digit",hourCycle:"h23"
     }).formatToParts(new Date()).map(part=>[part.type,part.value]));
   }
 
@@ -253,54 +282,33 @@
     const parts=indiaTime();
     const current=Number(parts.hour)*60+Number(parts.minute);
     const open=current>=600&&current<1380;
-    const status=$("#statusText");
-    const live=$("#liveTime");
-    const heroStatus=$("#heroStatus");
-    const today=$("#todayHours");
-    const compact=$("#compactHours");
-    const footerToday=$("#footerToday");
-
-    if(status){
-      status.textContent=open
-        ?"Open now · closes at 11:00 PM"
-        :current<600
-          ?"Closed now · opens today at 10:00 AM"
-          :"Closed now · opens tomorrow at 10:00 AM";
-    }
+    const status=$("#statusText"),live=$("#liveTime"),heroStatus=$("#heroStatus");
+    if(status)status.textContent=open?"Open now · closes at 11:00 PM":current<600?"Closed now · opens today at 10:00 AM":"Closed now · opens tomorrow at 10:00 AM";
     if(live)live.textContent=`${Number(parts.hour)%12||12}:${parts.minute} ${Number(parts.hour)>=12?"PM":"AM"} · Bengaluru time`;
     heroStatus?.classList.toggle("open",open);
-    if(today)today.textContent=`Today · ${hotel.hours} · Bengaluru time`;
-    if(compact)compact.textContent=`Today · ${hotel.hours} · Bengaluru time`;
-    if(footerToday)footerToday.textContent=hotel.hours;
+    if($("#todayHours"))$("#todayHours").textContent=`Today · ${hotel.hours} · Bengaluru time`;
+    if($("#compactHours"))$("#compactHours").textContent=`Today · ${hotel.hours} · Bengaluru time`;
+    if($("#footerToday"))$("#footerToday").textContent=hotel.hours;
   }
 
   function populateHotelTimes(){
-    const date=$("#date");
-    const select=$("#time");
+    const date=$("#date"),select=$("#time");
     if(!date||!select)return;
     select.innerHTML='<option value="">Choose a time</option>';
-    if(!date.value){
-      select.disabled=true;
-      return;
-    }
+    if(!date.value){select.disabled=true;return;}
     for(let total=600;total<=1350;total+=30){
-      const hour=Math.floor(total/60);
-      const minute=total%60;
-      const raw=`${String(hour).padStart(2,"0")}:${String(minute).padStart(2,"0")}`;
+      const hour=Math.floor(total/60),minute=total%60;
       const option=document.createElement("option");
-      option.value=raw;
+      option.value=`${String(hour).padStart(2,"0")}:${String(minute).padStart(2,"0")}`;
       option.textContent=`${hour%12||12}:${String(minute).padStart(2,"0")} ${hour>=12?"PM":"AM"}`;
       select.append(option);
     }
     select.disabled=false;
   }
 
-  function initializeCompactUpdate(attempt=0){
-    const baseReady=$("#comboAccordion .combo-row")&&$("#date")&&$("#footerToday");
-    if(!baseReady&&attempt<80){
-      setTimeout(()=>initializeCompactUpdate(attempt+1),50);
-      return;
-    }
+  function initialize(attempt=0){
+    const ready=$("#comboAccordion .combo-row")&&$("#date");
+    if(!ready&&attempt<80){setTimeout(()=>initialize(attempt+1),50);return;}
     applyCompactLayout();
     syncHours();
     const date=$("#date");
@@ -311,5 +319,5 @@
     setInterval(syncHours,10000);
   }
 
-  initializeCompactUpdate();
+  initialize();
 })();
