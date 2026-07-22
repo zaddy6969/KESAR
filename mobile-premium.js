@@ -67,6 +67,65 @@
     });
   }
 
+  function loadWhyKesarStyles(){
+    if(document.querySelector('link[data-kesar-why-page]'))return;
+    const link=document.createElement("link");
+    link.rel="stylesheet";
+    link.href="/why-kesar.css?v=why-kesar-1";
+    link.dataset.kesarWhyPage="true";
+    document.head.append(link);
+  }
+
+  function buildWhyKesar(){
+    if(document.querySelector("#why-kesar-page"))return;
+    const signature=document.querySelector("#signature-dishes");
+    if(!signature)return;
+
+    loadWhyKesarStyles();
+    const section=document.createElement("section");
+    section.id="why-kesar-page";
+    section.className="why-kesar-page";
+    section.setAttribute("aria-labelledby","whyKesarTitle");
+    section.innerHTML=`<div class="why-kesar-page__shell">
+      <div class="why-kesar-page__copy">
+        <span class="why-kesar-page__eyebrow" data-why-reveal>Why Kesar</span>
+        <h2 class="why-kesar-page__title" id="whyKesarTitle" data-why-reveal>Where every gathering <em>feels generous.</em></h2>
+        <p class="why-kesar-page__lead" data-why-reveal>Slow fire, fragrant rice and thoughtful hospitality—made for families, celebrations and tables that stay a little longer.</p>
+        <div class="why-kesar-page__reasons" data-why-reveal>
+          <article class="why-kesar-page__reason"><span>01</span><h3>Slow-roasted with patience</h3><p>Meats are cooked gently so every serving stays tender, smoky and full of flavour.</p></article>
+          <article class="why-kesar-page__reason"><span>02</span><h3>Feasts made for sharing</h3><p>Generous combinations bring families and friends together around one memorable table.</p></article>
+          <article class="why-kesar-page__reason"><span>03</span><h3>Fragrant mandi rice</h3><p>Long-grain rice, warm spices and careful balance complete every KESAR platter.</p></article>
+          <article class="why-kesar-page__reason"><span>04</span><h3>Hospitality that feels personal</h3><p>From the first welcome to the final serving, the experience is warm and unhurried.</p></article>
+        </div>
+        <div class="why-kesar-page__actions" data-why-reveal>
+          <a class="why-kesar-page__primary" href="#reservation">Reserve a table →</a>
+          <a class="why-kesar-page__secondary" href="#order-online">Order online ↗</a>
+        </div>
+      </div>
+      <figure class="why-kesar-page__media" data-why-reveal>
+        <img src="/assets/images/storypage-mandi2.png" width="1122" height="1402" loading="lazy" decoding="async" alt="A generous KESAR mandi feast prepared for sharing">
+        <figcaption class="why-kesar-page__hours"><span>Open daily</span><strong>10:00 AM–11:00 PM</strong></figcaption>
+      </figure>
+    </div>`;
+    signature.insertAdjacentElement("afterend",section);
+
+    if(matchMedia("(prefers-reduced-motion: reduce)").matches){
+      section.classList.add("is-visible");
+      return;
+    }
+    if("IntersectionObserver" in window){
+      const observer=new IntersectionObserver(entries=>{
+        if(entries.some(entry=>entry.isIntersecting)){
+          section.classList.add("is-visible");
+          observer.disconnect();
+        }
+      },{threshold:.14,rootMargin:"0px 0px -8% 0px"});
+      observer.observe(section);
+    }else{
+      section.classList.add("is-visible");
+    }
+  }
+
   function optimizeImages(){
     const hero=document.querySelector("#heroMedia img");
     if(hero){hero.fetchPriority="high";hero.decoding="async";hero.removeAttribute("loading");}
@@ -104,6 +163,7 @@
   }
 
   setupSeo();
+  buildWhyKesar();
   optimizeImages();
   trimMobileDom();
   setupMobileActions();
