@@ -37,7 +37,7 @@
       }
       if(!document.querySelector('script[data-kesar-hours-update]')){
         const hoursUpdate=document.createElement("script");
-        hoursUpdate.src="/hours-update.js?v=restaurant-hours-1230";
+        hoursUpdate.src="/hours-update.js?v=why-kesar-image-fade-1";
         hoursUpdate.async=true;
         hoursUpdate.dataset.kesarHoursUpdate="true";
         document.body.append(hoursUpdate);
