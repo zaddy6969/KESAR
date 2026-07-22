@@ -1,0 +1,168 @@
+/* KESAR premium mobile refinement. Desktop remains untouched. */
+@media (max-width:767px){
+  :root{--mobile-gutter:16px;--mobile-radius:18px;--mobile-bar:68px}
+
+  html{scroll-padding-top:72px!important}
+  body.has-kesar-mobile-actions{padding-bottom:calc(var(--mobile-bar) + env(safe-area-inset-bottom))!important}
+  html body .shell,
+  html body .delivery-section>.shell,
+  html body .delivery-benefits>.shell{width:calc(100% - (var(--mobile-gutter) * 2))!important}
+
+  /* Cleaner, faster mobile header. */
+  html body .site-header{height:64px!important}
+  html body .nav{gap:4px!important}
+  html body .brand strong{font-size:1.32rem!important;letter-spacing:.18em!important}
+  html body .brand span{font-size:.34rem!important;letter-spacing:.22em!important;margin-top:4px!important}
+  html body .menu-toggle{min-height:42px!important;font-size:.58rem!important;letter-spacing:.15em!important}
+  html body .mobile-menu{padding:88px 18px 24px!important}
+  html body .mobile-menu nav a{font-size:clamp(2.35rem,11vw,3.35rem)!important;padding:11px 0!important}
+
+  /* Hero: premium but compact, with a single clear conversion path. */
+  html body .hero,
+  html body .hero-inner{min-height:min(88svh,720px)!important}
+  html body .hero-inner{padding-top:96px!important;padding-bottom:24px!important}
+  html body .hero-status{top:78px!important;font-size:.47rem!important;letter-spacing:.09em!important}
+  html body .hero-grid{gap:18px!important}
+  html body .hero h1{font-size:clamp(3.45rem,17.2vw,5.05rem)!important;line-height:.84!important}
+  html body .hero-side{max-width:none!important}
+  html body .hero-side .line-link{min-height:44px!important;padding:0 0 7px!important}
+  html body .hero-bottom{margin-top:22px!important;padding-top:12px!important}
+  html body .hero-bottom a{font-size:.48rem!important;opacity:.78}
+  html body .hero-fallback{animation-duration:24s!important;object-position:70% center!important}
+  html body .smoke span{width:150px!important;height:220px!important;filter:blur(22px)!important;animation-duration:15s!important}
+  html body .smoke span:nth-child(n+3){display:none!important}
+
+  /* Global section rhythm. */
+  html body .section{padding:54px 0!important}
+  html body .kicker{font-size:.56rem!important;letter-spacing:.18em!important}
+  html body .display{font-size:clamp(2.85rem,12.7vw,4.3rem)!important;line-height:.96!important}
+
+  /* Story: one strong image on mobile; remove the decorative duplicate. */
+  html body section#story.story-editorial{padding:54px 16px 48px!important;min-height:0!important}
+  html body section#story .story-editorial__layout{width:100%!important;gap:24px!important}
+  html body section#story .story-editorial__symbol{width:24px!important;height:24px!important;margin:0 0 20px 2px!important}
+  html body section#story .story-editorial__symbol::after{left:40px!important;width:72px!important}
+  html body section#story .story-editorial__title{font-size:clamp(2.95rem,13.7vw,4rem)!important;line-height:.93!important}
+  html body section#story .story-editorial__description{margin-top:22px!important;padding-top:20px!important;font-size:.9rem!important;line-height:1.58!important}
+  html body section#story .story-editorial__gallery{width:100%!important;display:block!important}
+  html body section#story .story-editorial__media--main{width:100%!important;aspect-ratio:16/11!important;clip-path:polygon(15% 0,100% 0,100% 100%,0 100%,0 28%)!important;border-radius:20px!important}
+  html body section#story .story-editorial__media--main img{object-position:center 60%!important}
+  html body section#story .story-editorial__media--saffron{display:none!important}
+
+  /* Feast selector: reduce height while preserving all party-size functions. */
+  html body #menu.menu-intro{padding:48px 0!important}
+  html body #menu .menu-intro-grid{margin-bottom:20px!important}
+  html body #menu .menu-intro-grid .display{font-size:clamp(2.9rem,13.2vw,4.25rem)!important}
+  html body #menu .menu-intro-grid .lede{margin-top:14px!important;font-size:.88rem!important;line-height:1.55!important}
+  html body #menu .party-selector{padding:12px!important;border-radius:var(--mobile-radius)!important;background:rgba(255,255,255,.64)!important}
+  html body #menu .section-line{gap:6px!important}
+  html body #menu .section-line>div{gap:10px!important}
+  html body #menu .section-line h3{font-size:1.42rem!important}
+  html body #menu .section-line p{font-size:.72rem!important;line-height:1.5!important}
+  html body #menu .party-tabs{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:6px!important;margin:14px 0 10px!important}
+  html body #menu .party-tabs button{min-height:42px!important;padding:7px 4px!important;font-size:.47rem!important}
+  html body #menu .party-tabs button:last-child{grid-column:auto!important}
+  html body #menu .featured-combo{min-height:470px!important;border-radius:14px!important}
+  html body #menu .featured-copy{min-height:470px!important;padding:18px!important}
+  html body #menu .combo-title{gap:9px!important;margin:10px 0!important}
+  html body #menu .combo-title h3{font-size:2rem!important}
+  html body #menu .combo-title>strong{font-size:1.55rem!important}
+  html body #menu #featuredItems{margin:8px 0 12px!important;font-size:.68rem!important;line-height:1.4!important}
+  html body #menu #featuredItems li:nth-child(n+4){display:none!important}
+  html body #menu .featured-copy .primary-button{width:100%!important;min-height:46px!important;justify-content:center!important}
+
+  /* Complete combinations: accordion is useful; duplicate summary image is not. */
+  html body #menu-combos.combo-section{padding:42px 0 24px!important}
+  html body #menu-combos .chapter-head{padding-bottom:20px!important;gap:12px!important}
+  html body #menu-combos .chapter-head>p{font-size:.84rem!important;line-height:1.55!important}
+  html body #menu-combos .combo-layout{display:block!important;margin-top:20px!important}
+  html body #menu-combos .combo-summary{display:none!important}
+  html body #menu-combos .combo-row>button{padding:17px 0!important;grid-template-columns:24px minmax(0,1fr) auto 16px!important;gap:8px!important}
+  html body #menu-combos .combo-row strong{font-size:1.08rem!important}
+  html body #menu-combos .row-price{font-size:1rem!important}
+  html body #menu-combos .combo-panel-inner{padding:0 0 18px 30px!important}
+  html body #menu-combos .combo-note{margin:18px 0 0!important;font-size:.68rem!important}
+
+  /* Signature dishes: image-led cards without excessive vertical height. */
+  html body #signature-dishes.signature-section{padding:42px 0 48px!important}
+  html body #signature-dishes .chapter-head{gap:12px!important;padding-bottom:20px!important}
+  html body #signature-dishes .chapter-head>p{font-size:.84rem!important;line-height:1.55!important}
+  html body #signature-dishes .dish-tabs{margin:20px 0!important}
+  html body #signature-dishes .dish-track{grid-auto-columns:minmax(246px,82%)!important;gap:10px!important}
+  html body #signature-dishes .dish-card{border-radius:14px!important;overflow:hidden!important}
+  html body #signature-dishes .dish-card img{aspect-ratio:16/10!important}
+  html body #signature-dishes .dish-card>div{padding:15px!important}
+  html body #signature-dishes .dish-card h3{font-size:1.55rem!important}
+  html body #signature-dishes .dish-card p{font-size:.82rem!important;margin-bottom:12px!important}
+
+  /* Order Online: keep the food image, but make it a compact banner. */
+  html body #order-online.delivery-section{padding:50px 0 0!important}
+  html body #order-online .delivery-section__layout{gap:22px!important}
+  html body #order-online .delivery-section__title{font-size:clamp(2.9rem,13.4vw,4.15rem)!important}
+  html body #order-online .delivery-section__rule{margin:20px 0 22px!important}
+  html body #order-online .delivery-section__body{font-size:.88rem!important;line-height:1.58!important}
+  html body #order-online .delivery-section__body p+p{display:none!important}
+  html body #order-online .delivery-section__platforms{margin-top:24px!important}
+  html body #order-online .delivery-platform{min-height:64px!important;border-radius:12px!important}
+  html body #order-online .delivery-section__disclaimer{display:none!important}
+  html body #order-online .delivery-section__media,
+  html body #order-online .delivery-section__media.reveal{aspect-ratio:16/10!important;border-radius:18px 0 0 18px!important;background-position:70% center!important;margin-left:0!important}
+
+  /* Reservation: compact, clear and conversion-led. */
+  html body #reservation.reservation{padding:38px 0 34px!important}
+  html body #reservation .reservation-head{margin-bottom:16px!important;padding-bottom:11px!important}
+  html body #reservation .reservation-form{gap:13px!important}
+  html body #reservation .field label{font-size:.57rem!important;letter-spacing:.13em!important}
+  html body #reservation .field input,
+  html body #reservation .field select,
+  html body #reservation .field textarea{min-height:50px!important;border-radius:10px!important;padding-inline:12px!important;background:rgba(255,255,255,.52)!important}
+  html body #reservation .field textarea{min-height:86px!important;padding-top:12px!important}
+  html body #reservation .submit-row{margin-top:10px!important;gap:12px!important}
+  html body #reservation .submit-row>p{display:none!important}
+  html body #reservation .reservation-submit-actions{gap:8px!important}
+  html body #reservation .reservation-submit-actions a{min-height:48px!important;border-radius:10px!important}
+
+  /* Compact luxury footer on phones. */
+  html body footer.footer-luxury-ready .shell{width:calc(100% - 28px)!important}
+  html body .footer-luxury-main{grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:26px 0 14px!important}
+  html body .footer-luxury-brand{grid-column:1/-1!important;padding:0 0 20px!important;font-size:2.65rem!important}
+  html body .footer-luxury-item{min-height:58px!important;padding:9px 8px!important;gap:9px!important;border-top:1px solid rgba(214,154,58,.15)!important;border-left:0!important}
+  html body .footer-luxury-email{grid-column:1/-1!important}
+  html body .footer-luxury-icon{width:18px!important;height:18px!important;flex-basis:18px!important}
+  html body .footer-luxury-value,
+  html body .footer-luxury-copy strong{font-size:.7rem!important;white-space:normal!important}
+  html body .footer-luxury-copy small{font-size:.45rem!important}
+  html body .footer-luxury-bottom{grid-template-columns:1fr!important;gap:5px!important;padding:14px 0 18px!important;font-size:.43rem!important}
+
+  /* Replace the older combo-only bar with clear site-wide actions. */
+  html body .mobile-reserve{display:none!important}
+  .kesar-mobile-actions{
+    position:fixed;z-index:9900;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));
+    display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:7px;
+    border:1px solid rgba(214,154,58,.28);border-radius:16px;
+    background:rgba(9,8,6,.94);box-shadow:0 16px 50px rgba(0,0,0,.34);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    transition:opacity .25s ease,transform .25s ease;
+  }
+  .kesar-mobile-actions a{display:flex;align-items:center;justify-content:center;min-height:46px;border-radius:10px;font-size:.58rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+  .kesar-mobile-actions__whatsapp{color:#f2eee7;border:1px solid rgba(214,154,58,.34)}
+  .kesar-mobile-actions__reserve{background:#d69a3a;color:#100d0a}
+  .kesar-mobile-actions.is-hidden,
+  .menu-open .kesar-mobile-actions,
+  .reservation-greeting-open .kesar-mobile-actions{opacity:0;transform:translateY(120%);pointer-events:none}
+
+  /* Keep animation refined and reduce battery-heavy work. */
+  html body .story-editorial.story-motion-active .story-editorial__media--main img{animation-duration:18s!important}
+}
+
+@media (max-width:390px){
+  html body #menu .party-tabs{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  html body #menu .party-tabs button:last-child{grid-column:1/-1!important}
+  html body .footer-luxury-main{grid-template-columns:1fr!important}
+  html body .footer-luxury-brand,
+  html body .footer-luxury-email{grid-column:auto!important}
+}
+
+@media (max-width:767px) and (prefers-reduced-motion:reduce){
+  .kesar-mobile-actions{transition:none!important}
+}
