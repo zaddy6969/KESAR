@@ -18,6 +18,28 @@
     },wait);
   }
 
+  function loadPremiumEnhancements(){
+    const start=()=>{
+      if(smallScreen&&!document.querySelector('link[data-kesar-mobile-premium]')){
+        const link=document.createElement("link");
+        link.rel="stylesheet";
+        link.href="/mobile-premium.css?v=mobile-premium-1";
+        link.media="(max-width: 767px)";
+        link.dataset.kesarMobilePremium="true";
+        document.head.append(link);
+      }
+      if(!document.querySelector('script[data-kesar-premium-enhancements]')){
+        const enhancement=document.createElement("script");
+        enhancement.src="/mobile-premium.js?v=mobile-premium-1";
+        enhancement.async=true;
+        enhancement.dataset.kesarPremiumEnhancements="true";
+        document.body.append(enhancement);
+      }
+    };
+    if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});
+    else start();
+  }
+
   function loadStoryStyles(){
     if(document.querySelector('link[data-kesar-story-editorial]'))return;
     const link=document.createElement("link");
@@ -188,10 +210,11 @@
   function finish(){
     setupDishRail();
     const startVideo=()=>loadHeroVideo();
-    if("requestIdleCallback" in window)requestIdleCallback(startVideo,{timeout:1200});
+    if("requestIdleCallback"in window)requestIdleCallback(startVideo,{timeout:1200});
     else setTimeout(startVideo,250);
   }
 
+  loadPremiumEnhancements();
   loadStoryStyles();
   buildStory();
   releaseLoader();
