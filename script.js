@@ -30,7 +30,7 @@
       }
       if(!document.querySelector('script[data-kesar-premium-enhancements]')){
         const enhancement=document.createElement("script");
-        enhancement.src="/mobile-premium.js?v=bulk-orders-1";
+        enhancement.src="/mobile-premium.js?v=bulk-reference-1";
         enhancement.async=true;
         enhancement.dataset.kesarPremiumEnhancements="true";
         document.body.append(enhancement);
