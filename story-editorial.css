@@ -1,5 +1,13 @@
 @import url("https://cdn.jsdelivr.net/gh/zaddy6969/KESAR@d06fe43a56981ba8b6d022381dd94976e84795d6/story-editorial.css");
 
+/* Remove the three requested homepage text elements without affecting other sections. */
+.hero-side p,
+#todayHours,
+#liveTime,
+#heroStatus > span:nth-of-type(2){
+  display:none!important;
+}
+
 /* Slightly smaller Story images while preserving the approved reference geometry. */
 @media (min-width:1181px){
   .story-editorial__media--main{
