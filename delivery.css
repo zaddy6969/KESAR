@@ -45,3 +45,22 @@
 @media(max-width:1000px){.delivery-section{padding-top:clamp(82px,9vw,102px)}.delivery-section>.shell,.delivery-benefits>.shell{width:calc(100% - 40px)}.delivery-section__layout{min-height:auto;grid-template-columns:1fr;gap:38px}.delivery-section__copy{padding:0}.delivery-section__title{max-width:820px;font-size:clamp(4rem,9vw,6.4rem)}.delivery-section__title span{white-space:normal}.delivery-section__media,.delivery-section__media.reveal{min-height:560px;height:560px;background-position:right center!important}.delivery-section__media::before{display:none}.delivery-benefits__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.delivery-benefit:nth-child(2){border-right:0}.delivery-benefit:nth-child(3),.delivery-benefit:nth-child(4){border-top:1px solid rgba(23,19,15,.14)}}
 @media(max-width:700px){.delivery-section{padding-top:90px;padding-bottom:env(safe-area-inset-bottom)}.delivery-section>.shell,.delivery-benefits>.shell{width:calc(100% - 40px)}.delivery-section__layout{gap:32px}.delivery-section__title{font-size:clamp(3.2rem,14vw,5rem);line-height:.93}.delivery-section__rule{margin:26px 0 32px}.delivery-section__body{font-size:.96rem}.delivery-section__platforms{margin-top:34px}.delivery-actions{grid-template-columns:1fr;gap:12px}.delivery-platform{width:100%;min-height:72px}.delivery-section__disclaimer{margin-top:22px}.delivery-section__media,.delivery-section__media.reveal{min-height:0;height:auto;aspect-ratio:4/5;background-position:77% center!important}.delivery-section__media::before{display:none}.delivery-benefits__grid{grid-template-columns:1fr;min-height:0}.delivery-benefit{min-height:96px;grid-template-columns:48px minmax(0,1fr);gap:18px;padding:22px 20px;border-right:0;border-top:1px solid rgba(23,19,15,.14)}.delivery-benefit:first-child{border-top:0}}
 @media(prefers-reduced-motion:reduce){.delivery-reveal,.delivery-section__rule,.delivery-platform,.delivery-platform__arrow,.delivery-section__media{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}.delivery-platform:hover,.delivery-platform:focus-visible{transform:none}}
+
+/* Full-bleed right edge: retain the editorial left alignment but remove the awkward ivory gutter beside the food image. */
+@media(min-width:1001px){
+  .delivery-section>.shell{
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding-left:max(40px,calc((100vw - 1510px)/2));
+  }
+}
+@media(max-width:1000px){
+  .delivery-section>.shell{
+    width:100%;
+    max-width:none;
+    margin:0;
+    padding-left:20px;
+  }
+  .delivery-section__copy{padding-right:20px}
+}
