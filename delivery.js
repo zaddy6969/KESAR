@@ -143,6 +143,10 @@
     link.remove();
   }
 
+  function gmailComposeUrl(subject,message){
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(hotel.email)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  }
+
   function bindReservationActions(form){
     form.querySelectorAll("[data-reservation-action]").forEach(action=>{
       if(action.dataset.bound==="true")return;
@@ -161,8 +165,8 @@
 
         const details=reservationDetails(form);
         const subject=`Table Reservation - ${details.name} - ${details.date}`;
-        window.location.href=`mailto:${hotel.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-        window.dataLayer?.push({event:"reservation_email_click"});
+        openExternal(gmailComposeUrl(subject,message));
+        window.dataLayer?.push({event:"reservation_email_click",email_provider:"gmail_web"});
       });
     });
   }
