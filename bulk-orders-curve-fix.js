@@ -3,6 +3,25 @@
 
   const STYLE_ID="kesarBulkSmoothLeftImage";
 
+  function loadMobileInteractionRepairs(){
+    if(!document.querySelector('link[data-kesar-mobile-interactions]')){
+      const link=document.createElement("link");
+      link.rel="stylesheet";
+      link.href="/mobile-interactions.css?v=mobile-interactions-1";
+      link.media="(max-width: 1000px)";
+      link.dataset.kesarMobileInteractions="true";
+      document.head.append(link);
+    }
+
+    if(!document.querySelector('script[data-kesar-mobile-interactions]')){
+      const script=document.createElement("script");
+      script.src="/mobile-interactions.js?v=mobile-interactions-1";
+      script.async=true;
+      script.dataset.kesarMobileInteractions="true";
+      document.body.append(script);
+    }
+  }
+
   function addStyles(){
     document.getElementById("kesarBulkCurveOutFix")?.remove();
     if(document.getElementById(STYLE_ID))return;
@@ -87,6 +106,7 @@
   }
 
   function start(){
+    loadMobileInteractionRepairs();
     addStyles();
     if(cleanSection())return;
 
