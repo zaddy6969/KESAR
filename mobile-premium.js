@@ -160,6 +160,71 @@
     document.querySelectorAll("main img").forEach(img=>{if(img===hero)return;img.loading="lazy";img.decoding="async";img.fetchPriority="low";});
   }
 
+  function setupMobileHero(){
+    if(!isMobile)return;
+    const hero=document.querySelector("#home.hero");
+    const media=document.querySelector("#heroMedia");
+    const poster=media?.querySelector("img");
+    if(!hero||!media||!poster)return;
+
+    poster.classList.add("hero-fallback");
+
+    const setHeroVisibility=visible=>document.body.classList.toggle("mobile-hero-in-view",visible);
+    if("IntersectionObserver" in window){
+      const observer=new IntersectionObserver(entries=>{
+        const entry=entries[0];
+        setHeroVisibility(Boolean(entry?.isIntersecting&&entry.intersectionRatio>.18));
+      },{threshold:[0,.18,.45]});
+      observer.observe(hero);
+    }else{
+      setHeroVisibility(scrollY<hero.offsetHeight*.8);
+    }
+
+    const reducedMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const saveData=Boolean(navigator.connection?.saveData);
+    if(reducedMotion||saveData)return;
+
+    let video=media.querySelector(".hero-video");
+    if(!video){
+      video=document.createElement("video");
+      video.className="hero-video";
+      video.muted=true;
+      video.defaultMuted=true;
+      video.loop=true;
+      video.autoplay=true;
+      video.playsInline=true;
+      video.preload="auto";
+      video.disablePictureInPicture=true;
+      video.poster=poster.currentSrc||poster.src;
+      video.src="/assets/videos/heropage-mandi.mp4";
+      video.setAttribute("muted","");
+      video.setAttribute("playsinline","");
+      video.setAttribute("webkit-playsinline","");
+      video.setAttribute("aria-hidden","true");
+      poster.after(video);
+    }
+
+    const markReady=()=>{
+      video.classList.add("is-ready");
+      hero.classList.add("mobile-video-ready");
+    };
+    video.addEventListener("loadeddata",markReady,{once:true});
+    video.addEventListener("canplay",markReady,{once:true});
+    video.addEventListener("error",()=>{
+      hero.classList.remove("mobile-video-ready");
+      video.remove();
+    },{once:true});
+
+    const play=()=>video.play().catch(()=>{});
+    play();
+    document.addEventListener("visibilitychange",()=>{
+      if(document.hidden)video.pause();
+      else play();
+    });
+    document.addEventListener("pointerdown",play,{once:true,passive:true});
+    document.addEventListener("touchstart",play,{once:true,passive:true});
+  }
+
   function trimMobileDom(){
     if(!isMobile)return;
     document.querySelector("#story .story-editorial__media--saffron")?.remove();
@@ -187,6 +252,7 @@
   buildBulkOrders();
   buildWhyKesar();
   optimizeImages();
+  setupMobileHero();
   trimMobileDom();
   setupMobileActions();
 })();
