@@ -51,7 +51,22 @@
     if (structured && structured.textContent.trim() !== expected) structured.textContent = expected;
   }
 
+  function enableVercelAnalytics() {
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+
+    if (document.querySelector('script[data-vercel-analytics]')) return;
+
+    const analytics = document.createElement("script");
+    analytics.defer = true;
+    analytics.src = "/_vercel/insights/script.js";
+    analytics.dataset.vercelAnalytics = "true";
+    document.head.append(analytics);
+  }
+
   applyStaticSeo();
+  enableVercelAnalytics();
   document.addEventListener("DOMContentLoaded", applyStaticSeo, { once: true });
   window.addEventListener("pageshow", applyStaticSeo, { passive: true });
 
