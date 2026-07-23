@@ -1,0 +1,1 @@
+Production deployment trigger for the approved third-reference Feast for Every Table implementation.
