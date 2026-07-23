@@ -19,7 +19,7 @@
   }
 
   function setupSeo(){
-    document.title="KESAR | Premium Mandi Restaurant in Bengaluru";
+    document.title="KESAR | Family Fine Dining Restaurant";
     setMeta('meta[name="description"]',{name:"description",content:"Hotel KESAR serves slow-roasted mandi, charcoal grills, biryani, family feasts and bulk orders for celebrations in Bengaluru."});
     setMeta('meta[name="robots"]',{name:"robots",content:"index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"});
     setMeta('meta[name="format-detection"]',{name:"format-detection",content:"telephone=yes"});
