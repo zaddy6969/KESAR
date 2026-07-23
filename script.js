@@ -49,6 +49,20 @@
         bulkCurveFix.dataset.kesarBulkCurveFix="true";
         document.body.append(bulkCurveFix);
       }
+      if(!document.querySelector('link[data-kesar-reservation-modal]')){
+        const reservationModalStyle=document.createElement("link");
+        reservationModalStyle.rel="stylesheet";
+        reservationModalStyle.href="/reservation-modal.css?v=reservation-modal-1";
+        reservationModalStyle.dataset.kesarReservationModal="true";
+        document.head.append(reservationModalStyle);
+      }
+      if(!document.querySelector('script[data-kesar-reservation-modal]')){
+        const reservationModal=document.createElement("script");
+        reservationModal.src="/reservation-modal.js?v=reservation-modal-1";
+        reservationModal.async=true;
+        reservationModal.dataset.kesarReservationModal="true";
+        document.body.append(reservationModal);
+      }
     };
     if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});
     else start();
