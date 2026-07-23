@@ -1,1 +1,3 @@
-Retry production deployment for the approved Feast for Every Table implementation.
+Retry production deployment for the approved Hotel KESAR release.
+Includes static SEO metadata, canonical https://hotelkesar.com/, favicon.svg, robots.txt and sitemap.xml.
+Deployment retry requested on 2026-07-24.
