@@ -1,5 +1,24 @@
 /* Mobile-only homepage hero refinement. Desktop remains unchanged. */
 @media (max-width:767px){
+  /* Keep one clean line below KESAR. The later-loaded mobile stylesheet used
+     to reveal the original Mandi House Dining text as a second line. */
+  html body .site-header .brand span{
+    display:block!important;
+    margin-top:5px!important;
+    font-size:0!important;
+    line-height:1!important;
+    letter-spacing:0!important;
+  }
+
+  html body .site-header .brand span::after{
+    content:"FAMILY DINING RESTAURANT"!important;
+    display:block!important;
+    font:600 7px/1 Arial,Helvetica,sans-serif!important;
+    letter-spacing:.16em!important;
+    white-space:nowrap!important;
+    opacity:.8!important;
+  }
+
   html body #home.hero,
   html body #home .hero-inner{
     min-height:100svh!important;
@@ -11,29 +30,35 @@
   }
 
   html body #home .hero-media,
+  html body #home .hero-media img,
   html body #home .hero-fallback,
   html body #home .hero-video{
     width:100%!important;
     height:100%!important;
   }
 
+  html body #home .hero-media img,
   html body #home .hero-fallback,
   html body #home .hero-video{
     object-fit:cover!important;
-    object-position:64% center!important;
+    object-position:61% center!important;
   }
 
+  /* Always provide desktop-like motion, even when a mobile browser blocks
+     video autoplay. When video succeeds it fades over this moving poster. */
+  html body #home .hero-media img,
   html body #home .hero-fallback{
-    transform:scale(1.025);
-    animation:mobileHeroPoster 18s ease-in-out infinite alternate!important;
+    transform:scale(1.045);
+    animation:mobileHeroPoster 12s cubic-bezier(.45,.05,.35,.95) infinite alternate!important;
     transition:opacity .7s ease!important;
+    will-change:transform;
   }
 
   html body #home .hero-video{
     display:block!important;
     opacity:0;
-    transform:scale(1.015);
-    filter:saturate(1.04) contrast(1.04) brightness(.88)!important;
+    transform:scale(1.02);
+    filter:saturate(1.05) contrast(1.04) brightness(.96)!important;
     transition:opacity .75s ease!important;
   }
 
@@ -41,8 +66,9 @@
     opacity:1!important;
   }
 
-  html body #home.mobile-video-ready .hero-fallback{
-    opacity:.18!important;
+  html body #home.mobile-video-ready .hero-fallback,
+  html body #home.mobile-video-ready .hero-media>img{
+    opacity:.12!important;
   }
 
   html body #home .hero-shade{
@@ -53,11 +79,11 @@
 
   html body #home .hero-glow{
     opacity:.68;
-    animation-duration:10s!important;
+    animation-duration:8s!important;
   }
 
   html body #home .smoke{
-    opacity:.7;
+    opacity:.76;
   }
 
   html body #home .smoke span{
@@ -66,7 +92,7 @@
     width:138px!important;
     height:230px!important;
     filter:blur(24px)!important;
-    animation-duration:14s!important;
+    animation-duration:12s!important;
   }
 
   html body #home .smoke span:nth-child(2){
@@ -183,6 +209,11 @@
     padding-top:calc(64px + env(safe-area-inset-top) + 48px)!important;
   }
 
+  html body .site-header .brand span::after{
+    font-size:6px!important;
+    letter-spacing:.14em!important;
+  }
+
   html body #home .hero h1,
   html body #home h1{
     font-size:clamp(57px,18.5vw,76px)!important;
@@ -203,6 +234,7 @@
 
 @media (max-width:767px) and (prefers-reduced-motion:reduce){
   html body #home .hero-video{display:none!important}
+  html body #home .hero-media img,
   html body #home .hero-fallback{animation:none!important;transform:none!important}
   html body #home h1 span,
   html body #home .hero-side{opacity:1!important;transform:none!important;animation:none!important}
@@ -213,6 +245,7 @@
 }
 
 @keyframes mobileHeroPoster{
-  from{transform:scale(1.025) translate3d(0,0,0)}
-  to{transform:scale(1.075) translate3d(-1.2%,-.4%,0)}
+  0%{transform:scale(1.045) translate3d(0,0,0)}
+  45%{transform:scale(1.085) translate3d(-1.2%,-.35%,0)}
+  100%{transform:scale(1.12) translate3d(-2.1%,-.8%,0)}
 }
