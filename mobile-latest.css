@@ -1,0 +1,164 @@
+/* Latest KESAR mobile overrides: intentionally loaded after mobile-final.css. */
+@media (max-width:767px){
+  /* Transparent homepage header, matching desktop */
+  .site-header{
+    background:transparent!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    box-shadow:none!important;
+    border-bottom:0!important;
+  }
+  .site-header::before,.site-header::after{display:none!important}
+
+  /* Plain opening-hours text, no card/background */
+  .hero-status{
+    position:absolute!important;
+    top:72px!important;
+    left:14px!important;
+    right:14px!important;
+    width:auto!important;
+    max-width:none!important;
+    margin:0!important;
+    padding:0!important;
+    border:0!important;
+    border-radius:0!important;
+    background:transparent!important;
+    box-shadow:none!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    justify-content:center!important;
+    text-align:center!important;
+    gap:6px!important;
+    font-size:7.5px!important;
+    line-height:1.35!important;
+    letter-spacing:.09em!important;
+    text-shadow:0 1px 10px rgba(0,0,0,.55)!important;
+  }
+
+  /* Why KESAR: premium compact single-screen composition */
+  #why-kesar-page{min-height:0!important;padding:0!important;overflow:hidden!important}
+  #why-kesar-page .why-kesar-page__shell{
+    display:grid!important;
+    grid-template-columns:56% 44%!important;
+    min-height:440px!important;
+    height:auto!important;
+    align-items:stretch!important;
+    background:linear-gradient(135deg,#f7f0e4,#efe3d2)!important;
+  }
+  #why-kesar-page .why-kesar-page__copy{
+    grid-column:1!important;
+    grid-row:1!important;
+    justify-content:center!important;
+    padding:22px 12px 20px!important;
+  }
+  #why-kesar-page .why-kesar-page__media{
+    grid-column:2!important;
+    grid-row:1!important;
+    min-height:440px!important;
+    height:100%!important;
+    margin:0!important;
+    border-radius:0!important;
+    clip-path:none!important;
+    overflow:hidden!important;
+  }
+  #why-kesar-page .why-kesar-page__media img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center!important;
+    transform:none!important;
+  }
+  #why-kesar-page .why-kesar-page__eyebrow{font-size:7px!important;letter-spacing:.17em!important}
+  #why-kesar-page .why-kesar-page__copy h2,
+  #why-kesar-page .why-kesar-page__title{
+    font-size:clamp(29px,8.4vw,40px)!important;
+    line-height:.94!important;
+    margin:8px 0 10px!important;
+  }
+  #why-kesar-page .why-kesar-page__copy p{font-size:10.5px!important;line-height:1.42!important;margin:0 0 8px!important}
+  #why-kesar-page .why-kesar-page__points,
+  #why-kesar-page .why-kesar-page__features{gap:5px!important;margin:8px 0!important}
+  #why-kesar-page .why-kesar-page__points li,
+  #why-kesar-page .why-kesar-page__features li{font-size:9px!important;line-height:1.3!important}
+  #why-kesar-page .why-kesar-page__hours{padding:8px!important;margin-top:8px!important;font-size:8px!important;border-radius:8px!important}
+
+  /* Smaller premium footer */
+  footer.footer-luxury-ready{padding:0 0 calc(8px + env(safe-area-inset-bottom))!important}
+  .footer-luxury-main{grid-template-columns:1fr 1fr!important;gap:0!important}
+  .footer-luxury-brand{grid-column:1/3!important;padding:12px 0 8px!important;text-align:center!important;font-size:22px!important;line-height:1!important}
+  .footer-luxury-item{min-height:38px!important;padding:6px 5px!important;font-size:8px!important}
+  .footer-luxury-icon{width:18px!important;height:18px!important}
+  .footer-luxury-copy{gap:1px!important}
+  .footer-luxury-label{font-size:6px!important;letter-spacing:.12em!important}
+  .footer-luxury-value,.footer-luxury-copy strong{font-size:8px!important;line-height:1.25!important}
+  .footer-luxury-bottom{padding-top:8px!important;gap:6px!important;font-size:6px!important;line-height:1.3!important}
+
+  /* Premium reservation popup animation and tighter visual polish */
+  .reservation-dialog[open],
+  .reservation-dialog.is-open,
+  .reservation-dialog[data-open="true"]{
+    animation:kesarBackdropIn .34s ease both!important;
+  }
+  .reservation-dialog__panel{
+    transform-origin:50% 86%!important;
+    animation:kesarReservationPanelIn .62s cubic-bezier(.16,.84,.2,1) both!important;
+    box-shadow:0 24px 70px rgba(0,0,0,.48)!important;
+    border:1px solid rgba(182,117,50,.34)!important;
+    overflow:hidden!important;
+  }
+  .reservation-dialog__intro{
+    background:linear-gradient(110deg,rgba(32,21,14,.98),rgba(18,13,10,.98))!important;
+  }
+  .reservation-dialog__intro-content{
+    animation:kesarReservationContentIn .55s ease .12s both!important;
+  }
+  .reservation-dialog__form-host{
+    animation:kesarReservationContentIn .58s ease .18s both!important;
+    background:linear-gradient(180deg,#fffaf2 0%,#f8efe2 100%)!important;
+  }
+  .reservation-dialog .field input,
+  .reservation-dialog .field select,
+  .reservation-dialog .field textarea{
+    border-radius:8px!important;
+    transition:border-color .22s ease,box-shadow .22s ease,background .22s ease!important;
+  }
+  .reservation-dialog .field input:focus,
+  .reservation-dialog .field select:focus,
+  .reservation-dialog .field textarea:focus{
+    border-color:#b87532!important;
+    box-shadow:0 0 0 3px rgba(184,117,50,.12)!important;
+    background:#fff!important;
+  }
+  .reservation-action{
+    transition:transform .22s ease,box-shadow .22s ease,background .22s ease!important;
+  }
+  .reservation-action:active{transform:scale(.975)!important}
+  .reservation-dialog__close{
+    transition:transform .24s ease,background .24s ease!important;
+  }
+  .reservation-dialog__close:active{transform:rotate(8deg) scale(.94)!important}
+}
+
+@media (max-width:390px){
+  #why-kesar-page .why-kesar-page__shell{grid-template-columns:1fr!important;min-height:0!important}
+  #why-kesar-page .why-kesar-page__media{grid-column:1!important;grid-row:1!important;min-height:180px!important;height:180px!important}
+  #why-kesar-page .why-kesar-page__copy{grid-column:1!important;grid-row:2!important;padding:17px 12px!important}
+}
+
+@keyframes kesarBackdropIn{from{opacity:0}to{opacity:1}}
+@keyframes kesarReservationPanelIn{
+  from{opacity:0;transform:translateY(34px) scale(.965);filter:blur(7px)}
+  62%{opacity:1;filter:blur(0)}
+  to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+@keyframes kesarReservationContentIn{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .reservation-dialog[open],.reservation-dialog.is-open,.reservation-dialog[data-open="true"],
+  .reservation-dialog__panel,.reservation-dialog__intro-content,.reservation-dialog__form-host{
+    animation:none!important;
+  }
+}
