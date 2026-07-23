@@ -1,3 +1,5 @@
+@import url("/feast-reference.css?v=feast-third-reference-20260723-1");
+
 /* KESAR Order Online transition and image-frame sizing. */
 html body main#main #signature-dishes.signature-section {
   padding-bottom: clamp(54px, 4.5vw, 76px) !important;
