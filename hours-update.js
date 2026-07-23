@@ -71,6 +71,11 @@
     }
 
     style.textContent = `
+      html body #order-online.delivery-section {
+        margin-top: 0 !important;
+        padding-top: clamp(24px, 2vw, 36px) !important;
+      }
+
       html body #bulk-orders {
         margin-bottom: 0 !important;
       }
@@ -142,7 +147,17 @@
         z-index: 2 !important;
       }
 
+      @media (max-width: 1000px) {
+        html body #order-online.delivery-section {
+          padding-top: 32px !important;
+        }
+      }
+
       @media (max-width: 767px) {
+        html body #order-online.delivery-section {
+          padding-top: 26px !important;
+        }
+
         html body #why-kesar-page {
           margin-top: -1px !important;
           margin-block-start: -1px !important;
