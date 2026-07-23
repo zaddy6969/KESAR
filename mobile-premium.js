@@ -180,43 +180,48 @@
       setHeroVisibility(scrollY<hero.offsetHeight*.8);
     }
 
-    const reducedMotion=matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const saveData=Boolean(navigator.connection?.saveData);
-    if(reducedMotion||saveData)return;
+    if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;
 
     let video=media.querySelector(".hero-video");
     if(!video){
       video=document.createElement("video");
       video.className="hero-video";
-      video.muted=true;
-      video.defaultMuted=true;
-      video.loop=true;
-      video.autoplay=true;
-      video.playsInline=true;
-      video.preload="auto";
-      video.disablePictureInPicture=true;
       video.poster=poster.currentSrc||poster.src;
       video.src="/assets/videos/heropage-mandi.mp4";
-      video.setAttribute("muted","");
-      video.setAttribute("playsinline","");
-      video.setAttribute("webkit-playsinline","");
-      video.setAttribute("aria-hidden","true");
       poster.after(video);
     }
+
+    video.muted=true;
+    video.defaultMuted=true;
+    video.loop=true;
+    video.autoplay=true;
+    video.playsInline=true;
+    video.preload="auto";
+    video.disablePictureInPicture=true;
+    video.controls=false;
+    video.setAttribute("muted","");
+    video.setAttribute("autoplay","");
+    video.setAttribute("loop","");
+    video.setAttribute("playsinline","");
+    video.setAttribute("webkit-playsinline","");
+    video.setAttribute("aria-hidden","true");
 
     const markReady=()=>{
       video.classList.add("is-ready");
       hero.classList.add("mobile-video-ready");
     };
+    if(video.readyState>=2)markReady();
     video.addEventListener("loadeddata",markReady,{once:true});
     video.addEventListener("canplay",markReady,{once:true});
+    video.addEventListener("playing",markReady,{once:true});
     video.addEventListener("error",()=>{
       hero.classList.remove("mobile-video-ready");
       video.remove();
     },{once:true});
 
-    const play=()=>video.play().catch(()=>{});
+    const play=()=>video.play().then(markReady).catch(()=>{});
     play();
+    window.addEventListener("pageshow",play,{passive:true});
     document.addEventListener("visibilitychange",()=>{
       if(document.hidden)video.pause();
       else play();
