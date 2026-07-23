@@ -3,8 +3,10 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/reservation-modal.css", "destination": "/reservation-modal-live.css" },
     { "source": "/refresh-reservation", "destination": "/" },
     { "source": "/reservation-reference", "destination": "/" },
+    { "source": "/reservation-actions", "destination": "/" },
     { "source": "/assets/story-page-mandi.png", "destination": "/assets/images/story-page-mandi.png" },
     { "source": "/assets/story-page-spices.png", "destination": "/assets/images/story-page-spices.png" }
   ],
@@ -31,6 +33,13 @@
       ]
     },
     {
+      "source": "/reservation-actions",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store, max-age=0" },
+        { "key": "Clear-Site-Data", "value": "\"cache\"" }
+      ]
+    },
+    {
       "source": "/(.*).css",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }]
     },
@@ -44,6 +53,10 @@
     },
     {
       "source": "/reservation-modal.css",
+      "headers": [{ "key": "Cache-Control", "value": "no-store, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "/reservation-modal-live.css",
       "headers": [{ "key": "Cache-Control", "value": "no-store, max-age=0, must-revalidate" }]
     },
     {
