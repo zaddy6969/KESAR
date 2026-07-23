@@ -23,28 +23,28 @@
       if(smallScreen&&!document.querySelector('link[data-kesar-mobile-premium]')){
         const link=document.createElement("link");
         link.rel="stylesheet";
-        link.href="/mobile-premium.css?v=mobile-premium-1";
+        link.href="/mobile-premium.css?v=mobile-interactions-1";
         link.media="(max-width: 767px)";
         link.dataset.kesarMobilePremium="true";
         document.head.append(link);
       }
       if(!document.querySelector('script[data-kesar-premium-enhancements]')){
         const enhancement=document.createElement("script");
-        enhancement.src="/mobile-premium.js?v=bulk-curve-out-2";
+        enhancement.src="/mobile-premium.js?v=mobile-interactions-1";
         enhancement.async=true;
         enhancement.dataset.kesarPremiumEnhancements="true";
         document.body.append(enhancement);
       }
       if(!document.querySelector('script[data-kesar-hours-update]')){
         const hoursUpdate=document.createElement("script");
-        hoursUpdate.src="/hours-update.js?v=why-kesar-fullbleed-black-2";
+        hoursUpdate.src="/hours-update.js?v=mobile-interactions-1";
         hoursUpdate.async=true;
         hoursUpdate.dataset.kesarHoursUpdate="true";
         document.body.append(hoursUpdate);
       }
       if(!document.querySelector('script[data-kesar-bulk-curve-fix]')){
         const bulkCurveFix=document.createElement("script");
-        bulkCurveFix.src="/bulk-orders-curve-fix.js?v=curve-left-smooth-1";
+        bulkCurveFix.src="/bulk-orders-curve-fix.js?v=mobile-interactions-1";
         bulkCurveFix.async=true;
         bulkCurveFix.dataset.kesarBulkCurveFix="true";
         document.body.append(bulkCurveFix);
@@ -62,6 +62,21 @@
         reservationModal.async=true;
         reservationModal.dataset.kesarReservationModal="true";
         document.body.append(reservationModal);
+      }
+      if(!document.querySelector('link[data-kesar-mobile-interactions]')){
+        const mobileInteractionStyle=document.createElement("link");
+        mobileInteractionStyle.rel="stylesheet";
+        mobileInteractionStyle.href="/mobile-interactions.css?v=mobile-interactions-1";
+        mobileInteractionStyle.media="(max-width: 1000px)";
+        mobileInteractionStyle.dataset.kesarMobileInteractions="true";
+        document.head.append(mobileInteractionStyle);
+      }
+      if(!document.querySelector('script[data-kesar-mobile-interactions]')){
+        const mobileInteractions=document.createElement("script");
+        mobileInteractions.src="/mobile-interactions.js?v=mobile-interactions-1";
+        mobileInteractions.async=true;
+        mobileInteractions.dataset.kesarMobileInteractions="true";
+        document.body.append(mobileInteractions);
       }
     };
     if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start,{once:true});
