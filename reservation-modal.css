@@ -143,6 +143,34 @@
 .reservation-action--email .reservation-action__icon{color:#8e531e!important;border:1px solid rgba(167,101,36,.28)!important}
 .reservation-action--email small{color:#776b60!important}
 
+/* Restored premium opening motion. This only affects animation, not layout. */
+.reservation-dialog[open]{animation:kesarReservationBackdropIn .28s ease both}
+.reservation-dialog__panel{
+  transform:translateY(24px) scale(.975)!important;
+  opacity:0!important;
+  transition:transform .42s cubic-bezier(.2,.75,.2,1),opacity .3s ease!important;
+  will-change:transform,opacity;
+}
+.reservation-dialog.is-open .reservation-dialog__panel{
+  transform:translateY(0) scale(1)!important;
+  opacity:1!important;
+}
+.reservation-dialog__intro-content,
+.reservation-dialog__form-host{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .32s ease .08s,transform .4s cubic-bezier(.2,.75,.2,1) .08s;
+}
+.reservation-dialog.is-open .reservation-dialog__intro-content,
+.reservation-dialog.is-open .reservation-dialog__form-host{
+  opacity:1;
+  transform:none;
+}
+@keyframes kesarReservationBackdropIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
 @media(max-width:1000px) and (min-width:701px){
   .reservation-dialog__panel{height:min(790px,calc(100dvh - 16px))!important;max-height:calc(100dvh - 16px)!important}
   .reservation-dialog__form-host{padding:24px 24px 14px!important}
@@ -171,4 +199,10 @@
   .reservation-action{min-height:44px!important}
 }
 
-@media(prefers-reduced-motion:reduce){.reservation-action{transition:none!important}}
+@media(prefers-reduced-motion:reduce){
+  .reservation-action{transition:none!important}
+  .reservation-dialog[open]{animation:none!important}
+  .reservation-dialog__panel,
+  .reservation-dialog__intro-content,
+  .reservation-dialog__form-host{transition:none!important;transform:none!important;opacity:1!important}
+}
