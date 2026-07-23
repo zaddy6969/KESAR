@@ -29,7 +29,6 @@
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
   let dialog = null;
-  let panel = null;
   let form = null;
   let lastReservationTrigger = null;
   let selectedFeast = null;
@@ -49,13 +48,6 @@
     mandi: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 24h22M8 24v-8h16v8M11 16a5 5 0 0 1 10 0M16 8V5M9 12l-2-2M23 12l2-2"/></svg>',
     dining: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 5v10M5 5v6c0 2 1 4 3 4s3-2 3-4V5M8 15v12M23 5c-4 2-5 7-3 12h3v10M23 5v12"/></svg>'
   };
-
-  function forceFreshStyles() {
-    const link = document.querySelector('link[data-kesar-reservation-modal]');
-    if (link && !link.href.includes("reservation-reference-1")) {
-      link.href = "/reservation-modal.css?v=reservation-reference-1";
-    }
-  }
 
   function bengaluruDateString(date = new Date()) {
     const parts = Object.fromEntries(
@@ -493,7 +485,7 @@
     const menuToggle = $("#menuToggle");
     if (mobileMenu?.classList.contains("open")) {
       mobileMenu.classList.remove("open");
-      mobileMenu.setAttribute("aria-hidden", "true");
+      mobileMenu.setAttribute("inert", "");
       menuToggle?.setAttribute("aria-expanded", "false");
       if (menuToggle) menuToggle.textContent = "Menu";
       document.body.classList.remove("menu-open");
@@ -605,7 +597,6 @@
       </div>`;
 
     document.body.append(dialog);
-    panel = $(".reservation-dialog__panel", dialog);
     $(".reservation-dialog__form-host", dialog).append(form);
 
     source.classList.add("reservation-modal-source");
@@ -654,7 +645,6 @@
   }
 
   function initialize(attempt = 0) {
-    forceFreshStyles();
     if (mounted) return;
     if (buildDialog()) return;
     if (attempt < 100) setTimeout(() => initialize(attempt + 1), 40);

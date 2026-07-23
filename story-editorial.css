@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/gh/zaddy6969/KESAR@fd2f69a04bd210f5e3116ad70665fafd9d2a5748/story-editorial.css");
+@import url("/story-editorial-base.css");
 
 /* Premium curved edges for the main Story mandi image while retaining its diagonal cut. */
 .story-editorial__media--main{

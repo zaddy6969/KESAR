@@ -10,6 +10,50 @@ body.loader-hold.loaded .loader,body.loader-release.loaded .loader{opacity:1!imp
 @media(max-width:700px){.hero-fallback,.hero-video{object-position:68% center}.dish-track{grid-auto-columns:minmax(252px,82%)}}@media(prefers-reduced-motion:reduce){.hero-video{display:none}.hero-glow{animation:none!important}}
 /* KESAR brand update: HOTEL above the name and family dining tagline below. */
 .brand strong::before,.footer-grid>div:first-child>h2::before{content:"HOTEL";display:block;margin:0 0 4px;padding-left:.3em;font:600 6px/1 Arial,Helvetica,sans-serif;letter-spacing:.3em;opacity:.78}.brand span{font-size:0!important;margin-top:6px}.brand span::after{content:"FAMILY DINING RESTURANT";display:block;font:600 8px/1 Arial,Helvetica,sans-serif;letter-spacing:.16em;white-space:nowrap;opacity:.78}.loader-inner{display:flex;flex-direction:column;align-items:center}.loader-inner strong{order:2}.loader-inner strong::before{content:"HOTEL";display:block;margin:0 0 10px;padding-left:.32em;font:600 10px/1 Arial,Helvetica,sans-serif;letter-spacing:.32em;opacity:.8}.loader-inner span{order:3;font-size:0!important;margin:2px 0 14px}.loader-inner span::after{content:"FAMILY DINING RESTURANT";display:block;font:600 9px/1 Arial,Helvetica,sans-serif;letter-spacing:.24em;white-space:nowrap;opacity:.8}.loader-inner i{order:4}.footer-grid>div:first-child>span,.footer-bottom>span:last-child,.mobile-menu>p{font-size:0!important}.footer-grid>div:first-child>span::after,.footer-bottom>span:last-child::after{content:"FAMILY DINING RESTURANT";font-size:10px;letter-spacing:.15em}.mobile-menu>p::after{content:"Bengaluru · Family Dining Resturant";font-size:10px;letter-spacing:.15em;text-transform:uppercase}@media(max-width:700px){.brand strong::before{font-size:5px;margin-bottom:3px}.brand span::after{font-size:6px;letter-spacing:.12em}.loader-inner span::after{font-size:7px;letter-spacing:.18em}}
+
+/* Static replacements for the former runtime layout patches. */
+.bulk-orders-section__contacts,.bulk-orders-section__delivery{display:none!important}
+.bulk-orders-section__actions{margin-top:24px!important}
+#signature-dishes .dish-track{
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  overscroll-behavior-inline:contain!important;
+  scroll-snap-type:x proximity!important;
+  cursor:grab!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
+  touch-action:pan-x pan-y pinch-zoom!important;
+  -webkit-overflow-scrolling:touch!important;
+  scrollbar-width:thin!important;
+  scrollbar-color:rgba(135,69,18,.72) rgba(23,19,15,.10)!important;
+  padding-bottom:18px!important;
+}
+#signature-dishes .dish-track::-webkit-scrollbar{display:block!important;height:9px!important}
+#signature-dishes .dish-track::-webkit-scrollbar-track{background:rgba(23,19,15,.10)!important;border-radius:999px!important}
+#signature-dishes .dish-track::-webkit-scrollbar-thumb{background:rgba(135,69,18,.72)!important;border-radius:999px!important}
+#signature-dishes .dish-track.is-dragging{cursor:grabbing!important;scroll-snap-type:none!important}
+#signature-dishes .dish-card,#signature-dishes .dish-card img{user-select:none!important;-webkit-user-select:none!important;-webkit-user-drag:none!important}
+@media(min-width:901px){
+  .bulk-orders-section::before{inset:0 0 0 48.8%!important}
+  .bulk-orders-section::after{left:48.8%!important;right:0!important}
+  .bulk-orders-section__layout{grid-template-columns:48.8% 51.2%!important}
+  .bulk-orders-section__media{grid-column:1!important;grid-row:1!important;clip-path:none!important;filter:none!important;overflow:hidden!important}
+  .bulk-orders-section__content{grid-column:2!important;grid-row:1!important}
+  .bulk-orders-section__media::before{
+    display:block!important;
+    left:auto!important;
+    right:-225px!important;
+    top:-9%!important;
+    width:430px!important;
+    height:118%!important;
+    border-radius:50%!important;
+    background:var(--paper,#fbf5e9)!important;
+    box-shadow:-23px 0 0 -20px var(--gold,#b78743),-38px 0 70px rgba(40,25,13,.10)!important;
+  }
+}
+@media(min-width:901px) and (max-width:1180px){
+  .bulk-orders-section__media::before{right:-185px!important;width:355px!important}
+}
 /* Give Bulk Orders and Why KESAR a deliberate editorial transition. */
 body #why-kesar-page.why-kesar-page{margin-top:clamp(72px,6vw,118px)}
 #why-kesar-page .why-kesar-page__media::after{background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.68) 24%,rgba(0,0,0,.34) 52%,rgba(0,0,0,.1) 73%,transparent 90%),linear-gradient(0deg,rgba(0,0,0,.64) 0%,rgba(0,0,0,.18) 42%,transparent 68%)}
