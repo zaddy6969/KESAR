@@ -8,6 +8,8 @@
   <title>KESAR — Mandi House Dining</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="delivery.css">
+  <link rel="stylesheet" href="mobile-final.css?v=20260723-final-3" media="(max-width: 767px)">
+  <link rel="stylesheet" href="mobile-live-final.css?v=20260723-live-2" media="(max-width: 767px)">
 </head>
 <body class="is-loading">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -257,180 +259,31 @@
         <div class="dish-panel" id="nonvegPanel" data-dish-panel="nonveg">
           <div class="dish-controls">
             <p>House favourites</p>
-            <div>
-              <button id="dishPrev" type="button" aria-label="Previous dishes">←</button>
-              <button id="dishNext" type="button" aria-label="Next dishes">→</button>
-            </div>
+            <div></div>
           </div>
-
-          <div class="dish-track" id="dishTrack" tabindex="0" aria-label="Signature dishes">
-            <article class="dish-card reveal" data-title="Chicken Mandi" data-category="Mandi · Signature" data-copy="Fragrant mandi rice served with tender, slow-roasted chicken." data-pairing="Best enjoyed with house sauces and fresh salad.">
-              <img src="/assets/images/mandicombo-5-6ppl.png" alt="Chicken mandi">
-              <div><span>Mandi · Signature</span><h3>Chicken Mandi</h3><p>Fragrant mandi rice served with tender, slow-roasted chicken.</p><button type="button" data-details>View details ↗</button></div>
-            </article>
-
-            <article class="dish-card reveal" data-title="Al Faham Chicken" data-category="Charcoal · Grill" data-copy="Charcoal-grilled chicken marinated with aromatic Arabian-inspired spices." data-pairing="Pair with mandi rice and cooling raita.">
-              <img src="/assets/images/menupage-al faham.png" alt="Al Faham chicken">
-              <div><span>Charcoal · Grill</span><h3>Al Faham Chicken</h3><p>Charcoal-grilled chicken with aromatic spices.</p><button type="button" data-details>View details ↗</button></div>
-            </article>
-
-            <article class="dish-card reveal" data-title="Hot Biryani" data-category="Rice · Classic" data-copy="Aromatic long-grain basmati layered with spice and tender meat." data-pairing="Complete the plate with raita and salad.">
-              <img src="/assets/images/menupage-biryani.png" alt="Hot biryani">
-              <div><span>Rice · Classic</span><h3>Hot Biryani</h3><p>Aromatic basmati layered with spice and tender meat.</p><button type="button" data-details>View details ↗</button></div>
-            </article>
-
-            <article class="dish-card reveal" data-title="Royal Mandi Platter" data-category="Mandi · Sharing" data-copy="A generous platter of rice and slow-roasted meat for the whole table." data-pairing="Made for shared dining and larger gatherings.">
-              <img src="/assets/story-page-mandi.png" alt="Royal mandi platter">
-              <div><span>Mandi · Sharing</span><h3>Royal Mandi Platter</h3><p>A generous platter prepared for the whole table.</p><button type="button" data-details>View details ↗</button></div>
-            </article>
-          </div>
+          <div class="dish-track" id="nonvegTrack"></div>
         </div>
 
-        <div class="dish-panel veg-empty" id="vegPanel" data-dish-panel="veg" hidden>
-          <span aria-hidden="true">V</span>
-          <div>
-            <small>Vegetarian collection</small>
-            <h3>Vegetarian menu coming soon.</h3>
-            <p>
-              This section remains intentionally empty until KESAR provides
-              verified vegetarian dishes, descriptions and prices.
-            </p>
+        <div class="dish-panel" id="vegPanel" data-dish-panel="veg" hidden>
+          <div class="dish-controls">
+            <p>Vegetarian favourites</p>
+            <div></div>
           </div>
+          <div class="dish-track" id="vegTrack"></div>
         </div>
       </div>
     </section>
 
-    <section
-      id="order-online"
-      class="delivery-section"
-      aria-labelledby="deliverySectionTitle"
-    >
-      <div class="shell delivery-section__layout">
-        <div class="delivery-section__copy">
-          <span class="delivery-section__eyebrow reveal delivery-reveal delivery-reveal--label">Order Online</span>
-
-          <h2 id="deliverySectionTitle" class="delivery-section__title" aria-label="Kesar, delivered to your table.">
-            <span class="reveal delivery-reveal delivery-reveal--title">Kesar, <em>delivered</em></span>
-            <span class="reveal delivery-reveal delivery-reveal--title">to your table.</span>
-          </h2>
-
-          <span class="delivery-section__rule reveal" aria-hidden="true"></span>
-
-          <div class="delivery-section__body reveal delivery-reveal delivery-reveal--copy">
-            <p>
-              From our signature mandi combinations to generous family feasts,
-              enjoy Kesar’s flavours in the comfort of your home.
-            </p>
-            <p>
-              Made fresh, packed with care and available through our trusted
-              delivery partners.
-            </p>
-          </div>
-
-          <div class="delivery-section__platforms">
-            <span class="delivery-section__preference reveal delivery-reveal delivery-reveal--copy">Prefer delivery?</span>
-
-            <div class="delivery-actions">
-              <a
-                class="delivery-platform delivery-platform--swiggy reveal delivery-reveal delivery-reveal--action"
-                href="https://www.swiggy.com/city/bangalore/hotel-kesar-fine-dine-basaveshwaranagar-rest1288354"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-delivery-platform="swiggy"
-                data-delivery-branch="Basaveshwaranagar"
-                aria-label="Order Kesar on Swiggy, opens in a new tab"
-              >
-                <span class="delivery-platform__label">
-                  <small>Order on</small>
-                  <strong>Swiggy</strong>
-                </span>
-                <span class="delivery-platform__arrow" aria-hidden="true">↗</span>
-              </a>
-
-              <a
-                class="delivery-platform delivery-platform--zomato reveal delivery-reveal delivery-reveal--action"
-                href="https://www.zomato.com/bangalore/hotel-kesar-family-dine-veg-and-non-veg-peenya-bangalore"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-delivery-platform="zomato"
-                data-delivery-branch="Peenya"
-                aria-label="Order Kesar on Zomato, opens in a new tab"
-              >
-                <span class="delivery-platform__label">
-                  <small>Order on</small>
-                  <strong>Zomato</strong>
-                </span>
-                <span class="delivery-platform__arrow" aria-hidden="true">↗</span>
-              </a>
-            </div>
-          </div>
-
-          <p class="delivery-section__disclaimer reveal delivery-reveal delivery-reveal--copy">
-            Availability, prices, menu items and delivery times may vary by
-            platform and location.
-          </p>
+    <section class="order-section section dark-section" id="order-online">
+      <div class="shell order-grid">
+        <div>
+          <span class="kicker light reveal">Order online</span>
+          <h2 class="display light reveal">The Kesar table, <em>wherever you are.</em></h2>
+          <p class="lede reveal">Enjoy our mandi, grills and biryani from home.</p>
         </div>
-
-        <figure class="delivery-section__media reveal delivery-reveal delivery-reveal--media">
-          <picture>
-            <img
-              src="/assets/images/mandicombo-5-6ppl.png"
-              width="1600"
-              height="1100"
-              loading="lazy"
-              decoding="async"
-              alt="A freshly prepared Kesar mandi platter available for online ordering"
-            >
-          </picture>
-        </figure>
-      </div>
-
-      <div class="delivery-benefits" aria-label="Online ordering benefits">
-        <div class="shell delivery-benefits__grid">
-          <article class="delivery-benefit reveal delivery-reveal delivery-reveal--benefit">
-            <svg viewBox="0 0 48 48" aria-hidden="true">
-              <path d="M38 10C23 10 12 18 10 36c7-7 15-12 24-15"></path>
-              <path d="M10 36c4 1 8 0 11-3 5-5 5-13 17-23"></path>
-            </svg>
-            <div>
-              <strong>Freshly Prepared</strong>
-              <span>Made to order</span>
-            </div>
-          </article>
-
-          <article class="delivery-benefit reveal delivery-reveal delivery-reveal--benefit">
-            <svg viewBox="0 0 48 48" aria-hidden="true">
-              <path d="M9 16h30v24H9z"></path>
-              <path d="M9 16l6-8h18l6 8M16 24h16"></path>
-            </svg>
-            <div>
-              <strong>Carefully Packed</strong>
-              <span>Prepared for takeaway</span>
-            </div>
-          </article>
-
-          <article class="delivery-benefit reveal delivery-reveal delivery-reveal--benefit">
-            <svg viewBox="0 0 48 48" aria-hidden="true">
-              <path d="M11 16h21l5 8v12H11z"></path>
-              <path d="M32 24h5M17 36a4 4 0 1 0 0 .1M33 36a4 4 0 1 0 0 .1"></path>
-            </svg>
-            <div>
-              <strong>Delivery Partners</strong>
-              <span>Order through Swiggy or Zomato</span>
-            </div>
-          </article>
-
-          <article class="delivery-benefit reveal delivery-reveal delivery-reveal--benefit">
-            <svg viewBox="0 0 48 48" aria-hidden="true">
-              <path d="M8 36h32M13 36V22h22v14M18 22v-6h12v6"></path>
-              <circle cx="18" cy="12" r="3"></circle>
-              <circle cx="30" cy="12" r="3"></circle>
-            </svg>
-            <div>
-              <strong>Family Feasts</strong>
-              <span>Generous combinations for sharing</span>
-            </div>
-          </article>
+        <div class="order-actions reveal">
+          <a href="#" aria-label="Order on Swiggy">Swiggy</a>
+          <a href="#" aria-label="Order on Zomato">Zomato</a>
         </div>
       </div>
     </section>
@@ -439,78 +292,40 @@
       <div class="shell">
         <header class="chapter-head light-head">
           <div>
-            <span class="kicker reveal">Why visit Kesar?</span>
-            <h2 class="display reveal">Made for <em>generous tables.</em></h2>
+            <span class="kicker reveal">Why Kesar</span>
+            <h2 class="display reveal">Generous dining, <em>thoughtfully made.</em></h2>
           </div>
-          <p class="reveal">
-            Familiar warmth, thoughtful service and cooking designed around the
-            pleasure of sharing.
-          </p>
+          <p class="reveal">A warm place for families, friends and shared celebrations.</p>
         </header>
-
-        <div class="benefits">
-          <article class="reveal"><span>01</span><h3>Carefully Selected Ingredients</h3><p>Produce, spices and meats chosen for balanced flavour.</p></article>
-          <article class="reveal"><span>02</span><h3>Arabian-Inspired Slow Roasting</h3><p>Slow roasting, charcoal and fragrant spice shape each plate.</p></article>
-          <article class="reveal"><span>03</span><h3>Generous Mandi Rice</h3><p>Unlimited mandi rice is available with selected dine-in combinations.</p></article>
-          <article class="reveal"><span>04</span><h3>Made for Families</h3><p>Comfortable combinations prepared for gatherings of every size.</p></article>
+        <div class="why-grid">
+          <article><span>01</span><h3>Slow-cooked flavour</h3><p>Meats prepared with patience and warm spices.</p></article>
+          <article><span>02</span><h3>Made for sharing</h3><p>Generous platters for every kind of gathering.</p></article>
+          <article><span>03</span><h3>Warm hospitality</h3><p>Contemporary dining rooted in welcome.</p></article>
         </div>
-
-        <div class="experience-band reveal">
-          <figure><img src="/assets/images/storypage-mandi2.png" alt="Premium Kesar mandi dining atmosphere"></figure>
-          <div>
-            <span class="kicker light">The Kesar experience</span>
-            <h3>An evening designed to unfold slowly.</h3>
-            <p>Warm light, generous food and a room built around shared conversation.</p>
-          </div>
-        </div>
-
-        <aside class="compact-reservation reveal" id="menu-reservation">
-          <div>
-            <span class="kicker">Ready to reserve?</span>
-            <h3>Let us prepare your perfect feast.</h3>
-            <p>
-              Choose your gathering and continue to the reservation details.
-              Online sending remains disabled until a verified contact channel
-              is connected.
-            </p>
-            <a class="primary-button inline-button" href="#reservation">View reservation details →</a>
-          </div>
-          <div class="service-card">
-            <strong>Today’s service</strong>
-            <span id="compactHours">Checking Bengaluru time</span>
-            <span>Selected dine-in combinations include generous mandi rice.</span>
-          </div>
-        </aside>
       </div>
     </section>
 
-    <section class="reservation section" id="reservation">
+    <section class="reservation-section section dark-section" id="reservation">
       <div class="shell">
         <header class="reservation-head">
           <div>
-            <span class="kicker reveal">Reservations</span>
-            <h2 class="display reveal">Join us at Kesar.</h2>
+            <span class="kicker light reveal">Reserve a table</span>
+            <h2 class="display light reveal">Your table is <em>waiting.</em></h2>
           </div>
-          <p class="reveal">
-            The form is shown exactly as it will appear, but no request is sent
-            until a verified phone, WhatsApp, email or booking system is connected.
-          </p>
+          <p class="reveal">Tell us your preferred date, time and party size.</p>
         </header>
 
         <form class="reservation-form reveal" id="reservationForm" novalidate>
-          <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required><span class="error"></span></div>
-          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="10-digit mobile number" required><span class="error"></span></div>
+          <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required><span class="error"></span></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required><span class="error"></span></div>
+          <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email"><span class="error"></span></div>
           <div class="field"><label for="date">Date</label><input id="date" name="date" type="date" required><span class="error"></span></div>
-          <div class="field"><label for="time">Time</label><select id="time" name="time" required disabled><option value="">Choose date first</option></select><span class="error"></span></div>
-          <div class="field half"><label for="guests">Number of guests</label><select id="guests" name="guests" required><option value="">Choose party size</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option><option>7+ guests</option></select><span class="error"></span></div>
-          <div class="field half"><label for="occasion">Occasion</label><select id="occasion" name="occasion"><option>Dining</option><option>Birthday</option><option>Anniversary</option><option>Business dinner</option><option>Private event</option></select><span class="error"></span></div>
-          <div class="field full"><label for="message">Notes</label><textarea id="message" name="message" placeholder="Dietary requirements or special requests"></textarea><span class="error"></span></div>
-
+          <div class="field"><label for="time">Time</label><select id="time" name="time" required><option value="">Choose a time</option></select><span class="error"></span></div>
+          <div class="field"><label for="guests">Guests</label><select id="guests" name="guests" required><option value="">Choose party size</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option><option>7+ guests</option></select><span class="error"></span></div>
+          <div class="field full"><label for="message">Notes</label><textarea id="message" name="message" rows="4" placeholder="Celebration, seating preference or dietary note"></textarea><span class="error"></span></div>
           <div class="submit-row">
-            <p>
-              Online reservations are being prepared. A verified booking channel will be connected before accepting requests. Bengaluru opening times are used throughout the form.
-            </p>
-            <button type="submit" disabled aria-disabled="true">Reservations opening soon</button>
+            <button class="primary-button" type="submit">Request reservation →</button>
+            <p id="formMessage" role="status" aria-live="polite"></p>
           </div>
         </form>
       </div>
