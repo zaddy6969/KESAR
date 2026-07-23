@@ -1,4 +1,5 @@
 @import url("/mobile-final.css?v=mobile-final-20260723-2") screen and (max-width:767px);
+@import url("/mobile-latest.css?v=mobile-latest-20260723-1") screen and (max-width:767px);
 :root{--thank-you-bg:#f7f2e9;--thank-you-surface:#fbf8f2;--thank-you-ink:#17130f;--thank-you-muted:#746a60;--thank-you-gold:#ad6a25;--thank-you-border:rgba(23,19,15,.14)}
 .reservation-dialog__form-host>#reservationForm[hidden]{display:none!important;visibility:hidden!important}
 .reservation-dialog__form-host:has(>.reservation-success:not([hidden])){padding:0!important;overflow-y:auto!important;overflow-x:hidden!important;background:var(--thank-you-bg)!important}
