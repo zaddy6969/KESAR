@@ -2,6 +2,7 @@
   "use strict";
 
   const STYLE_ID="kesarBulkSmoothLeftImage";
+  const DISH_STYLE_ID="kesarDishHorizontalScrollFixV3";
 
   function loadMobileInteractionRepairs(){
     if(!document.querySelector('link[data-kesar-mobile-interactions]')){
@@ -106,109 +107,167 @@
   }
 
   function setupDishHorizontalScrolling(){
-    if(document.documentElement.dataset.kesarDishScrollFix==="true")return;
-    document.documentElement.dataset.kesarDishScrollFix="true";
+    document.documentElement.dataset.kesarDishScrollFix="v3";
+    document.getElementById("kesarDishHorizontalScrollFix")?.remove();
 
-    const style=document.createElement("style");
-    style.id="kesarDishHorizontalScrollFix";
-    style.textContent=`
-      #signature-dishes .dish-track{
-        overflow-x:auto!important;
-        overflow-y:hidden!important;
-        overscroll-behavior-x:contain!important;
-        scroll-behavior:auto!important;
-        cursor:grab!important;
-        user-select:none!important;
-        -webkit-user-select:none!important;
-        -webkit-overflow-scrolling:touch;
-      }
-      #signature-dishes .dish-track.is-dragging{
-        cursor:grabbing!important;
-        scroll-snap-type:none!important;
-      }
-      #signature-dishes .dish-card img{
-        pointer-events:auto!important;
-        user-select:none!important;
-        -webkit-user-select:none!important;
-        -webkit-user-drag:none!important;
-      }
-    `;
-    document.head.append(style);
+    if(!document.getElementById(DISH_STYLE_ID)){
+      const style=document.createElement("style");
+      style.id=DISH_STYLE_ID;
+      style.textContent=`
+        #signature-dishes .dish-track{
+          overflow-x:scroll!important;
+          overflow-y:hidden!important;
+          overscroll-behavior-inline:contain!important;
+          scroll-behavior:auto!important;
+          scroll-snap-type:x proximity!important;
+          cursor:grab!important;
+          user-select:none!important;
+          -webkit-user-select:none!important;
+          touch-action:pan-x pan-y pinch-zoom!important;
+          -webkit-overflow-scrolling:touch!important;
+          scrollbar-width:thin!important;
+          scrollbar-color:rgba(135,69,18,.72) rgba(23,19,15,.10)!important;
+          padding-bottom:18px!important;
+        }
+        #signature-dishes .dish-track::-webkit-scrollbar{
+          display:block!important;
+          width:auto!important;
+          height:9px!important;
+        }
+        #signature-dishes .dish-track::-webkit-scrollbar-track{
+          background:rgba(23,19,15,.10)!important;
+          border-radius:999px!important;
+        }
+        #signature-dishes .dish-track::-webkit-scrollbar-thumb{
+          background:rgba(135,69,18,.72)!important;
+          border-radius:999px!important;
+        }
+        #signature-dishes .dish-track.is-dragging{
+          cursor:grabbing!important;
+          scroll-snap-type:none!important;
+        }
+        #signature-dishes .dish-card,
+        #signature-dishes .dish-card img{
+          user-select:none!important;
+          -webkit-user-select:none!important;
+          -webkit-user-drag:none!important;
+        }
+        #signature-dishes .dish-card img{
+          pointer-events:auto!important;
+          cursor:grab!important;
+        }
+        #signature-dishes .dish-track.is-dragging .dish-card img{
+          cursor:grabbing!important;
+        }
+      `;
+      document.head.append(style);
+    }
 
-    const trackFromEvent=event=>{
-      const path=typeof event.composedPath==="function"?event.composedPath():[];
-      const fromPath=path.find(node=>node instanceof Element&&node.matches?.("#signature-dishes .dish-track"));
-      if(fromPath)return fromPath;
-      return event.target instanceof Element?event.target.closest("#signature-dishes .dish-track"):null;
+    const normalizeWheelDelta=(event,track)=>{
+      let delta=Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY;
+      if(event.deltaMode===1)delta*=28;
+      else if(event.deltaMode===2)delta*=track.clientWidth;
+      return delta;
+    };
+
+    const prepareTrack=track=>{
+      if(!(track instanceof HTMLElement))return;
+      track.querySelectorAll("img").forEach(image=>{
+        image.draggable=false;
+        image.addEventListener("dragstart",event=>event.preventDefault());
+      });
+
+      if(track.dataset.kesarWheelV3!=="true"){
+        track.dataset.kesarWheelV3="true";
+        track.addEventListener("wheel",event=>{
+          const maximum=Math.max(0,track.scrollWidth-track.clientWidth);
+          const delta=normalizeWheelDelta(event,track);
+          if(!delta||maximum<=1)return;
+
+          const current=track.scrollLeft;
+          const wantsForward=delta>0;
+          const canMove=wantsForward?current<maximum-1:current>1;
+
+          event.preventDefault();
+          event.stopImmediatePropagation();
+
+          if(canMove){
+            const next=Math.max(0,Math.min(maximum,current+(delta*1.65)));
+            track.scrollLeft=next;
+            return;
+          }
+
+          if(Math.abs(event.deltaY)>0){
+            window.scrollBy({top:event.deltaY,left:0,behavior:"auto"});
+          }
+        },{capture:true,passive:false});
+      }
+
+      if(track.dataset.kesarDragV3!=="true"){
+        track.dataset.kesarDragV3="true";
+        let active=false;
+        let pointerId=null;
+        let startX=0;
+        let startScroll=0;
+        let moved=false;
+
+        track.addEventListener("pointerdown",event=>{
+          if(event.pointerType==="touch"||event.button!==0)return;
+          if(event.target instanceof Element&&event.target.closest("button,a,input,select,textarea,label"))return;
+          if(track.scrollWidth<=track.clientWidth+1)return;
+
+          active=true;
+          pointerId=event.pointerId;
+          startX=event.clientX;
+          startScroll=track.scrollLeft;
+          moved=false;
+          track.classList.add("is-dragging");
+          track.setPointerCapture?.(pointerId);
+          event.preventDefault();
+          event.stopImmediatePropagation();
+        },{capture:true});
+
+        track.addEventListener("pointermove",event=>{
+          if(!active||event.pointerId!==pointerId)return;
+          const distance=event.clientX-startX;
+          if(Math.abs(distance)>3)moved=true;
+          track.scrollLeft=startScroll-distance;
+          if(moved){
+            event.preventDefault();
+            event.stopImmediatePropagation();
+          }
+        },{capture:true,passive:false});
+
+        const stopDrag=event=>{
+          if(!active||event.pointerId!==pointerId)return;
+          track.classList.remove("is-dragging");
+          try{track.releasePointerCapture?.(pointerId);}catch{}
+          active=false;
+          pointerId=null;
+          requestAnimationFrame(()=>{moved=false;});
+        };
+
+        track.addEventListener("pointerup",stopDrag,{capture:true});
+        track.addEventListener("pointercancel",stopDrag,{capture:true});
+        track.addEventListener("lostpointercapture",()=>{
+          track.classList.remove("is-dragging");
+          active=false;
+          pointerId=null;
+          moved=false;
+        });
+
+        track.addEventListener("click",event=>{
+          if(!moved)return;
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          moved=false;
+        },true);
+      }
     };
 
     const prepareTracks=()=>{
-      document.querySelectorAll("#signature-dishes .dish-track").forEach(track=>{
-        track.querySelectorAll("img").forEach(image=>image.draggable=false);
-      });
+      document.querySelectorAll("#signature-dishes .dish-track").forEach(prepareTrack);
     };
-
-    document.addEventListener("wheel",event=>{
-      const track=trackFromEvent(event);
-      if(!track)return;
-
-      const maximum=Math.max(0,track.scrollWidth-track.clientWidth);
-      if(maximum<=1)return;
-
-      let delta=Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY;
-      if(event.deltaMode===1)delta*=22;
-      else if(event.deltaMode===2)delta*=track.clientWidth;
-      if(!delta)return;
-
-      const current=track.scrollLeft;
-      const next=Math.max(0,Math.min(maximum,current+delta));
-      if(Math.abs(next-current)<0.5)return;
-
-      event.preventDefault();
-      event.stopPropagation();
-      track.scrollLeft=next;
-    },{capture:true,passive:false});
-
-    let activeTrack=null;
-    let activePointer=null;
-    let startX=0;
-    let startScroll=0;
-    let moved=false;
-
-    document.addEventListener("pointerdown",event=>{
-      if(event.pointerType!=="mouse"||event.button!==0)return;
-      const track=trackFromEvent(event);
-      if(!track||event.target.closest?.("button,a,input,select,textarea,label"))return;
-      if(track.scrollWidth<=track.clientWidth+1)return;
-
-      activeTrack=track;
-      activePointer=event.pointerId;
-      startX=event.clientX;
-      startScroll=track.scrollLeft;
-      moved=false;
-      track.classList.add("is-dragging");
-      track.setPointerCapture?.(event.pointerId);
-      event.preventDefault();
-    },true);
-
-    document.addEventListener("pointermove",event=>{
-      if(!activeTrack||event.pointerId!==activePointer)return;
-      const distance=event.clientX-startX;
-      if(Math.abs(distance)>2)moved=true;
-      activeTrack.scrollLeft=startScroll-distance;
-      if(moved)event.preventDefault();
-    },{capture:true,passive:false});
-
-    const stopDrag=event=>{
-      if(!activeTrack||event.pointerId!==activePointer)return;
-      activeTrack.classList.remove("is-dragging");
-      activeTrack.releasePointerCapture?.(event.pointerId);
-      activeTrack=null;
-      activePointer=null;
-      moved=false;
-    };
-    document.addEventListener("pointerup",stopDrag,true);
-    document.addEventListener("pointercancel",stopDrag,true);
 
     prepareTracks();
     const observer=new MutationObserver(prepareTracks);
