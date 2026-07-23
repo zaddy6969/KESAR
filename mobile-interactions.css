@@ -80,6 +80,12 @@
 
   html body .mobile-reserve[hidden]{display:none!important}
   html body .mobile-reserve:not([hidden]){display:grid!important}
+  body.combo-reserve-visible .mobile-reserve{
+    display:grid!important;
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
+  }
 
   html body .mobile-reserve>div{
     min-width:0;
@@ -180,6 +186,10 @@
 
   html body #menu .featured-copy{
     min-height:0!important;
+  }
+
+  html body #menu #featuredItems li:nth-child(n+4){
+    display:list-item!important;
   }
 
   html body #menu-combos .combo-row>button{
