@@ -1,6 +1,6 @@
-@import url("/reservation-modal-reference-fix.css?v=reference-exact-1");
+@import url("/reservation-modal-reference-fix.css?v=reference-exact-2");
 
-/* Critical visibility fix: keep reservation actions pinned inside the popup. */
+/* Keep the form scrollable while the reservation actions remain visible. */
 .reservation-dialog__content{
   min-height:0!important;
   overflow:hidden!important;
@@ -11,21 +11,27 @@
   height:100%!important;
   overflow-y:auto!important;
   overflow-x:hidden!important;
-  padding-bottom:0!important;
+  padding-bottom:118px!important;
 }
 
+/* The action bar is pinned to the visible bottom of the modal. */
 .reservation-dialog .submit-row{
-  position:sticky!important;
-  z-index:40!important;
-  bottom:0!important;
-  left:auto!important;
-  right:auto!important;
-  margin:16px -36px 0 -34px!important;
+  position:fixed!important;
+  z-index:25020!important;
+  left:calc(50vw - min(470px, calc(50vw - 22px)) + min(300px, 32vw))!important;
+  right:calc(50vw - min(470px, calc(50vw - 22px)))!important;
+  bottom:max(18px, calc((100dvh - min(700px, calc(100dvh - 36px))) / 2))!important;
+  margin:0!important;
   padding:13px 22px 14px!important;
   min-height:92px!important;
-  background:rgba(247,242,233,.985)!important;
-  border-top:1px solid rgba(149,81,23,.2)!important;
-  box-shadow:0 -14px 30px rgba(23,19,15,.10)!important;
+  display:grid!important;
+  grid-template-columns:minmax(145px,.68fr) minmax(0,1.65fr)!important;
+  gap:14px!important;
+  align-items:center!important;
+  background:rgba(247,242,233,.99)!important;
+  border-top:1px solid rgba(149,81,23,.22)!important;
+  border-radius:0 0 15px 0!important;
+  box-shadow:0 -14px 30px rgba(23,19,15,.12)!important;
   backdrop-filter:blur(14px)!important;
   -webkit-backdrop-filter:blur(14px)!important;
 }
@@ -38,33 +44,36 @@
 }
 
 @media(max-width:1000px) and (min-width:701px){
+  .reservation-dialog__form-host{padding-bottom:112px!important}
   .reservation-dialog .submit-row{
-    bottom:0!important;
-    margin:14px -26px 0!important;
+    left:calc(50vw - min(470px, calc(50vw - 22px)) + min(280px, 32vw))!important;
+    padding-inline:18px!important;
   }
 }
 
 @media(max-width:700px){
   .reservation-dialog__form-host{
-    padding-bottom:0!important;
+    padding-bottom:102px!important;
   }
 
   .reservation-dialog .submit-row{
-    bottom:0!important;
-    margin:14px -14px 0!important;
-    min-height:92px!important;
+    left:14px!important;
+    right:14px!important;
+    bottom:14px!important;
+    min-height:88px!important;
+    grid-template-columns:1fr!important;
     padding:10px 12px calc(10px + env(safe-area-inset-bottom))!important;
+    border-radius:14px!important;
   }
+
+  .reservation-security{display:none!important}
+  .reservation-submit-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important}
 }
 
 @media(max-width:420px){
-  .reservation-dialog__form-host{
-    padding-bottom:0!important;
-  }
-
+  .reservation-dialog__form-host{padding-bottom:154px!important}
   .reservation-dialog .submit-row{
-    bottom:0!important;
-    min-height:146px!important;
-    margin-bottom:0!important;
+    min-height:136px!important;
   }
+  .reservation-submit-actions{grid-template-columns:1fr!important}
 }
