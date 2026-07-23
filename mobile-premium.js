@@ -163,7 +163,8 @@
   function trimMobileDom(){
     if(!isMobile)return;
     document.querySelector("#story .story-editorial__media--saffron")?.remove();
-    document.querySelector("#menu-combos .combo-summary")?.remove();
+    /* Keep the combo summary nodes in the DOM. Mobile CSS hides the visual card,
+       while the shared selection controller still updates its state safely. */
   }
 
   function setupMobileActions(){
