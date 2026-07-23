@@ -105,9 +105,120 @@
     return true;
   }
 
+  function setupDishHorizontalScrolling(){
+    if(document.documentElement.dataset.kesarDishScrollFix==="true")return;
+    document.documentElement.dataset.kesarDishScrollFix="true";
+
+    const style=document.createElement("style");
+    style.id="kesarDishHorizontalScrollFix";
+    style.textContent=`
+      #signature-dishes .dish-track{
+        overflow-x:auto!important;
+        overflow-y:hidden!important;
+        overscroll-behavior-x:contain!important;
+        scroll-behavior:auto!important;
+        cursor:grab!important;
+        user-select:none!important;
+        -webkit-user-select:none!important;
+        -webkit-overflow-scrolling:touch;
+      }
+      #signature-dishes .dish-track.is-dragging{
+        cursor:grabbing!important;
+        scroll-snap-type:none!important;
+      }
+      #signature-dishes .dish-card img{
+        pointer-events:auto!important;
+        user-select:none!important;
+        -webkit-user-select:none!important;
+        -webkit-user-drag:none!important;
+      }
+    `;
+    document.head.append(style);
+
+    const trackFromEvent=event=>{
+      const path=typeof event.composedPath==="function"?event.composedPath():[];
+      const fromPath=path.find(node=>node instanceof Element&&node.matches?.("#signature-dishes .dish-track"));
+      if(fromPath)return fromPath;
+      return event.target instanceof Element?event.target.closest("#signature-dishes .dish-track"):null;
+    };
+
+    const prepareTracks=()=>{
+      document.querySelectorAll("#signature-dishes .dish-track").forEach(track=>{
+        track.querySelectorAll("img").forEach(image=>image.draggable=false);
+      });
+    };
+
+    document.addEventListener("wheel",event=>{
+      const track=trackFromEvent(event);
+      if(!track)return;
+
+      const maximum=Math.max(0,track.scrollWidth-track.clientWidth);
+      if(maximum<=1)return;
+
+      let delta=Math.abs(event.deltaX)>Math.abs(event.deltaY)?event.deltaX:event.deltaY;
+      if(event.deltaMode===1)delta*=22;
+      else if(event.deltaMode===2)delta*=track.clientWidth;
+      if(!delta)return;
+
+      const current=track.scrollLeft;
+      const next=Math.max(0,Math.min(maximum,current+delta));
+      if(Math.abs(next-current)<0.5)return;
+
+      event.preventDefault();
+      event.stopPropagation();
+      track.scrollLeft=next;
+    },{capture:true,passive:false});
+
+    let activeTrack=null;
+    let activePointer=null;
+    let startX=0;
+    let startScroll=0;
+    let moved=false;
+
+    document.addEventListener("pointerdown",event=>{
+      if(event.pointerType!=="mouse"||event.button!==0)return;
+      const track=trackFromEvent(event);
+      if(!track||event.target.closest?.("button,a,input,select,textarea,label"))return;
+      if(track.scrollWidth<=track.clientWidth+1)return;
+
+      activeTrack=track;
+      activePointer=event.pointerId;
+      startX=event.clientX;
+      startScroll=track.scrollLeft;
+      moved=false;
+      track.classList.add("is-dragging");
+      track.setPointerCapture?.(event.pointerId);
+      event.preventDefault();
+    },true);
+
+    document.addEventListener("pointermove",event=>{
+      if(!activeTrack||event.pointerId!==activePointer)return;
+      const distance=event.clientX-startX;
+      if(Math.abs(distance)>2)moved=true;
+      activeTrack.scrollLeft=startScroll-distance;
+      if(moved)event.preventDefault();
+    },{capture:true,passive:false});
+
+    const stopDrag=event=>{
+      if(!activeTrack||event.pointerId!==activePointer)return;
+      activeTrack.classList.remove("is-dragging");
+      activeTrack.releasePointerCapture?.(event.pointerId);
+      activeTrack=null;
+      activePointer=null;
+      moved=false;
+    };
+    document.addEventListener("pointerup",stopDrag,true);
+    document.addEventListener("pointercancel",stopDrag,true);
+
+    prepareTracks();
+    const observer=new MutationObserver(prepareTracks);
+    observer.observe(document.body,{childList:true,subtree:true});
+  }
+
   function start(){
     loadMobileInteractionRepairs();
     addStyles();
+    setupDishHorizontalScrolling();
     if(cleanSection())return;
 
     const observer=new MutationObserver(()=>{
