@@ -173,90 +173,166 @@
   }
 
   const dishes=[
-    ["Chicken Mandi","Mandi · Signature","Fragrant mandi rice served with tender, slow-roasted chicken.","Best enjoyed with house sauces and fresh salad.","/assets/images/menupage-chicken%20mandi.png"],
-    ["Al Faham Chicken","Charcoal · Grill","Charcoal-grilled chicken marinated with aromatic Arabian-inspired spices.","Pair with mandi rice and cooling raita.","/assets/images/menupage-al%20faham.png"],
-    ["Biryani","Rice · Classic","Aromatic long-grain basmati layered with spice and tender meat.","Complete the plate with raita and salad.","/assets/images/menupage-biryani.png"],
-    ["Chicken Kebab","Grill · Sharing","Juicy chicken kebabs with warm spice and charred edges.","Serve with garlic dip and fresh salad.","/assets/images/menupage-chicken%20kebab.png"],
-    ["Grill Chicken","Grill · House Favourite","Fire-grilled chicken finished with citrus and fragrant spice.","Best paired with mandi rice and house sauce.","/assets/images/menupage-grill%20chicken.png"],
-    ["Kathi Rolls","Rolls · Street Classic","Soft flatbread wrapped around smoky chicken, vegetables and house sauce.","Perfect with a chilled drink.","/assets/images/menupage-kathi%20rolles.png"],
-    ["Shawarma","Wrap · Classic","Tender spiced chicken, fresh vegetables and creamy sauce in a warm wrap.","Enjoy with fries and garlic sauce.","/assets/images/menupage-shawarma.png"],
-    ["Tandoori Chicken","Tandoor · Classic","Deeply marinated chicken roasted in the tandoor until smoky and tender.","Best with mint chutney and onion salad.","/assets/images/menupage-tandoori%20chicken.png"]
+    {title:"Chicken Mandi",category:"Mandi · Signature",description:"Fragrant mandi rice served with tender, slow-roasted chicken.",pairing:"Best enjoyed with house sauces and fresh salad.",image:"/assets/images/menupage-chicken%20mandi.png",alt:"Chicken Mandi"},
+    {title:"Al Faham Chicken",category:"Charcoal · Grill",description:"Charcoal-grilled chicken marinated with aromatic Arabian-inspired spices.",pairing:"Pair with mandi rice and cooling raita.",image:"/assets/images/menupage-al%20faham.png",alt:"Al Faham Chicken"},
+    {title:"Biryani",category:"Rice · Classic",description:"Aromatic long-grain basmati layered with spice and tender meat.",pairing:"Complete the plate with raita and salad.",image:"/assets/images/menupage-biryani.png",alt:"Biryani"},
+    {title:"Chicken Kebab",category:"Grill · Sharing",description:"Juicy chicken kebabs with warm spice and charred edges.",pairing:"Serve with garlic dip and fresh salad.",image:"/assets/images/menupage-chicken%20kebab.png",alt:"Chicken Kebab"},
+    {title:"Grill Chicken",category:"Grill · House Favourite",description:"Fire-grilled chicken finished with citrus and fragrant spice.",pairing:"Best paired with mandi rice and house sauce.",image:"/assets/images/menupage-grill%20chicken.png",alt:"Grill Chicken"},
+    {title:"Kathi Rolls",category:"Rolls · Street Classic",description:"Soft flatbread wrapped around smoky chicken, vegetables and house sauce.",pairing:"Perfect with a chilled drink.",image:"/assets/images/menupage-kathi%20rolles.png",alt:"Kathi Rolls"},
+    {title:"Shawarma",category:"Wrap · Classic",description:"Tender spiced chicken, fresh vegetables and creamy sauce in a warm wrap.",pairing:"Enjoy with fries and garlic sauce.",image:"/assets/images/menupage-shawarma.png",alt:"Shawarma"},
+    {title:"Tandoori Chicken",category:"Tandoor · Classic",description:"Deeply marinated chicken roasted in the tandoor until smoky and tender.",pairing:"Best with mint chutney and onion salad.",image:"/assets/images/menupage-tandoori%20chicken.png",alt:"Tandoori Chicken"}
   ];
+
+  const vegetarianDishes=[
+    {title:"Paneer Tikka",category:"Tandoor · Signature",image:"/assets/images/01-Paneer-Tikka.png",width:1024,height:1365,alt:"Paneer tikka grilled with peppers and onions, served with mint chutney",description:"Charcoal-grilled paneer marinated with warm spices, peppers and onions.",pairing:"Best enjoyed with mint chutney, onion salad and fresh lemon."},
+    {title:"Hara Bhara Kabab",category:"Vegetarian · Classic",image:"/assets/images/02-Hara-Bhara-Kabab.png",width:1024,height:1365,alt:"Hara bhara kabab served with mint chutney and onion salad",description:"Golden vegetable and spinach kababs with herbs, peas and aromatic spices.",pairing:"Serve with mint chutney, onion salad and a squeeze of lemon."},
+    {title:"Veg Seekh Kabab",category:"Tandoor · Grill",image:"/assets/images/03-Veg-Seekh-Kabab.png",width:1024,height:1365,alt:"Vegetarian seekh kababs grilled on skewers and served with mint chutney",description:"Smoky vegetable seekh kababs grilled with fragrant spices and fresh herbs.",pairing:"Pairs well with mint chutney, sliced onions and fresh salad."},
+    {title:"Gobi 65",category:"Vegetarian · Spiced",image:"/assets/images/04-Gobi-65.png",width:1024,height:1365,alt:"Crispy Gobi 65 with green chillies and mint chutney",description:"Crispy cauliflower tossed with curry leaves, green chillies and bold spices.",pairing:"Enjoy with mint chutney or a cooling yoghurt dip."},
+    {title:"Malai Broccoli",category:"Tandoor · Creamy",image:"/assets/images/05-Malai-Broccoli.png",width:1024,height:1365,alt:"Creamy malai broccoli grilled in the tandoor and served with dip",description:"Tender broccoli florets in a creamy aromatic marinade, finished in the tandoor.",pairing:"Best paired with herb dip, onion salad and fresh lemon."},
+    {title:"Mushroom Tikka",category:"Tandoor · Vegetarian",image:"/assets/images/06-Mushroom-Tikka.png",width:1024,height:1365,alt:"Tandoori mushroom tikka served with mint chutney and onions",description:"Juicy mushrooms marinated in warm tandoori spices and grilled over high heat.",pairing:"Serve with mint chutney, onion rings and lemon."},
+    {title:"Tandoori Pineapple",category:"Tandoor · Sweet & Smoky",image:"/assets/images/07-Tandoori-Pineapple.png",width:1024,height:1365,alt:"Tandoori pineapple slices grilled with spices and served with chutney",description:"Caramelised pineapple grilled with gentle spice for a sweet and smoky finish.",pairing:"Enjoy with fresh mint chutney or as a light sharing starter."},
+    {title:"Stuffed Tandoori Aloo",category:"Tandoor · House Special",image:"/assets/images/08-Stuffed-Tandoori-Aloo.png",width:1024,height:1365,alt:"Stuffed tandoori potatoes grilled with spices and served with mint chutney",description:"Roasted potatoes filled with a seasoned vegetable mixture and finished in the tandoor.",pairing:"Best served with mint chutney, onion salad and lemon."}
+  ];
+
+  function buildVegetarianPanel(){
+    const nonvegTab=$("[data-dish-tab='nonveg']");
+    const vegTab=$("[data-dish-tab='veg']");
+    const nonvegPanel=$("#nonvegPanel");
+    const vegPanel=$("#vegPanel");
+    if(!nonvegTab||!vegTab||!nonvegPanel||!vegPanel)return;
+
+    nonvegTab.id="nonvegTab";
+    nonvegTab.setAttribute("aria-controls","nonvegPanel");
+    vegTab.id="vegTab";
+    vegTab.setAttribute("aria-controls","vegPanel");
+
+    nonvegPanel.setAttribute("role","tabpanel");
+    nonvegPanel.setAttribute("aria-labelledby","nonvegTab");
+    vegPanel.className="dish-panel";
+    vegPanel.setAttribute("role","tabpanel");
+    vegPanel.setAttribute("aria-labelledby","vegTab");
+    vegPanel.innerHTML=`<div class="dish-controls"><p>Vegetarian favourites</p><div><button id="vegDishPrev" type="button" aria-label="Previous vegetarian dishes">←</button><button id="vegDishNext" type="button" aria-label="Next vegetarian dishes">→</button></div></div><div class="dish-track" id="vegDishTrack" tabindex="0" aria-label="Vegetarian signature dishes"></div>`;
+  }
+
+  function dishCardMarkup(dish){
+    const dimensions=dish.width&&dish.height?` width="${dish.width}" height="${dish.height}"`:"";
+    return `<article class="dish-card reveal visible" data-title="${dish.title}" data-category="${dish.category}" data-copy="${dish.description}" data-pairing="${dish.pairing}"><img src="${dish.image}"${dimensions} loading="lazy" decoding="async" alt="${dish.alt}"><div><span>${dish.category}</span><h3>${dish.title}</h3><p>${dish.description}</p><button type="button" data-optimized-detail>View details ↗</button></div></article>`;
+  }
+
+  function renderDishTrack(track,dishData){
+    if(!track)return;
+    track.innerHTML=dishData.map(dishCardMarkup).join("");
+    track.querySelectorAll("img").forEach(image=>{
+      image.addEventListener("error",()=>{
+        console.warn(`KESAR dish image failed to load: ${image.getAttribute("src")}`);
+        image.hidden=true;
+      },{once:true});
+    });
+  }
 
   function openDish(card,trigger){
     const dialog=$("#dishDialog");
-    if(!dialog)return;
-    $("#dialogImage").src=$("img",card).src;
-    $("#dialogImage").alt=$("img",card).alt;
-    $("#dialogCategory").textContent=card.dataset.category;
-    $("#dialogTitle").textContent=card.dataset.title;
-    $("#dialogCopy").textContent=card.dataset.copy;
-    $("#dialogPairing").textContent=card.dataset.pairing;
+    const image=$("img",card);
+    if(!dialog||!image)return;
+    const dialogImage=$("#dialogImage");
+    if(dialogImage){dialogImage.src=image.currentSrc||image.src;dialogImage.alt=image.alt;}
+    if($("#dialogCategory"))$("#dialogCategory").textContent=card.dataset.category||"Signature dish";
+    if($("#dialogTitle"))$("#dialogTitle").textContent=card.dataset.title||"KESAR dish";
+    if($("#dialogCopy"))$("#dialogCopy").textContent=card.dataset.copy||"";
+    if($("#dialogPairing"))$("#dialogPairing").textContent=card.dataset.pairing||"";
     document.body.classList.add("dialog-open");
-    dialog.showModal();
+    if(!dialog.open)dialog.showModal();
     $(".dialog-close",dialog)?.focus();
-    dialog.addEventListener("close",()=>trigger.focus(),{once:true});
+    dialog.addEventListener("close",()=>trigger?.focus(),{once:true});
   }
 
-  function setupDishRail(){
-    const track=$("#dishTrack");
-    if(!track)return;
-    track.innerHTML=dishes.map(d=>`<article class="dish-card reveal visible" data-title="${d[0]}" data-category="${d[1]}" data-copy="${d[2]}" data-pairing="${d[3]}"><img src="${d[4]}" alt="${d[0]}" loading="lazy" decoding="async"><div><span>${d[1]}</span><h3>${d[0]}</h3><p>${d[2]}</p><button type="button" data-optimized-detail>View details ↗</button></div></article>`).join("");
-    track.querySelectorAll("[data-optimized-detail]").forEach(button=>button.addEventListener("click",()=>openDish(button.closest(".dish-card"),button)));
+  function setupDishRail({track,previousButton,nextButton}){
+    if(!track||!previousButton||!nextButton||track.dataset.dishRailReady==="true")return;
+    track.dataset.dishRailReady="true";
+
+    const previous=previousButton.cloneNode(true);
+    const next=nextButton.cloneNode(true);
+    previousButton.replaceWith(previous);
+    nextButton.replaceWith(next);
+
     const step=()=>{
       const card=$(".dish-card",track);
       const gap=parseFloat(getComputedStyle(track).gap||18);
       return card?card.getBoundingClientRect().width+gap:track.clientWidth*.82;
     };
-    const max=()=>track.scrollWidth-track.clientWidth;
-    const controls=()=>{
-      const prev=$("#dishPrev"),next=$("#dishNext");
-      if(prev)prev.disabled=track.scrollLeft<=3;
-      if(next)next.disabled=track.scrollLeft>=max()-3;
+    const max=()=>Math.max(0,track.scrollWidth-track.clientWidth);
+    const updateControls=()=>{
+      previous.disabled=track.scrollLeft<=3;
+      next.disabled=track.scrollLeft>=max()-3;
     };
-    const bind=(selector,direction)=>{
-      const old=$(selector);
-      if(!old)return;
-      const button=old.cloneNode(true);
-      old.replaceWith(button);
-      button.addEventListener("click",()=>track.scrollBy({left:direction*step(),behavior:reducedMotion?"auto":"smooth"}));
-    };
-    bind("#dishPrev",-1);
-    bind("#dishNext",1);
-    track.addEventListener("scroll",controls,{passive:true});
+    const refreshControls=()=>requestAnimationFrame(()=>requestAnimationFrame(updateControls));
+
+    previous.addEventListener("click",()=>track.scrollBy({left:-step(),behavior:reducedMotion?"auto":"smooth"}));
+    next.addEventListener("click",()=>track.scrollBy({left:step(),behavior:reducedMotion?"auto":"smooth"}));
+    track.addEventListener("scroll",updateControls,{passive:true});
     track.addEventListener("wheel",event=>{
-      if(Math.abs(event.deltaY)<=Math.abs(event.deltaX))return;
+      if(Math.abs(event.deltaY)<=Math.abs(event.deltaX)||max()<=0)return;
       event.preventDefault();
       track.scrollLeft+=event.deltaY;
     },{passive:false});
+    track.addEventListener("keydown",event=>{
+      if(event.target.closest("button, a, input, select, textarea, label"))return;
+      if(event.key==="ArrowRight")track.scrollBy({left:step(),behavior:reducedMotion?"auto":"smooth"});
+      else if(event.key==="ArrowLeft")track.scrollBy({left:-step(),behavior:reducedMotion?"auto":"smooth"});
+      else if(event.key==="Home")track.scrollTo({left:0,behavior:reducedMotion?"auto":"smooth"});
+      else if(event.key==="End")track.scrollTo({left:max(),behavior:reducedMotion?"auto":"smooth"});
+      else return;
+      event.preventDefault();
+    });
+    track.addEventListener("click",event=>{
+      const trigger=event.target.closest("[data-optimized-detail]");
+      if(trigger)openDish(trigger.closest(".dish-card"),trigger);
+    });
+
     let dragging=false,startX=0,startScroll=0;
     track.addEventListener("pointerdown",event=>{
-      if(event.target.closest("button,a"))return;
+      if(event.target.closest("button, a, input, select, textarea, label"))return;
       dragging=true;
       startX=event.clientX;
       startScroll=track.scrollLeft;
       track.classList.add("is-dragging");
-      track.setPointerCapture(event.pointerId);
+      track.setPointerCapture?.(event.pointerId);
     });
     track.addEventListener("pointermove",event=>{
       if(dragging)track.scrollLeft=startScroll-(event.clientX-startX);
     });
-    ["pointerup","pointercancel"].forEach(name=>track.addEventListener(name,()=>{
+    ["pointerup","pointercancel","lostpointercapture"].forEach(name=>track.addEventListener(name,()=>{
       dragging=false;
       track.classList.remove("is-dragging");
-      controls();
+      updateControls();
     }));
-    addEventListener("resize",controls,{passive:true});
-    requestAnimationFrame(controls);
+
+    const panel=track.closest("[data-dish-panel]");
+    if(panel&&"MutationObserver" in window){
+      new MutationObserver(refreshControls).observe(panel,{attributes:true,attributeFilter:["hidden"]});
+    }
+    if("ResizeObserver" in window)new ResizeObserver(refreshControls).observe(track);
+    else addEventListener("resize",refreshControls,{passive:true});
+    refreshControls();
+  }
+
+  function setupDishRails(){
+    const nonvegTrack=$("#dishTrack");
+    const vegTrack=$("#vegDishTrack");
+    renderDishTrack(nonvegTrack,dishes);
+    renderDishTrack(vegTrack,vegetarianDishes);
+    setupDishRail({track:nonvegTrack,previousButton:$("#dishPrev"),nextButton:$("#dishNext")});
+    setupDishRail({track:vegTrack,previousButton:$("#vegDishPrev"),nextButton:$("#vegDishNext")});
   }
 
   function finish(){
-    setupDishRail();
+    setupDishRails();
     const startVideo=()=>loadHeroVideo();
     if("requestIdleCallback"in window)requestIdleCallback(startVideo,{timeout:1200});
     else setTimeout(startVideo,250);
   }
 
+  buildVegetarianPanel();
   loadPremiumEnhancements();
   loadStoryStyles();
   buildStory();
