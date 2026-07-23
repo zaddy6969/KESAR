@@ -1,0 +1,46 @@
+/* KESAR Order Online transition and image-frame sizing. */
+html body main#main #signature-dishes.signature-section {
+  padding-bottom: clamp(54px, 4.5vw, 76px) !important;
+  margin-bottom: 0 !important;
+}
+
+@media (min-width: 1001px) {
+  html body main#main #order-online.delivery-section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  html body main#main #order-online .delivery-section__layout {
+    min-height: 0 !important;
+    height: clamp(580px, 31.25vw, 640px) !important;
+    align-items: stretch !important;
+  }
+
+  html body main#main #order-online .delivery-section__copy {
+    justify-content: center !important;
+    padding-top: clamp(20px, 1.5vw, 28px) !important;
+    padding-bottom: clamp(20px, 1.5vw, 28px) !important;
+  }
+
+  html body main#main #order-online .delivery-section__media,
+  html body main#main #order-online .delivery-section__media.reveal,
+  html body main#main #order-online .delivery-section__media.delivery-reveal--media {
+    align-self: stretch !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: right center !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  html body main#main #signature-dishes.signature-section {
+    padding-bottom: 44px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  html body main#main #signature-dishes.signature-section {
+    padding-bottom: 34px !important;
+  }
+}
