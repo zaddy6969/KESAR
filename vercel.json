@@ -2,8 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/reservation-modal.css", "destination": "/reservation-modal-live.css", "permanent": false }
+  ],
   "rewrites": [
-    { "source": "/reservation-modal.css", "destination": "/reservation-modal-live.css" },
     { "source": "/refresh-reservation", "destination": "/" },
     { "source": "/reservation-reference", "destination": "/" },
     { "source": "/reservation-actions", "destination": "/" },
