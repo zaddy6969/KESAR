@@ -10,7 +10,7 @@
     {
       "source": "/",
       "headers": [
-        { "key": "Link", "value": "</styles.css>; rel=preload; as=style, </delivery.css>; rel=preload; as=style, </assets/images/heropage-mandi-4k.webp>; rel=preload; as=image; fetchpriority=high" },
+        { "key": "Link", "value": "</styles.css>; rel=preload; as=style, </delivery.css>; rel=preload; as=style, </story-editorial.css>; rel=preload; as=style, </reservation-modal-reference-base.css>; rel=preload; as=style, </reservation-modal.css>; rel=preload; as=style, </assets/images/heropage-mandi-4k.webp>; rel=preload; as=image; fetchpriority=high" },
         { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
       ]
     },
