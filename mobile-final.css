@@ -8,9 +8,10 @@
   .section{padding:64px 0!important}
 
   /* Header and mobile menu */
-  .site-header{height:66px!important;padding:0!important;background:rgba(15,12,9,.88)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+  .site-header{height:66px!important;padding:0!important;background:transparent!important;box-shadow:none!important;border-bottom:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .site-header::before,.site-header::after{display:none!important}
   .site-header .nav{width:calc(100% - 24px)!important;min-height:66px!important;grid-template-columns:52px 1fr 52px!important;align-items:center!important;gap:6px!important}
-  .menu-toggle{width:48px!important;min-width:48px!important;min-height:44px!important;justify-content:flex-start!important;font-size:10px!important;letter-spacing:.16em!important}
+  .menu-toggle{width:48px!important;min-width:48px!important;min-height:44px!important;justify-content:flex-start!important;font-size:10px!important;letter-spacing:.16em!important;background:transparent!important}
   .brand{justify-self:center!important;text-align:center!important;max-width:190px!important}
   .brand strong{font-size:22px!important;line-height:1!important;letter-spacing:.16em!important}
   .brand span{font-size:6px!important;line-height:1.2!important;letter-spacing:.19em!important;margin-top:4px!important}
@@ -21,9 +22,11 @@
 
   /* Hero */
   .hero,.hero-inner{min-height:100svh!important}
-  .hero-inner{padding-top:102px!important;padding-bottom:calc(24px + env(safe-area-inset-bottom))!important}
+  .hero-inner{padding-top:96px!important;padding-bottom:calc(24px + env(safe-area-inset-bottom))!important}
   .hero-media img,.hero-video{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center!important}
-  .hero-status{position:relative!important;top:auto!important;right:auto!important;width:100%!important;max-width:none!important;margin-bottom:24px!important;gap:6px!important;font-size:8px!important;letter-spacing:.1em!important;line-height:1.45!important}
+  .hero-status{position:relative!important;top:auto!important;right:auto!important;width:auto!important;max-width:100%!important;margin:0 0 22px!important;padding:0!important;gap:6px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;font-size:8px!important;letter-spacing:.1em!important;line-height:1.45!important}
+  .hero-status::before,.hero-status::after{display:none!important}
+  .hero-status i{width:6px!important;height:6px!important;box-shadow:none!important}
   .hero-grid{display:grid!important;grid-template-columns:1fr!important;gap:24px!important}
   .hero h1{font-size:clamp(58px,18vw,84px)!important;line-height:.86!important;letter-spacing:-.055em!important;max-width:100%!important}
   .hero-side{max-width:none!important;width:100%!important}
@@ -74,79 +77,115 @@
   .delivery-section__media{min-height:340px!important;aspect-ratio:4/5!important}
   .delivery-benefits__grid{grid-template-columns:1fr 1fr!important;gap:1px!important}
   .delivery-benefit{min-height:112px!important;padding:16px 12px!important}
-  #why-kesar-page .why-kesar-page__copy{padding:50px 15px 30px!important}
-  #why-kesar-page .why-kesar-page__media{min-height:430px!important;height:60svh!important}
+  #why-kesar-page{padding:0!important;min-height:0!important;background:#f6f1e9!important}
+  #why-kesar-page .why-kesar-page__shell{display:grid!important;grid-template-columns:1fr!important;gap:0!important;min-height:0!important}
+  #why-kesar-page .why-kesar-page__copy{padding:38px 16px 24px!important}
+  #why-kesar-page .why-kesar-page__copy h2{font-size:clamp(42px,11.5vw,58px)!important;line-height:.95!important;margin-bottom:16px!important}
+  #why-kesar-page .why-kesar-page__copy p{font-size:13px!important;line-height:1.55!important;margin-bottom:14px!important}
+  #why-kesar-page .why-kesar-page__features{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;margin-top:18px!important}
+  #why-kesar-page .why-kesar-page__feature{min-height:0!important;padding:12px!important;border:1px solid rgba(23,19,15,.1)!important;background:rgba(255,255,255,.36)!important}
+  #why-kesar-page .why-kesar-page__feature strong{font-size:11px!important}
+  #why-kesar-page .why-kesar-page__feature span{font-size:9px!important;line-height:1.35!important}
+  #why-kesar-page .why-kesar-page__media{min-height:0!important;height:clamp(220px,42svh,330px)!important;aspect-ratio:16/10!important}
+  #why-kesar-page .why-kesar-page__media img{object-position:center 42%!important}
+  #why-kesar-page .why-kesar-page__hours{padding:12px 14px!important;bottom:12px!important;right:12px!important;left:auto!important;max-width:68%!important}
+  #why-kesar-page .why-kesar-page__hours strong{font-size:12px!important}
+  #why-kesar-page .why-kesar-page__hours span{font-size:9px!important}
 
   /* Footer */
-  footer.footer-luxury-ready{padding-bottom:calc(20px + env(safe-area-inset-bottom))!important}
-  .footer-luxury-main{grid-template-columns:1fr!important;gap:0!important}
-  .footer-luxury-brand{padding:26px 0 18px!important;text-align:center!important}
-  .footer-luxury-item{min-height:58px!important;padding:14px 0!important;border-top:1px solid rgba(255,255,255,.1)!important}
-  .footer-luxury-bottom{display:grid!important;gap:8px!important;padding-top:18px!important;text-align:center!important}
+  footer.footer-luxury-ready{padding:18px 0 calc(12px + env(safe-area-inset-bottom))!important}
+  .footer-luxury-main{grid-template-columns:1fr 1fr!important;gap:12px!important}
+  .footer-luxury-brand{grid-column:1/-1!important;padding:4px 0 12px!important;text-align:left!important}
+  .footer-luxury-brand h2{font-size:28px!important;margin:0!important}
+  .footer-luxury-brand p{max-width:300px!important;margin:8px 0 0!important;font-size:10px!important;line-height:1.45!important}
+  .footer-luxury-item{min-height:0!important;padding:10px 0!important;border-top:1px solid rgba(255,255,255,.1)!important}
+  .footer-luxury-item small{font-size:8px!important}
+  .footer-luxury-item strong{font-size:11px!important;line-height:1.3!important}
+  .footer-luxury-bottom{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:8px!important;padding-top:12px!important;font-size:8px!important;text-align:left!important}
 
   /* Reservation form modal */
   .reservation-dialog{padding:6px!important;place-items:center!important}
-  .reservation-dialog__panel{width:calc(100vw - 12px)!important;height:calc(100dvh - 12px)!important;max-height:calc(100dvh - 12px)!important;border-radius:14px!important;grid-template-columns:1fr!important}
-  .reservation-dialog__intro{display:block!important;min-height:0!important;height:auto!important;padding:18px 58px 16px 16px!important;border-right:0!important;border-bottom:1px solid rgba(182,117,50,.45)!important}
-  .reservation-dialog__intro-content{display:grid!important;gap:4px!important}
-  .reservation-dialog__brand{font-size:9px!important;letter-spacing:.18em!important}
-  .reservation-dialog__brand::before{width:24px!important}
-  .reservation-dialog__eyebrow{margin-top:8px!important;font-size:7px!important}
-  .reservation-dialog__intro h2{display:flex!important;gap:6px!important;margin:4px 0 0!important;font-size:30px!important;line-height:1!important;letter-spacing:-.035em!important}
+  .reservation-dialog__panel{width:calc(100vw - 12px)!important;height:calc(100dvh - 12px)!important;max-height:calc(100dvh - 12px)!important;border-radius:14px!important;grid-template-columns:1fr!important;transform-origin:center 20%!important}
+  .reservation-dialog__intro{display:block!important;min-height:0!important;height:auto!important;padding:13px 52px 11px 14px!important;border-right:0!important;border-bottom:1px solid rgba(182,117,50,.38)!important}
+  .reservation-dialog__intro-content{display:grid!important;gap:2px!important}
+  .reservation-dialog__brand{font-size:8px!important;letter-spacing:.16em!important}
+  .reservation-dialog__brand::before{width:20px!important}
+  .reservation-dialog__eyebrow{margin-top:5px!important;font-size:6px!important}
+  .reservation-dialog__intro h2{display:flex!important;gap:5px!important;margin:2px 0 0!important;font-size:25px!important;line-height:1!important;letter-spacing:-.03em!important}
   .reservation-dialog__intro p,.reservation-dialog__ornament{display:none!important}
   .reservation-dialog__content{min-height:0!important;height:100%!important;overflow:hidden!important}
-  .reservation-dialog__form-host{height:100%!important;padding:14px 12px calc(12px + env(safe-area-inset-bottom))!important;overflow-y:auto!important;overflow-x:hidden!important}
-  .reservation-dialog__close{position:fixed!important;top:12px!important;right:12px!important;width:38px!important;height:38px!important;z-index:100!important}
-  .reservation-dialog .reservation-form{grid-template-columns:1fr!important;gap:8px!important}
+  .reservation-dialog__form-host{height:100%!important;padding:10px 10px calc(10px + env(safe-area-inset-bottom))!important;overflow-y:auto!important;overflow-x:hidden!important}
+  .reservation-dialog__close{position:fixed!important;top:10px!important;right:10px!important;width:34px!important;height:34px!important;z-index:100!important}
+  .reservation-dialog .reservation-form{grid-template-columns:1fr!important;gap:6px!important}
   .reservation-dialog .field,.reservation-dialog .reservation-experience,.reservation-dialog .reservation-selected-feast,.reservation-dialog .submit-row{grid-column:1!important}
-  .reservation-dialog .field input,.reservation-dialog .field select{height:46px!important;min-height:46px!important}
-  .reservation-dialog .field textarea{height:68px!important;min-height:68px!important}
-  .reservation-experience__options{grid-template-columns:1fr 1fr!important;gap:7px!important}
-  .reservation-experience__card{min-height:64px!important;grid-template-columns:32px minmax(0,1fr) 16px!important;padding:8px!important}
-  .reservation-experience__icon{width:32px!important;height:32px!important;padding:6px!important}
-  .reservation-experience__text strong{font-size:12px!important}
-  .reservation-experience__text small{font-size:8px!important}
-  .reservation-dialog .submit-row{grid-template-columns:1fr!important;margin-top:4px!important;padding-top:10px!important}
-  .reservation-submit-actions{grid-template-columns:1fr!important;gap:8px!important}
-  .reservation-action{min-height:52px!important;grid-template-columns:30px minmax(0,1fr)!important;padding:8px 12px!important}
-  .reservation-action strong{font-size:9px!important}
-  .reservation-action small{font-size:8px!important}
+  .reservation-dialog .field{gap:3px!important}
+  .reservation-dialog .field input,.reservation-dialog .field select{height:42px!important;min-height:42px!important}
+  .reservation-dialog .field textarea{height:54px!important;min-height:54px!important}
+  .reservation-experience__options{grid-template-columns:1fr 1fr!important;gap:6px!important}
+  .reservation-experience__card{min-height:54px!important;grid-template-columns:28px minmax(0,1fr) 14px!important;padding:6px!important}
+  .reservation-experience__icon{width:28px!important;height:28px!important;padding:5px!important}
+  .reservation-experience__text strong{font-size:11px!important}
+  .reservation-experience__text small{font-size:7px!important}
+  .reservation-dialog .submit-row{grid-template-columns:1fr!important;margin-top:2px!important;padding-top:7px!important}
+  .reservation-submit-actions{grid-template-columns:1fr 1fr!important;gap:6px!important}
+  .reservation-action{min-height:44px!important;grid-template-columns:24px minmax(0,1fr)!important;padding:6px 8px!important;border-radius:8px!important}
+  .reservation-action__icon{width:24px!important;height:24px!important;padding:4px!important}
+  .reservation-action strong{font-size:8px!important}
+  .reservation-action small{font-size:7px!important}
+  .reservation-dialog[open]{animation:mobileReservationBackdrop .28s ease both!important}
+  .reservation-dialog[open] .reservation-dialog__panel{animation:mobileReservationPanel .54s cubic-bezier(.18,.82,.22,1) both!important}
+  .reservation-dialog[open] .reservation-dialog__intro{animation:mobileReservationSlice .42s ease .08s both!important}
+  .reservation-dialog[open] .reservation-dialog__form-host{animation:mobileReservationContent .45s ease .16s both!important}
 
   /* Thank-you state */
   .reservation-dialog:has(.reservation-success.is-visible){padding:8px!important}
   .reservation-dialog:has(.reservation-success.is-visible) .reservation-dialog__panel{width:calc(100vw - 16px)!important;height:auto!important;max-height:calc(100dvh - 16px)!important;min-height:0!important;display:block!important;visibility:visible!important;overflow:hidden!important;border-radius:16px!important;background:var(--thank-you-bg)!important}
   .reservation-dialog:has(.reservation-success.is-visible) .reservation-dialog__content{display:block!important;height:auto!important;min-height:0!important;overflow:visible!important}
   .reservation-dialog:has(.reservation-success.is-visible) .reservation-dialog__form-host{height:auto!important;max-height:calc(100dvh - 16px)!important;padding:0!important;overflow-y:auto!important}
-  .reservation-dialog:has(.reservation-success.is-visible) .reservation-success{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:0!important;padding:40px 18px calc(22px + env(safe-area-inset-bottom))!important;place-items:center!important}
+  .reservation-dialog:has(.reservation-success.is-visible) .reservation-success{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;min-height:0!important;padding:32px 16px calc(18px + env(safe-area-inset-bottom))!important;place-items:center!important}
   .reservation-success__inner{width:100%!important;max-width:480px!important;margin:0 auto!important}
-  .reservation-success__icon{width:72px!important;height:72px!important;margin-bottom:16px!important}
-  .reservation-success__eyebrow{font-size:8px!important;margin-bottom:10px!important}
-  .reservation-success h2{font-size:50px!important;line-height:1!important}
-  .reservation-success__message{font-size:13px!important;line-height:1.55!important;margin-top:14px!important}
-  .reservation-success__summary{margin-top:20px!important;width:100%!important}
-  .reservation-success__summary div{padding:12px 13px!important}
-  .reservation-success__notice{margin-top:16px!important}
-  .reservation-success__actions{grid-template-columns:1fr!important;gap:8px!important;margin-top:18px!important}
-  .reservation-success__actions button{width:100%!important;min-height:50px!important}
+  .reservation-success__icon{width:66px!important;height:66px!important;margin-bottom:13px!important}
+  .reservation-success__eyebrow{font-size:7px!important;margin-bottom:8px!important}
+  .reservation-success h2{font-size:46px!important;line-height:1!important}
+  .reservation-success__message{font-size:12px!important;line-height:1.5!important;margin-top:12px!important}
+  .reservation-success__summary{margin-top:16px!important;width:100%!important}
+  .reservation-success__summary div{padding:10px 11px!important}
+  .reservation-success__notice{margin-top:13px!important}
+  .reservation-success__actions{grid-template-columns:1fr!important;gap:7px!important;margin-top:15px!important}
+  .reservation-success__actions button{width:100%!important;min-height:46px!important}
 
   /* Sticky reserve bar */
   .mobile-reserve{left:8px!important;right:8px!important;bottom:calc(8px + env(safe-area-inset-bottom))!important;width:auto!important;max-width:none!important;border-radius:12px!important;padding:10px!important;gap:10px!important}
   .mobile-reserve button{min-height:46px!important;padding-inline:16px!important}
 }
 
+@keyframes mobileReservationBackdrop{from{opacity:0}to{opacity:1}}
+@keyframes mobileReservationPanel{0%{opacity:0;transform:translateY(28px) scale(.965);filter:blur(7px)}62%{opacity:1;filter:blur(0)}100%{opacity:1;transform:none;filter:none}}
+@keyframes mobileReservationSlice{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+@keyframes mobileReservationContent{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
 @media (max-width:390px){
   .shell,.delivery-section>.shell,.delivery-benefits>.shell{width:calc(100% - 24px)!important}
   .hero h1{font-size:clamp(54px,18vw,72px)!important}
   .display,#menu .display,#menu-combos .display,#signature-dishes .display,#why-kesar .display,#reservation .display{font-size:clamp(41px,12vw,56px)!important}
   .reservation-experience__options{grid-template-columns:1fr!important}
+  .reservation-submit-actions{grid-template-columns:1fr!important}
   .delivery-benefits__grid{grid-template-columns:1fr!important}
+  #why-kesar-page .why-kesar-page__features{grid-template-columns:1fr!important}
 }
 
 @media (max-width:767px) and (max-height:680px){
-  .reservation-dialog__intro{padding-top:12px!important;padding-bottom:10px!important}
-  .reservation-dialog__intro h2{font-size:25px!important}
-  .reservation-dialog__form-host{padding-top:10px!important}
-  .reservation-dialog:has(.reservation-success.is-visible) .reservation-success{padding-top:28px!important}
-  .reservation-success__icon{width:62px!important;height:62px!important;margin-bottom:12px!important}
-  .reservation-success h2{font-size:44px!important}
+  .reservation-dialog__intro{padding-top:9px!important;padding-bottom:8px!important}
+  .reservation-dialog__intro h2{font-size:22px!important}
+  .reservation-dialog__form-host{padding-top:8px!important}
+  .reservation-dialog .field input,.reservation-dialog .field select{height:39px!important;min-height:39px!important}
+  .reservation-dialog .field textarea{height:48px!important;min-height:48px!important}
+  .reservation-experience__card{min-height:48px!important}
+  .reservation-dialog:has(.reservation-success.is-visible) .reservation-success{padding-top:24px!important}
+  .reservation-success__icon{width:58px!important;height:58px!important;margin-bottom:10px!important}
+  .reservation-success h2{font-size:41px!important}
+}
+
+@media (max-width:767px) and (prefers-reduced-motion:reduce){
+  .reservation-dialog[open],.reservation-dialog[open] .reservation-dialog__panel,.reservation-dialog[open] .reservation-dialog__intro,.reservation-dialog[open] .reservation-dialog__form-host{animation:none!important;transform:none!important;filter:none!important;opacity:1!important}
 }
