@@ -1,0 +1,265 @@
+/* KESAR mobile/tablet interaction fixes. Desktop above 1000px is intentionally untouched. */
+@media (max-width:1000px){
+  html{scroll-padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+
+  html body #menu .party-tabs button,
+  html body #menu [data-reserve-combo],
+  html body #menu-combos .combo-row>button,
+  html body #menu-combos [data-row-reserve],
+  html body .mobile-reserve button{
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  html body #menu .party-tabs button{
+    position:relative;
+    z-index:2;
+    min-height:44px;
+    pointer-events:auto;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+
+  html body #menu .party-tabs button:focus-visible,
+  html body #menu-combos .combo-row>button:focus-visible,
+  html body #menu [data-reserve-combo]:focus-visible,
+  html body #menu-combos [data-row-reserve]:focus-visible,
+  html body .mobile-reserve button:focus-visible{
+    outline:3px solid rgba(185,110,38,.38);
+    outline-offset:3px;
+  }
+
+  html body #menu .featured-combo,
+  html body #menu .featured-combo>* ,
+  html body #menu-combos .combo-layout,
+  html body #menu-combos .accordion,
+  html body #menu-combos .combo-row{
+    min-width:0;
+  }
+
+  html body #menu #featuredImage{
+    transition:opacity .18s ease;
+  }
+
+  html body #menu-combos .combo-row>button{
+    min-height:58px;
+    pointer-events:auto;
+  }
+
+  html body #menu-combos .combo-panel{
+    overflow:clip;
+  }
+
+  html body #menu-combos .combo-panel-inner [data-row-reserve]{
+    min-height:46px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  html body .mobile-reserve{
+    position:fixed;
+    z-index:14500;
+    left:12px;
+    right:12px;
+    bottom:max(10px,env(safe-area-inset-bottom));
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    gap:12px;
+    min-height:70px;
+    padding:10px 10px 10px 15px;
+    border:1px solid rgba(214,154,58,.34);
+    border-radius:16px;
+    background:rgba(12,10,8,.96);
+    color:#f7f0e3;
+    box-shadow:0 18px 54px rgba(0,0,0,.36);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    transition:opacity .22s ease,transform .22s ease;
+  }
+
+  html body .mobile-reserve[hidden]{display:none!important}
+  html body .mobile-reserve:not([hidden]){display:grid!important}
+
+  html body .mobile-reserve>div{
+    min-width:0;
+    display:grid;
+    gap:4px;
+  }
+
+  html body .mobile-reserve #mobileComboName{
+    overflow:hidden;
+    color:rgba(247,240,227,.78);
+    font:600 9px/1.25 "DM Sans",Arial,sans-serif;
+    letter-spacing:.08em;
+    text-overflow:ellipsis;
+    text-transform:uppercase;
+    white-space:nowrap;
+  }
+
+  html body .mobile-reserve #mobileComboPrice{
+    color:#e0ad64;
+    font:400 22px/1 "Italiana",Georgia,serif;
+  }
+
+  html body .mobile-reserve #mobileReserveButton{
+    min-width:112px;
+    min-height:48px;
+    padding:11px 18px;
+    border:1px solid #d69a3a;
+    border-radius:11px;
+    background:#d69a3a;
+    color:#130f0b;
+    font:700 10px/1 "DM Sans",Arial,sans-serif;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    cursor:pointer;
+  }
+
+  body.combo-reserve-visible .kesar-mobile-actions,
+  body.reservation-modal-open .kesar-mobile-actions,
+  body.reservation-modal-open .mobile-reserve,
+  body.menu-open .mobile-reserve,
+  body.dialog-open .mobile-reserve{
+    opacity:0!important;
+    transform:translateY(125%)!important;
+    pointer-events:none!important;
+  }
+
+  /* Tablet modal treatment; desktop modal above 1000px remains unchanged. */
+  html body .reservation-modal{
+    align-items:end;
+    padding:12px;
+  }
+
+  html body .reservation-modal__panel{
+    width:min(100%,780px);
+    max-height:96dvh;
+    grid-template-columns:1fr;
+    border-radius:18px 18px 11px 11px;
+  }
+
+  html body .reservation-modal__intro{
+    min-height:0;
+    display:block;
+    padding:28px 58px 22px 24px;
+    border-right:0;
+    border-bottom:1px solid var(--reservation-modal-line);
+  }
+
+  html body .reservation-modal__eyebrow{margin-top:22px}
+  html body .reservation-modal__title{font-size:clamp(38px,7vw,54px)}
+  html body .reservation-modal__copy{max-width:620px;margin-top:10px;line-height:1.5}
+  html body .reservation-modal__hours{margin-top:15px;padding-top:12px}
+  html body .reservation-modal__form-shell{padding:22px 20px calc(24px + env(safe-area-inset-bottom))}
+  html body .reservation-modal .reservation-form{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+  html body .reservation-modal .field.full,
+  html body .reservation-modal .submit-row{grid-column:1/-1!important}
+}
+
+@media (max-width:767px){
+  html body #menu .party-tabs{
+    grid-template-columns:repeat(3,minmax(0,1fr))!important;
+    overflow:visible!important;
+  }
+
+  html body #menu .party-tabs button{
+    width:100%;
+    padding-inline:5px!important;
+  }
+
+  html body #menu .featured-combo{
+    grid-template-columns:1fr!important;
+    min-height:0!important;
+  }
+
+  html body #menu .featured-combo figure{
+    min-height:240px;
+    max-height:310px;
+  }
+
+  html body #menu .featured-copy{
+    min-height:0!important;
+  }
+
+  html body #menu-combos .combo-row>button{
+    width:100%;
+  }
+
+  html body .reservation-modal .reservation-form{
+    grid-template-columns:1fr!important;
+  }
+
+  html body .reservation-modal .field.full,
+  html body .reservation-modal .submit-row{
+    grid-column:auto!important;
+  }
+
+  html body .reservation-modal__intro{
+    padding:25px 52px 18px 20px;
+  }
+
+  html body .reservation-modal__copy{
+    font-size:11px;
+  }
+}
+
+@media (max-width:700px){
+  html body .mobile-reserve{
+    left:8px;
+    right:8px;
+    bottom:max(8px,env(safe-area-inset-bottom));
+    min-height:66px;
+    border-radius:15px;
+  }
+
+  html body .mobile-reserve #mobileReserveButton{
+    min-width:104px;
+    min-height:46px;
+  }
+}
+
+@media (max-width:420px){
+  html body #menu .party-tabs{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  html body #menu .party-tabs button:last-child{
+    grid-column:1/-1!important;
+  }
+
+  html body .mobile-reserve{
+    gap:8px;
+    padding-left:12px;
+  }
+
+  html body .mobile-reserve #mobileComboName{
+    font-size:8px;
+  }
+
+  html body .mobile-reserve #mobileComboPrice{
+    font-size:19px;
+  }
+
+  html body .mobile-reserve #mobileReserveButton{
+    min-width:94px;
+    padding-inline:12px;
+    font-size:9px;
+  }
+
+  html body .reservation-modal__copy,
+  html body .reservation-modal__hours{
+    display:none;
+  }
+
+  html body .reservation-modal__eyebrow{
+    margin-top:16px;
+  }
+}
+
+@media (max-width:1000px) and (prefers-reduced-motion:reduce){
+  html body .mobile-reserve,
+  html body #menu #featuredImage{
+    transition:none!important;
+  }
+}
