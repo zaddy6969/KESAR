@@ -71,7 +71,16 @@
     }
 
     style.textContent = `
-      #why-kesar-page {
+      html body #bulk-orders {
+        margin-bottom: 0 !important;
+      }
+
+      html body #why-kesar-page {
+        margin-top: -1px !important;
+        margin-block-start: -1px !important;
+        padding-top: 0 !important;
+        border-top: 1px solid rgba(183, 135, 67, .24) !important;
+        box-shadow: 0 -18px 42px rgba(55, 35, 17, .06) !important;
         overflow: hidden !important;
       }
 
@@ -134,6 +143,13 @@
       }
 
       @media (max-width: 767px) {
+        html body #why-kesar-page {
+          margin-top: -1px !important;
+          margin-block-start: -1px !important;
+          padding-top: 0 !important;
+          box-shadow: 0 -10px 26px rgba(55, 35, 17, .05) !important;
+        }
+
         #why-kesar-page .why-kesar-page__shell {
           display: block !important;
           width: 100% !important;
