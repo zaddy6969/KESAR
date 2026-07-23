@@ -1,29 +1,15 @@
-# Kesar Premium Restaurant Website
+# Hotel KESAR
 
-A redesigned, responsive one-page website for **Kesar**, built around an editorial luxury aesthetic.
+Production source for [hotelkesar.com](https://hotelkesar.com/), a static one-page restaurant website deployed on Vercel.
 
-## Design direction
+The complete page content lives in `index.html`. JavaScript is limited to interactions, live Bengaluru time, scroll motion, media playback, and the reservation dialog:
 
-- Full-screen cinematic photography
-- Minimal navigation with a persistent reservation action
-- Typography-led sections instead of rounded cards
-- Thin rules and restrained saffron accents
-- Editorial menu presentation
-- Subtle image cross-fade and scroll reveal animation
-- Live India-time open/closed status
-- Mobile full-screen navigation
-- Reduced-motion accessibility support
+- `base.js` — navigation, menu tabs, dish rails, dialogs, hours, and form times
+- `script.js` — loader, story motion, hero video, and image enhancements
+- `reservation-modal.js` — WhatsApp and email reservation flow
 
-## Open locally
+Run locally with any static file server, for example:
 
-Open `index.html` in a modern browser.
-
-## Replace before launch
-
-- Restaurant address
-- Phone and email
-- Menu items and prices
-- Opening hours
-- Social-media links
-- Stock photography with Kesar's real food and interior photography
-- Demo reservation handler with WhatsApp, email, a booking platform, or a backend
+```sh
+python3 -m http.server 4173
+```
