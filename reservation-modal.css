@@ -1,1 +1,70 @@
 @import url("/reservation-modal-reference-fix.css?v=reference-exact-1");
+
+/* Critical visibility fix: keep reservation actions pinned inside the popup. */
+.reservation-dialog__content{
+  min-height:0!important;
+  overflow:hidden!important;
+}
+
+.reservation-dialog__form-host{
+  min-height:0!important;
+  height:100%!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  padding-bottom:0!important;
+}
+
+.reservation-dialog .submit-row{
+  position:sticky!important;
+  z-index:40!important;
+  bottom:0!important;
+  left:auto!important;
+  right:auto!important;
+  margin:16px -36px 0 -34px!important;
+  padding:13px 22px 14px!important;
+  min-height:92px!important;
+  background:rgba(247,242,233,.985)!important;
+  border-top:1px solid rgba(149,81,23,.2)!important;
+  box-shadow:0 -14px 30px rgba(23,19,15,.10)!important;
+  backdrop-filter:blur(14px)!important;
+  -webkit-backdrop-filter:blur(14px)!important;
+}
+
+.reservation-submit-actions,
+.reservation-action{
+  visibility:visible!important;
+  opacity:1!important;
+  pointer-events:auto!important;
+}
+
+@media(max-width:1000px) and (min-width:701px){
+  .reservation-dialog .submit-row{
+    bottom:0!important;
+    margin:14px -26px 0!important;
+  }
+}
+
+@media(max-width:700px){
+  .reservation-dialog__form-host{
+    padding-bottom:0!important;
+  }
+
+  .reservation-dialog .submit-row{
+    bottom:0!important;
+    margin:14px -14px 0!important;
+    min-height:92px!important;
+    padding:10px 12px calc(10px + env(safe-area-inset-bottom))!important;
+  }
+}
+
+@media(max-width:420px){
+  .reservation-dialog__form-host{
+    padding-bottom:0!important;
+  }
+
+  .reservation-dialog .submit-row{
+    bottom:0!important;
+    min-height:146px!important;
+    margin-bottom:0!important;
+  }
+}
