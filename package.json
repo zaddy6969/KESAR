@@ -1,0 +1,23 @@
+{
+  "name": "primary",
+  "version": "1.0.0",
+  "description": "A redesigned, responsive one-page website for **Kesar**, built around an editorial luxury aesthetic.",
+  "main": "base.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaddy6969/KESAR.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaddy6969/KESAR/issues"
+  },
+  "homepage": "https://github.com/zaddy6969/KESAR#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
