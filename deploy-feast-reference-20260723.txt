@@ -1,0 +1,3 @@
+Deploy the supplied third-reference Feast for Every Table design.
+CSS commit: e8211301486b8bcfc3298a7bfbfca68f773d2434
+Activation commit: a38611b3a30b81034bafa5e6887e3dc4916acff3
