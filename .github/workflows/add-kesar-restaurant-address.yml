@@ -81,3 +81,5 @@ jobs:
           git add index.html
           git commit -m "Add full restaurant postal address to schema"
           git push origin HEAD:main
+
+# Triggered after workflow installation.
