@@ -1,0 +1,118 @@
+=== WWW ROOT ===
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 8
+cache-control: public, max-age=0, must-revalidate
+cdn-cache-control: public, s-maxage=60, stale-while-revalidate=300
+content-disposition: inline
+content-type: text/html; charset=utf-8
+date: Fri, 24 Jul 2026 10:26:49 GMT
+etag: "67c7bab9e229ffa3350e2fcca5bd1a11"
+last-modified: Fri, 24 Jul 2026 10:26:41 GMT
+permissions-policy: camera=(), microphone=(), geolocation=()
+referrer-policy: strict-origin-when-cross-origin
+server: Vercel
+strict-transport-security: max-age=63072000
+x-content-type-options: nosniff
+x-vercel-cache: HIT
+x-vercel-id: sfo1::gg86w-1784888809227-544c32de4c5f
+content-length: 51647
+
+
+=== WWW PATH ===
+HTTP/2 308 
+cache-control: public, max-age=0, must-revalidate
+content-type: text/plain
+date: Fri, 24 Jul 2026 10:26:49 GMT
+location: https://hotelkesar.com/menu-check
+refresh: 0;url=https://hotelkesar.com/menu-check
+server: Vercel
+strict-transport-security: max-age=63072000
+x-vercel-id: sfo1::vflsb-1784888809275-82a482a5c982
+
+
+=== APEX ROOT ===
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 8
+cache-control: public, max-age=0, must-revalidate
+cdn-cache-control: public, s-maxage=60, stale-while-revalidate=300
+content-disposition: inline
+content-type: text/html; charset=utf-8
+date: Fri, 24 Jul 2026 10:26:49 GMT
+etag: "67c7bab9e229ffa3350e2fcca5bd1a11"
+last-modified: Fri, 24 Jul 2026 10:26:41 GMT
+permissions-policy: camera=(), microphone=(), geolocation=()
+referrer-policy: strict-origin-when-cross-origin
+server: Vercel
+strict-transport-security: max-age=63072000
+x-content-type-options: nosniff
+x-vercel-cache: HIT
+x-vercel-id: sfo1::qfqnb-1784888809447-0bee60917aae
+content-length: 51647
+
+
+=== ANALYTICS ===
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 17465
+cache-control: public, max-age=2678400
+content-disposition: inline; filename="script.js"
+content-type: application/javascript; charset=utf-8
+cross-origin-resource-policy: cross-origin
+date: Fri, 24 Jul 2026 10:26:49 GMT
+etag: "8e699b6e4471fd6950176e39c5f1ace0"
+last-modified: Fri, 24 Jul 2026 05:25:41 GMT
+server: Vercel
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-vercel-cache: HIT
+x-vercel-id: sfo1:sfo1:sfo1::ghp8z-1784888809513-7d21b0cdae3b
+content-length: 2495
+
+
+=== CSS ===
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 0
+cache-control: public, max-age=3600, must-revalidate
+cdn-cache-control: public, s-maxage=86400, stale-while-revalidate=604800
+content-disposition: inline; filename="styles.css"
+content-type: text/css; charset=utf-8
+date: Fri, 24 Jul 2026 10:26:49 GMT
+etag: "496bb673afd199d2268430d00d5f7c2f"
+last-modified: Fri, 24 Jul 2026 10:26:49 GMT
+permissions-policy: camera=(), microphone=(), geolocation=()
+referrer-policy: strict-origin-when-cross-origin
+server: Vercel
+strict-transport-security: max-age=63072000
+x-content-type-options: nosniff
+x-vercel-cache: MISS
+x-vercel-id: sfo1::48ksd-1784888809688-274761cdc9fc
+content-length: 11821
+
+
+=== ASSET ===
+HTTP/2 200 
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 0
+cache-control: public, max-age=86400, stale-while-revalidate=604800
+cdn-cache-control: public, s-maxage=604800, stale-while-revalidate=2592000
+content-disposition: inline; filename="mandicombo-5-6ppl.png"
+content-type: image/png
+date: Fri, 24 Jul 2026 10:26:50 GMT
+etag: "847f46d65eefc95d90d3e09d944f4110"
+last-modified: Fri, 24 Jul 2026 10:26:50 GMT
+permissions-policy: camera=(), microphone=(), geolocation=()
+referrer-policy: strict-origin-when-cross-origin
+server: Vercel
+strict-transport-security: max-age=63072000
+x-content-type-options: nosniff
+x-vercel-cache: MISS
+x-vercel-id: sfo1::zq5jg-1784888809920-4842b7540b31
+content-length: 2935297
+
