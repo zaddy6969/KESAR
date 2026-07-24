@@ -382,8 +382,18 @@
       reserveSelected(reserve.dataset.rowReserve);
       return;
     }
-    const row = event.target.closest(".combo-row");
-    if (row) selectCombo(row.dataset.combo);
+
+    const trigger = event.target.closest(".combo-row > button");
+    const row = trigger?.closest(".combo-row");
+    if (!trigger || !row) return;
+
+    if (row.classList.contains("open")) {
+      row.classList.remove("open");
+      trigger.setAttribute("aria-expanded", "false");
+      return;
+    }
+
+    selectCombo(row.dataset.combo);
   });
   $("[data-reserve-combo]")?.addEventListener("click", () => reserveSelected());
   $("#mobileReserveButton")?.addEventListener("click", () => reserveSelected());
