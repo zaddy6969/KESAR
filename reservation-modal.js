@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const CORE_SRC = "/reservation-modal-core.js?v=20260724-email-confirmation";
+  const CORE_SRC = "/reservation-modal-core.js?v=20260724-fast-open";
   const RESERVATION_EMAIL = "hotelkesar41@gmail.com";
   const STATE_KEY = "kesarReservationState";
   const STATE_TTL = 15 * 60 * 1000;
@@ -454,7 +454,8 @@
 
   const core = document.createElement("script");
   core.src = CORE_SRC;
-  core.async = false;
+  core.async = true;
+  core.fetchPriority = "high";
   core.onload = installSendPatch;
   core.onerror = () => console.error("KESAR reservation system could not load.");
   document.body.append(core);

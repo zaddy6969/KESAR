@@ -1,5 +1,3 @@
-@import url("/reservation-modal-reference-base.css?v=final-compact-20260723");
-
 /* Final compact reservation layout: all controls and actions fit inside the modal. */
 .reservation-dialog__panel{height:min(820px,calc(100dvh - 20px))!important;max-height:calc(100dvh - 20px)!important}
 .reservation-dialog__content{position:relative!important;min-height:0!important;padding:0!important;overflow:hidden!important;background:var(--reservation-bg)!important}
@@ -42,14 +40,14 @@
 .reservation-action--email .reservation-action__icon{color:#8e531e!important;border:1px solid rgba(167,101,36,.28)!important}
 .reservation-action--email small{color:#776b60!important}
 
-/* Reliable opening motion: keyframes start whenever the dialog receives the open attribute. */
-.reservation-dialog[open]{animation:kesarReservationBackdropIn .34s ease both!important}
-.reservation-dialog[open] .reservation-dialog__panel{animation:kesarReservationPanelIn .52s cubic-bezier(.18,.78,.2,1) both!important;will-change:transform,opacity,filter,clip-path}
-.reservation-dialog[open] .reservation-dialog__intro-content{animation:kesarReservationContentIn .42s ease .12s both!important}
-.reservation-dialog[open] .reservation-dialog__form-host{animation:kesarReservationContentIn .42s ease .18s both!important}
-@keyframes kesarReservationBackdropIn{from{opacity:0}to{opacity:1}}
-@keyframes kesarReservationPanelIn{0%{opacity:0;transform:translateY(34px) scale(.96);filter:blur(8px);clip-path:inset(4% 3% 4% 3% round 20px)}60%{opacity:1;filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1);filter:none;clip-path:inset(0 round 16px)}}
-@keyframes kesarReservationContentIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+/* Fast, smooth reservation motion: transform and opacity only. */
+.reservation-dialog{opacity:0!important;transition:opacity .16s ease-out!important}
+.reservation-dialog::backdrop{background:rgba(7,5,4,.8)!important;backdrop-filter:blur(3px)!important;-webkit-backdrop-filter:blur(3px)!important}
+.reservation-dialog__panel{opacity:0!important;transform:translate3d(0,16px,0) scale(.985)!important;transition:opacity .14s ease-out,transform .2s cubic-bezier(.16,1,.3,1)!important;will-change:transform,opacity;backface-visibility:hidden;contain:paint}
+.reservation-dialog.is-open{opacity:1!important}
+.reservation-dialog.is-open .reservation-dialog__panel{opacity:1!important;transform:translate3d(0,0,0) scale(1)!important}
+.reservation-dialog[open],.reservation-dialog[open] .reservation-dialog__panel,.reservation-dialog[open] .reservation-dialog__intro-content,.reservation-dialog[open] .reservation-dialog__form-host{animation:none!important;filter:none!important;clip-path:none!important}
+@media(max-width:700px){.reservation-dialog::backdrop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}.reservation-dialog__panel{transform:translate3d(0,12px,0) scale(.99)!important}.reservation-dialog.is-open .reservation-dialog__panel{transform:translate3d(0,0,0) scale(1)!important}}
 
 @media(max-width:1000px) and (min-width:701px){.reservation-dialog__panel{height:min(790px,calc(100dvh - 16px))!important;max-height:calc(100dvh - 16px)!important}.reservation-dialog__form-host{padding:24px 24px 14px!important}.reservation-dialog .reservation-form{gap:7px 11px!important}.reservation-dialog .submit-row{grid-template-columns:1fr!important;min-height:60px!important}.reservation-security{display:none!important}}
 @media(max-width:700px){.reservation-dialog__panel{height:calc(100dvh - 14px)!important;max-height:calc(100dvh - 14px)!important}.reservation-dialog__form-host{padding:16px 13px 12px!important}.reservation-dialog__close{position:fixed!important;top:13px!important;right:13px!important;width:38px!important;height:38px!important}.reservation-dialog .reservation-form{gap:8px!important;grid-template-columns:1fr!important}.reservation-dialog .field,.reservation-dialog .reservation-experience,.reservation-dialog .reservation-selected-feast,.reservation-dialog .submit-row{grid-column:1!important}.reservation-experience__options{grid-template-columns:1fr!important}.reservation-experience__card{min-height:58px!important}.reservation-dialog .submit-row{grid-template-columns:1fr!important;min-height:60px!important;padding-top:8px!important}.reservation-security{display:none!important}.reservation-submit-actions{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important}.reservation-action{min-height:48px!important;grid-template-columns:24px minmax(0,1fr)!important;padding:6px 8px!important}.reservation-action__icon{width:24px!important;height:24px!important}}
