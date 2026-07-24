@@ -1,0 +1,240 @@
+name: Apply six approved KESAR audit fixes
+
+on:
+  push:
+    branches:
+      - fix/audit-six-safe-items-20260724
+    paths:
+      - .github/workflows/apply-audit-six-safe-items.yml
+
+permissions:
+  contents: write
+
+jobs:
+  apply-approved-fixes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out controlled branch
+        uses: actions/checkout@v4
+        with:
+          ref: fix/audit-six-safe-items-20260724
+          fetch-depth: 0
+
+      - name: Apply only the six approved changes
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from urllib.parse import unquote
+          import json
+          import re
+          import struct
+
+          root = Path('.')
+          index_path = root / 'index.html'
+          styles_path = root / 'styles.css'
+          vercel_path = root / 'vercel.json'
+
+          index = index_path.read_text(encoding='utf-8')
+          styles = styles_path.read_text(encoding='utf-8')
+
+          # 1) Enable Vercel Web Analytics for this plain HTML site.
+          analytics_marker = '/_vercel/insights/script.js'
+          if analytics_marker not in index:
+              analytics = '''  <script>
+              window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+            </script>
+            <script defer src="/_vercel/insights/script.js"></script>
+          '''
+              if '</head>' not in index:
+                  raise SystemExit('Missing </head> marker')
+              index = index.replace('</head>', analytics + '</head>', 1)
+
+          # 2) Show the already-approved postal address without changing existing footer content.
+          address_text = '117, Rajagopalanagar Main Road, 2nd Stage, Peenya, Bengaluru, Karnataka 560058'
+          if 'class="footer-luxury-address"' not in index:
+              footer_marker = '      <span>BENGALURU · MANDI HOUSE DINING</span>\n    </div>\n  </footer>'
+              address_html = '''      <span>BENGALURU · MANDI HOUSE DINING</span>
+              <a class="footer-luxury-address" href="https://www.google.com/maps/search/?api=1&amp;query=117%2C%20Rajagopalanagar%20Main%20Road%2C%202nd%20Stage%2C%20Peenya%2C%20Bengaluru%2C%20Karnataka%20560058" target="_blank" rel="noopener noreferrer" aria-label="Open Hotel KESAR address in Google Maps">117, Rajagopalanagar Main Road, 2nd Stage, Peenya, Bengaluru, Karnataka 560058</a>
+            </div>
+          </footer>'''
+              if footer_marker not in index:
+                  raise SystemExit('Footer insertion marker was not found')
+              index = index.replace(footer_marker, address_html, 1)
+
+          address_css = '''
+          /* Visible restaurant address: added without altering existing footer items. */
+          .footer-luxury-address{display:block;width:100%;margin-top:9px;color:inherit;font-size:9px;line-height:1.5;letter-spacing:.06em;text-align:right;text-transform:none;opacity:.72;transition:opacity .2s ease}
+          .footer-luxury-address:hover,.footer-luxury-address:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:3px}
+          @media(max-width:700px){.footer-luxury-address{text-align:center;font-size:8.5px}}
+          '''
+          if '.footer-luxury-address{' not in styles:
+              styles = styles.rstrip() + '\n' + address_css.strip() + '\n'
+
+          # 3) Correct the visible spelling everywhere in current frontend source files.
+          index = index.replace('RESTURANT', 'RESTAURANT').replace('Resturant', 'Restaurant').replace('resturant', 'restaurant')
+          styles = styles.replace('RESTURANT', 'RESTAURANT').replace('Resturant', 'Restaurant').replace('resturant', 'restaurant')
+
+          # 4) Add intrinsic dimensions to every local image that lacks them.
+          def image_size(path: Path):
+              data = path.read_bytes()
+              if data.startswith(b'\x89PNG\r\n\x1a\n') and len(data) >= 24:
+                  return struct.unpack('>II', data[16:24])
+              if data[:2] == b'\xff\xd8':
+                  i = 2
+                  while i + 9 < len(data):
+                      if data[i] != 0xFF:
+                          i += 1
+                          continue
+                      marker = data[i + 1]
+                      i += 2
+                      if marker in (0xD8, 0xD9):
+                          continue
+                      if i + 2 > len(data):
+                          break
+                      length = int.from_bytes(data[i:i+2], 'big')
+                      if marker in {0xC0,0xC1,0xC2,0xC3,0xC5,0xC6,0xC7,0xC9,0xCA,0xCB,0xCD,0xCE,0xCF}:
+                          return (int.from_bytes(data[i+5:i+7], 'big'), int.from_bytes(data[i+3:i+5], 'big'))
+                      i += length
+              if data[:4] == b'RIFF' and data[8:12] == b'WEBP':
+                  kind = data[12:16]
+                  if kind == b'VP8X' and len(data) >= 30:
+                      return (1 + int.from_bytes(data[24:27], 'little'), 1 + int.from_bytes(data[27:30], 'little'))
+                  if kind == b'VP8 ' and len(data) >= 30:
+                      return (int.from_bytes(data[26:28], 'little') & 0x3FFF, int.from_bytes(data[28:30], 'little') & 0x3FFF)
+                  if kind == b'VP8L' and len(data) >= 25:
+                      bits = int.from_bytes(data[21:25], 'little')
+                      return ((bits & 0x3FFF) + 1, ((bits >> 14) & 0x3FFF) + 1)
+              raise ValueError(f'Unsupported image format: {path}')
+
+          img_re = re.compile(r'<img\b[^>]*>', re.I)
+          src_re = re.compile(r'\bsrc=["\']([^"\']+)["\']', re.I)
+          width_re = re.compile(r'\bwidth=["\']\d+["\']', re.I)
+          height_re = re.compile(r'\bheight=["\']\d+["\']', re.I)
+
+          def add_dimensions(match):
+              tag = match.group(0)
+              if width_re.search(tag) and height_re.search(tag):
+                  return tag
+              src_match = src_re.search(tag)
+              if not src_match:
+                  return tag
+              src = src_match.group(1)
+              if src.startswith(('http://', 'https://', 'data:')):
+                  return tag
+              local = unquote(src.split('?', 1)[0].split('#', 1)[0]).lstrip('/')
+              path = root / local
+              if not path.is_file():
+                  raise SystemExit(f'Local image not found for dimensions: {src}')
+              width, height = image_size(path)
+              tag = width_re.sub('', tag)
+              tag = height_re.sub('', tag)
+              tag = re.sub(r'\s+>', '>', tag)
+              return tag[:-1] + f' width="{width}" height="{height}">'
+
+          index = img_re.sub(add_dimensions, index)
+
+          # 5) Use a source-controlled permanent www -> apex redirect and balanced caching.
+          vercel = {
+              '$schema': 'https://openapi.vercel.sh/vercel.json',
+              'cleanUrls': True,
+              'trailingSlash': False,
+              'redirects': [
+                  {
+                      'source': '/:path*',
+                      'has': [
+                          {'type': 'host', 'value': 'www.hotelkesar.com'}
+                      ],
+                      'destination': 'https://hotelkesar.com/:path*',
+                      'permanent': True
+                  }
+              ],
+              'headers': [
+                  {
+                      'source': '/',
+                      'headers': [
+                          {'key': 'Cache-Control', 'value': 'public, max-age=0, must-revalidate'},
+                          {'key': 'CDN-Cache-Control', 'value': 'public, s-maxage=60, stale-while-revalidate=300'},
+                          {'key': 'Vercel-CDN-Cache-Control', 'value': 'public, s-maxage=60, stale-while-revalidate=300'}
+                      ]
+                  },
+                  {
+                      'source': '/(.*).html',
+                      'headers': [
+                          {'key': 'Cache-Control', 'value': 'public, max-age=0, must-revalidate'},
+                          {'key': 'CDN-Cache-Control', 'value': 'public, s-maxage=60, stale-while-revalidate=300'},
+                          {'key': 'Vercel-CDN-Cache-Control', 'value': 'public, s-maxage=60, stale-while-revalidate=300'}
+                      ]
+                  },
+                  {
+                      'source': '/(.*).css',
+                      'headers': [
+                          {'key': 'Cache-Control', 'value': 'public, max-age=3600, must-revalidate'},
+                          {'key': 'CDN-Cache-Control', 'value': 'public, s-maxage=86400, stale-while-revalidate=604800'},
+                          {'key': 'Vercel-CDN-Cache-Control', 'value': 'public, s-maxage=86400, stale-while-revalidate=604800'}
+                      ]
+                  },
+                  {
+                      'source': '/(.*).js',
+                      'headers': [
+                          {'key': 'Cache-Control', 'value': 'public, max-age=3600, must-revalidate'},
+                          {'key': 'CDN-Cache-Control', 'value': 'public, s-maxage=86400, stale-while-revalidate=604800'},
+                          {'key': 'Vercel-CDN-Cache-Control', 'value': 'public, s-maxage=86400, stale-while-revalidate=604800'}
+                      ]
+                  },
+                  {
+                      'source': '/assets/(.*)',
+                      'headers': [
+                          {'key': 'Cache-Control', 'value': 'public, max-age=86400, stale-while-revalidate=604800'},
+                          {'key': 'CDN-Cache-Control', 'value': 'public, s-maxage=604800, stale-while-revalidate=2592000'},
+                          {'key': 'Vercel-CDN-Cache-Control', 'value': 'public, s-maxage=604800, stale-while-revalidate=2592000'}
+                      ]
+                  },
+                  {
+                      'source': '/(.*)',
+                      'headers': [
+                          {'key': 'X-Content-Type-Options', 'value': 'nosniff'},
+                          {'key': 'Referrer-Policy', 'value': 'strict-origin-when-cross-origin'},
+                          {'key': 'Permissions-Policy', 'value': 'camera=(), microphone=(), geolocation=()'}
+                      ]
+                  }
+              ]
+          }
+
+          index_path.write_text(index, encoding='utf-8')
+          styles_path.write_text(styles, encoding='utf-8')
+          vercel_path.write_text(json.dumps(vercel, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          # Validation: exact requested outcomes only.
+          final_index = index_path.read_text(encoding='utf-8')
+          final_styles = styles_path.read_text(encoding='utf-8')
+          final_vercel = json.loads(vercel_path.read_text(encoding='utf-8'))
+
+          assert analytics_marker in final_index
+          assert 'class="footer-luxury-address"' in final_index and address_text in final_index
+          assert 'RESTURANT' not in final_index + final_styles
+          assert final_vercel['redirects'][0]['has'][0] == {'type': 'host', 'value': 'www.hotelkesar.com'}
+          assert final_vercel['redirects'][0]['destination'] == 'https://hotelkesar.com/:path*'
+          assert final_vercel['redirects'][0]['permanent'] is True
+
+          missing = []
+          for tag in img_re.findall(final_index):
+              src_match = src_re.search(tag)
+              if src_match and not src_match.group(1).startswith(('http://', 'https://', 'data:')):
+                  if not (width_re.search(tag) and height_re.search(tag)):
+                      missing.append(src_match.group(1))
+          if missing:
+              raise SystemExit(f'Images still missing dimensions: {missing}')
+
+          print('All six approved audit fixes applied and validated.')
+          PY
+
+      - name: Commit validated branch changes and remove one-time workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/apply-audit-six-safe-items.yml
+          git add index.html styles.css vercel.json
+          git commit -m "Fix six approved audit items without redesign"
+          git push origin HEAD:fix/audit-six-safe-items-20260724
