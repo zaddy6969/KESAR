@@ -518,7 +518,7 @@
     showDialog();
     requestAnimationFrame(() => {
       dialog.classList.add("is-open");
-      setTimeout(() => $("#name", form)?.focus({ preventScroll: true }), 90);
+      setTimeout(() => $("#name", form)?.focus({ preventScroll: true }), 35);
     });
   }
 
@@ -531,7 +531,7 @@
         dialog.removeAttribute("open");
         dialog.dispatchEvent(new Event("close"));
       }
-    }, 180);
+    }, 170);
   }
 
   function markTriggers(root = document) {
