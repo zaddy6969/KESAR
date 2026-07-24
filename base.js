@@ -8,93 +8,17 @@
   const CLOSE_MINUTES = 23 * 60;
   const HOURS_LABEL = "12:30 PM–11:00 PM";
 
-  const combos = {
-    "2": {
-      name: "Mandi Combo",
-      party: "2 People",
-      label: "2 People",
-      price: "₹499",
-      badge: "Perfect for Two",
-      image: "/assets/images/mandicombo-2ppl.png",
-      alt: "Mandi feast for two",
-      guests: "2 guests",
-      items: [
-        "Half Al Faham Chicken",
-        "Unlimited mandi rice on selected dine-in combinations",
-        "2 Boiled Eggs",
-        "2 Soft Drinks"
-      ]
-    },
-    "5": {
-      name: "Mandi Combo",
-      party: "4 to 5 People",
-      label: "4–5 People",
-      price: "₹1,199",
-      badge: "Most Popular",
-      image: "/assets/images/mandicombo-5-6ppl.png",
-      alt: "Mandi feast for four to five people",
-      guests: "5 guests",
-      items: [
-        "Half Al Faham Chicken",
-        "Half Tandoori Chicken",
-        "8 Pc Chicken Kabab",
-        "Unlimited mandi rice on selected dine-in combinations",
-        "5 Soft Drinks"
-      ]
-    },
-    "6": {
-      name: "Family Mandi Feast",
-      party: "6 People",
-      label: "6 People",
-      price: "₹1,499",
-      badge: "Family Favourite",
-      image: "/assets/images/familymandifest-6ppl.png",
-      alt: "Family mandi feast for six people",
-      guests: "6 guests",
-      items: [
-        "Full Al Faham Chicken",
-        "12 Pc Chicken Kabab",
-        "Unlimited mandi rice on selected dine-in combinations",
-        "6 Soft Drinks"
-      ]
-    },
-    "8": {
-      name: "Mandi Combo",
-      party: "8 People",
-      label: "8 People",
-      price: "₹1,999",
-      badge: "Made for Gatherings",
-      image: "/assets/images/mandicombo-8ppl.png",
-      alt: "Mandi feast for eight people",
-      guests: "7+ guests",
-      items: [
-        "Half Tandoori Chicken",
-        "Half Al Faham Chicken",
-        "8 Pc Chicken Kabab",
-        "Unlimited mandi rice on selected dine-in combinations",
-        "8 Soft Drinks"
-      ]
-    },
-    "10": {
-      name: "Royal Mandi Platter",
-      party: "10 People",
-      label: "10 People",
-      price: "₹2,499",
-      badge: "The Complete Feast",
-      image: "/assets/images/royalmandiplatter-10ppl.png",
-      alt: "Royal mandi platter for ten people",
-      guests: "7+ guests",
-      items: [
-        "Full Al Faham Chicken",
-        "Full Tandoori Chicken",
-        "16 Pc Chicken Kabab",
-        "Unlimited mandi rice on selected dine-in combinations",
-        "10 Soft Drinks"
-      ]
-    }
+  // Final names, prices and inclusions live in index.html. JavaScript only keeps
+  // media and form values that are required when a visitor changes party size.
+  const COMBO_MEDIA = {
+    "2": { image: "/assets/images/mandicombo-2ppl.png", alt: "Mandi feast for two", guests: "2 guests" },
+    "5": { image: "/assets/images/mandicombo-5-6ppl.png", alt: "Mandi feast for four to five people", guests: "5 guests" },
+    "6": { image: "/assets/images/familymandifest-6ppl.png", alt: "Family mandi feast for six people", guests: "6 guests" },
+    "8": { image: "/assets/images/mandicombo-8ppl.png", alt: "Mandi feast for eight people", guests: "7+ guests" },
+    "10": { image: "/assets/images/royalmandiplatter-10ppl.png", alt: "Royal mandi platter for ten people", guests: "7+ guests" }
   };
 
-  let selectedCombo = "5";
+  let selectedCombo = $("[data-party][aria-selected='true']")?.dataset.party || "5";
   let lastDishTrigger = null;
 
   const clock = total => {
@@ -141,8 +65,28 @@
     if ($("#footerToday")) $("#footerToday").textContent = HOURS_LABEL;
   }
 
+  function comboFromHtml(key) {
+    const row = $$(".combo-row[data-combo]").find(candidate => candidate.dataset.combo === key);
+    const media = COMBO_MEDIA[key];
+    if (!row || !media) return null;
+
+    const labels = $$("button small", row).map(label => label.textContent.trim()).filter(Boolean);
+    const partyTab = $$("[data-party]").find(tab => tab.dataset.party === key);
+
+    return {
+      key,
+      name: $("button strong", row)?.textContent.trim() || "Mandi Combo",
+      badge: labels[0] || "KESAR Feast",
+      party: labels.at(-1) || partyTab?.textContent.trim() || "",
+      label: partyTab?.textContent.trim() || labels.at(-1) || "",
+      price: $(".row-price", row)?.textContent.trim() || "",
+      items: $$(".combo-panel li", row).map(item => item.cloneNode(true)),
+      ...media
+    };
+  }
+
   function selectCombo(key, announce = true) {
-    const combo = combos[key];
+    const combo = comboFromHtml(key);
     if (!combo) return;
     selectedCombo = key;
 
@@ -175,11 +119,7 @@
     });
 
     const items = $("#featuredItems");
-    if (items) items.replaceChildren(...combo.items.map(item => {
-      const listItem = document.createElement("li");
-      listItem.textContent = item;
-      return listItem;
-    }));
+    if (items && combo.items.length) items.replaceChildren(...combo.items);
 
     $$(".combo-row").forEach(row => {
       const active = row.dataset.combo === key;
@@ -193,13 +133,17 @@
   }
 
   function reserveSelected(key = selectedCombo) {
-    const combo = combos[key];
+    const combo = comboFromHtml(key);
     if (!combo) return;
     selectCombo(key, false);
 
     const guests = $("#guests");
     const notes = $("#message");
-    if (guests) guests.value = combo.guests;
+    if (guests) {
+      guests.value = combo.guests;
+      guests.dispatchEvent(new Event("input", { bubbles: true }));
+      guests.dispatchEvent(new Event("change", { bubbles: true }));
+    }
     if (notes) {
       const note = `Interested in the ${combo.name} for ${combo.party} — ${combo.price}.`;
       if (!notes.value.includes(note)) notes.value = `${notes.value.trim()}${notes.value.trim() ? "\n" : ""}${note}`;
