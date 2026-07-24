@@ -1,4 +1,4 @@
-/* Production deployment retry: no visual or functional change. */
+/* Production deployment retry after Vercel rate-limit window: no visual or functional change. */
 /* Final compact reservation layout: all controls and actions fit inside the modal. */
 .reservation-dialog__panel{height:min(820px,calc(100dvh - 20px))!important;max-height:calc(100dvh - 20px)!important}
 .reservation-dialog__content{position:relative!important;min-height:0!important;padding:0!important;overflow:hidden!important;background:var(--reservation-bg)!important}
