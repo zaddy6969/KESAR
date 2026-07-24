@@ -1,0 +1,48 @@
+name: Tidy approved footer markup
+
+on:
+  push:
+    branches:
+      - fix/audit-six-safe-items-20260724
+    paths:
+      - .github/workflows/tidy-audit-footer-markup.yml
+
+permissions:
+  contents: write
+
+jobs:
+  tidy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/audit-six-safe-items-20260724
+          fetch-depth: 0
+      - name: Restore original footer indentation around the added address
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          old = '''      <span>BENGALURU · MANDI HOUSE DINING</span>
+    <a class="footer-luxury-address" href="https://www.google.com/maps/search/?api=1&amp;query=117%2C%20Rajagopalanagar%20Main%20Road%2C%202nd%20Stage%2C%20Peenya%2C%20Bengaluru%2C%20Karnataka%20560058" target="_blank" rel="noopener noreferrer" aria-label="Open Hotel KESAR address in Google Maps">117, Rajagopalanagar Main Road, 2nd Stage, Peenya, Bengaluru, Karnataka 560058</a>
+  </div>
+</footer>'''
+          new = '''      <span>BENGALURU · MANDI HOUSE DINING</span>
+      <a class="footer-luxury-address" href="https://www.google.com/maps/search/?api=1&amp;query=117%2C%20Rajagopalanagar%20Main%20Road%2C%202nd%20Stage%2C%20Peenya%2C%20Bengaluru%2C%20Karnataka%20560058" target="_blank" rel="noopener noreferrer" aria-label="Open Hotel KESAR address in Google Maps">117, Rajagopalanagar Main Road, 2nd Stage, Peenya, Bengaluru, Karnataka 560058</a>
+    </div>
+  </footer>'''
+          if old not in text:
+              raise SystemExit('Expected address footer block was not found')
+          path.write_text(text.replace(old, new, 1), encoding='utf-8')
+          PY
+      - name: Commit formatting cleanup and remove one-time workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/tidy-audit-footer-markup.yml
+          git add index.html
+          git commit -m "Keep approved footer markup formatting consistent"
+          git push origin HEAD:fix/audit-six-safe-items-20260724
